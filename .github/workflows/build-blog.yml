@@ -18,7 +18,7 @@ jobs:
 
         run: |
           sudo apt update
-          sudo apt install -y git npm nodejs tar xz-utils
+          sudo apt install -y git npm nodejs tar zip unzip xz-utils
           npm i -g hexo hexo-cli
       - name: Pull blog source
 
@@ -29,6 +29,7 @@ jobs:
           cd blogbackup
           sudo rm -rf .git*
           hexo cl && hexo g
+          cd ../
       - name: Upload blog to artifact
 
         uses: actions/upload-artifact@v3
@@ -37,5 +38,5 @@ jobs:
 
           name: blog-html
 
-          path: public/*
+          path: blogackup/*
          
