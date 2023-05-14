@@ -31,7 +31,8 @@ jobs:
           hexo cl && hexo g
       - name: pack blog
         run: |
-          tar -cvf blog.tar.xz ./*
+          cd blogbackup
+          tar -cvf blog.tar.xz public
       - name: Upload blog to artifact
 
         uses: actions/upload-artifact@v3
