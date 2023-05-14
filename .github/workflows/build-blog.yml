@@ -41,5 +41,5 @@ jobs:
 
           name: blog-html
 
-          path: blog.tar.xz
+          path: blogbackup/blog.tar.xz
          
