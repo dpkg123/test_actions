@@ -29,7 +29,9 @@ jobs:
           cd blogbackup
           sudo rm -rf .git*
           hexo cl && hexo g
-          cd ../
+      - name: pack blog
+        run: |
+          tar -cvf blog.tar.xz public
       - name: Upload blog to artifact
 
         uses: actions/upload-artifact@v3
@@ -38,5 +40,5 @@ jobs:
 
           name: blog-html
 
-          path: blogackup/*
+          path: blog.tar.xz
          
