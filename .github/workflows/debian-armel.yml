@@ -23,6 +23,8 @@ jobs:
       run: |
         sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch bullseye rootfs https://mirrors.bfsu.edu.cn/debian
         sudo test -d /etc/resolv.conf || sudo cp /etc/resolv.conf rootfs/etc/ -rv
+        sudo rm -rf -v rootfs/etc/hostname
+        sudo echo "Nintendo3DS" >rootfs/etc/hostname
         cd rootfs && sudo find -name qemu-* -delete
 
     - name: Package Rootfs
