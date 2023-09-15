@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Rootfs
       run: |
-        sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch bullseye rootfs https://mirrors.bfsu.edu.cn/debian
+        sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch,ffmpeg,mpv,dos2unix,sl bullseye rootfs https://mirrors.bfsu.edu.cn/debian
 
     - name: Configure Rootfs
       run: |
