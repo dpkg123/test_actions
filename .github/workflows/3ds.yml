@@ -37,7 +37,7 @@ jobs:
 
     - name: Get Buildroot Config
       run: |
-        wget https://github.com/dpkg123/test_actions/raw/main/3ds_defconfig buildroot/.config
+        cp -v 3ds_defconfig buildroot/.config
 
     - name: Setup ccache
 
