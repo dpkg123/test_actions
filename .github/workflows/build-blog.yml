@@ -2,7 +2,7 @@ name: deploy blog
 
 on:
 
-  workflow_dispatch:
+ workflow_dispatch:
 
 jobs:
 
