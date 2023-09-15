@@ -29,11 +29,11 @@ jobs:
         sudo chmod 777 -R rootfs/etc/hostname
         sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' rootfs/etc/apt/sources.list
         cd rootfs && sudo find -name qemu-* -delete
-        sudo rm -rf -v rootfs/var/lib/apt/lists rootfs/var/cache/apt/archives
-        
+         
     - name: Package Rootfs
       run: |
         cd rootfs
+        sudo rm -rf -v var/lib/apt/lists var/cache/apt/archives
         sudo find ./* | sudo cpio -oc > ../rootfs.cpio
 
     - name: Upload rootfs.cpio to Artifact
