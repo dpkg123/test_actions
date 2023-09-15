@@ -1,0 +1,65 @@
+name: build 3ds rootfs
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+  build-3ds-rootfs:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Checkout Repo"
+      uses: actions/checkout@v4
+      
+    # Cleanup The Actions Workspace Using Custom Composite Run Actions
+    - name: Cleanup
+      uses: rokibhasansagar/slimhub_actions@main
+      # That's it! Now use your normal steps
+
+    - name: Prepare the environment
+      run: |
+        sudo apt update 
+        sudo apt -y upgrade  
+        sudo apt -y install gcc git wget make binutils util-linux e2fsprogs jfsutils reiserfsprogs xfsprogs squashfs-tools btrfs-progs pcmciautils ppp procps oprofile udev iptables libcrypto* openssl* bc sphinx*
+
+    - name: Prepare Toolchain
+      run: | 
+        wget https://toolchains.bootlin.com/downloads/releases/toolchains/armv6-eabihf/tarballs/armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
+        tar -jxvf  armv6-eabihf--glibc--stable-2018.02-2.tar.bz2 -C $HOME/
+        rm -rf -v armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
+
+    - name: Get Buildroot source
+      run: |
+        git clone https://github.com/buildroot/buildroot.git --depth=1
+
+    - name: Get Buildroot Config
+      run: |
+        wget https://github.com/dpkg123/test_actions/raw/main/3ds_defconfig buildroot/.config
+
+    - name: Setup ccache
+
+      uses: hendrikmuhs/ccache-action@main
+      with: 
+        max-size: 4G
+
+    - name: Set Swap Space
+      uses: pierotofy/set-swap-space@master
+      with:
+        swap-size-gb: 8
+
+    - name: Build Rootfs
+      run: |
+        cd buildroot
+        export ARCH=arm
+        export PATH="$PATH:$HOME/armv6-eabihf--glibc--stable-2018.02-2"
+        make -j2
+
+    - name: Upload rootfs to Artifact
+      if: github.event_name == 'push'
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "3ds-rootfs"
+       path: buildroot/output/images/rootfs.cpio.gz
