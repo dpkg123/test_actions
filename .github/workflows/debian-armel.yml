@@ -34,7 +34,7 @@ jobs:
     - name: Package Rootfs
       run: |
         cd rootfs
-        sudo find ./* | sudo cpio -oc > rootfs.cpio
+        sudo find ./* | sudo cpio -oc > ../rootfs.cpio
 
     - name: Upload rootfs.cpio to Artifact
       uses: actions/upload-artifact@v3
