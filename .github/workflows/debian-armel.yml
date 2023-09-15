@@ -22,14 +22,18 @@ jobs:
     - name: Build Rootfs
       run: |
         sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch bullseye rootfs https://mirrors.bfsu.edu.cn/debian
+
+    - name: Configure Rootfs
+      run: |
         sudo test -d /etc/resolv.conf || sudo cp /etc/resolv.conf rootfs/etc/ -rv
         sudo rm -rf -v rootfs/etc/hostname
-        sudo echo "Nintendo3DS" >rootfs/etc/hostname
+        sudo echo "Nintendo3DS" > rootfs/etc/hostname
         cd rootfs && sudo find -name qemu-* -delete
-
+        
     - name: Package Rootfs
       run: |
-        sudo find rootfs/* -type f | sudo cpio -oc > rootfs.cpio
+        cd rootfs
+        sudo find ./* | sudo cpio -oc > rootfs.cpio
 
     - name: Upload rootfs.cpio to Artifact
       uses: actions/upload-artifact@v3
