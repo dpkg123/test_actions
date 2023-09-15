@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Rootfs
       run: |
-        sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch,ffmpeg,mpv,dos2unix,sl bullseye rootfs https://mirrors.bfsu.edu.cn/debian
+        sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch,ffmpeg,mpv,dos2unix,sl bullseye rootfs
 
     - name: Configure Rootfs
       run: |
@@ -30,6 +30,7 @@ jobs:
         sudo rm -rf -v rootfs/etc/hostname
         sudo echo Nintendo3DS > rootfs/etc/hostname
         sudo chmod 600 -R rootfs/etc/hostname
+        sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' rootfs/etc/apt/sources.list
         cd rootfs && sudo mkdir -p -v dev run sys media mnt srv
         cd rootfs && sudo find -name qemu-* -delete
         
