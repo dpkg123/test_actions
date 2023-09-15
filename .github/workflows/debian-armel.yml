@@ -22,7 +22,7 @@ jobs:
 
     - name: Build Rootfs
       run: |
-        sudo debootstrap --arch=armel --keyring=/usr/share/keyrings/debian-archive-keyring.gpg rootfs bullseye 
+        sudo debootstrap --arch=armel rootfs bullseye 
         cd rootfs && sudo find -name qemu-* -delete
 
     - name: Package Rootfs
