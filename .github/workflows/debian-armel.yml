@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Rootfs
       run: |
-        sudo debootstrap --arch=armel bullseye rootfs
+        sudo debootstrap --arch=armel --include=lxde,w3m,htop,neofetch bullseye rootfs
         cd rootfs && sudo find -name qemu-* -delete
 
     - name: Package Rootfs
@@ -29,7 +29,6 @@ jobs:
         find rootfs -type f | sudo cpio -oc > rootfs.cpio
 
     - name: Upload rootfs.cpio to Artifact
-      if: github.event_name == 'push'
       uses: actions/upload-artifact@v3
       with: 
        name: "3ds-rootfs"
