@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Rootfs
       run: |
-        sudo debootstrap --arch=armel rootfs bullseye 
+        sudo debootstrap --arch=armel bullseye rootfs
         cd rootfs && sudo find -name qemu-* -delete
 
     - name: Package Rootfs
