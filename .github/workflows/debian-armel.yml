@@ -17,7 +17,6 @@ jobs:
     - name: Prepare the environment
       run: |
         sudo apt update 
-        sudo apt autopurge nodejs* python* firefox* docker*
         sudo apt install qemu-user-static debootstrap cpio
 
     - name: Build Rootfs
