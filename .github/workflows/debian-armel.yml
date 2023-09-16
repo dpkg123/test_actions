@@ -35,9 +35,10 @@ jobs:
         cd rootfs
         sudo rm -rf -v var/lib/apt/lists var/cache/apt/archives
         sudo find ./* | sudo cpio -oc > ../rootfs.cpio
+        gzip -c ../rootfs.cpio > ../rootfs.cpio.gz
 
     - name: Upload rootfs.cpio to Artifact
       uses: actions/upload-artifact@v3
       with: 
        name: "3ds-rootfs"
-       path: rootfs.cpio
+       path: rootfs.cpio*
