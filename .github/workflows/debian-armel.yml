@@ -27,9 +27,9 @@ jobs:
       run: |
         sudo test -d /etc/resolv.conf || sudo cp /etc/resolv.conf rootfs/etc/ -rv
         sudo chmod 777 -R rootfs/etc/hostname
+        sudo cp fstab rootfs/etc -vr
         sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' rootfs/etc/apt/sources.list
         cd rootfs && sudo find -name qemu-* -delete
-        sudo cp fstab rootfs/etc -vr
          
     - name: Package Rootfs
       run: |
