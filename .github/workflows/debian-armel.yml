@@ -21,7 +21,7 @@ jobs:
 
     - name: Build Rootfs
       run: |
-        sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch,nethack-console bullseye rootfs
+        sudo debootstrap --arch=armel --variant=minbase --include=icewm,xinit,w3m,htop,neofetch,nethack-console bullseye rootfs
 
     - name: Configure Rootfs
       run: |
