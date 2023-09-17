@@ -38,6 +38,6 @@ jobs:
         max-size: 8G
 
     - name: Build Linux
-      run: curl -SsL https://gist.githubusercontent.com/jcmvbkbc/316e6da728021c8ff670a24e674a35e6/raw/8ffd2e759814612a7c210ddb0b1580855e529b5f/rebuild-esp32s3-linux-wifi.sh | sudo bash
+      run: curl -SsL https://gist.githubusercontent.com/jcmvbkbc/316e6da728021c8ff670a24e674a35e6/raw/8ffd2e759814612a7c210ddb0b1580855e529b5f/rebuild-esp32s3-linux-wifi.sh | bash
     
     - run: sudo tree ./
