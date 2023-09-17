@@ -37,14 +37,6 @@ jobs:
       with: 
         max-size: 8G
 
-    - name: Setup Enviroment
-      run: |
-        sudo systemctl mask brltty.path
-        sudo systemctl stop brltty-udev.service
-        sudo systemctl mask blttry-udev.service
-        sudo systemctl stop brltty.service
-        sudo systemctl disable brltty.service
-
     - name: Build Linux
       run: curl -SsL https://gist.githubusercontent.com/jcmvbkbc/316e6da728021c8ff670a24e674a35e6/raw/8ffd2e759814612a7c210ddb0b1580855e529b5f/rebuild-esp32s3-linux-wifi.sh | sudo bash
     
