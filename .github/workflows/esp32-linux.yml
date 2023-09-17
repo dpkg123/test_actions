@@ -23,7 +23,8 @@ jobs:
       run: |
         sudo apt update 
         sudo apt -y upgrade
-        sudo apt install python3 python3-pip make cmake automake wget git curl -y
+        sudo apt install python3 python-is-python3 gcc llvm gawk cmake python3-pip make cmake automake wget git curl libtool-bin libtool-doc gperf bc bison flex texinfo libtool make git rsync help2man -y
+        sudo apt purge modemmanager -y
 
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
@@ -36,9 +37,15 @@ jobs:
       with: 
         max-size: 8G
 
+    - name: Setup Enviroment
+      run: |
+        sudo systemctl mask brltty.path
+        sudo systemctl stop brltty-udev.service
+        sudo systemctl mask blttry-udev.service
+        sudo systemctl stop brltty.service
+        sudo systemctl disable brltty.service
 
     - name: Build Linux
       run: curl -SsL https://gist.githubusercontent.com/jcmvbkbc/316e6da728021c8ff670a24e674a35e6/raw/8ffd2e759814612a7c210ddb0b1580855e529b5f/rebuild-esp32s3-linux-wifi.sh | sudo bash
-
-
+    
     - run: sudo tree ./
