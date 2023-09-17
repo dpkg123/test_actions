@@ -1,0 +1,48 @@
+name: build devuan armel rootfs
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+  build-rootfs:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Checkout Repo"
+      uses: actions/checkout@v4
+      
+    - name: Prepare the environment
+      run: |
+        sudo apt update 
+        sudo apt install qemu-user-static cpio
+        
+    - name: Install debootstrap
+      run: |
+        git clone https://git.devuan.org/devuan/debootstrap/
+        sudo make -C debootstrap install 
+
+    - name: Build Rootfs
+      run: |
+        sudo debootstrap --arch=armel --include=icewm,xinit,w3m,htop,neofetch,nethack-console chimaera rootfs
+
+    - name: Configure Rootfs
+      run: |
+        sudo test -d /etc/resolv.conf || sudo cp /etc/resolv.conf rootfs/etc/ -rv
+        sudo chmod 777 -R rootfs/etc/hostname
+        cd rootfs && sudo find -name qemu-* -delete
+         
+    - name: Package Rootfs
+      run: |
+        cd rootfs
+        sudo rm -rf -v var/lib/apt/lists var/cache/apt/archives
+        sudo find ./* | sudo cpio -oc > ../rootfs.cpio
+        gzip -c ../rootfs.cpio > ../rootfs.cpio.gz
+
+    - name: Upload rootfs.cpio to Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "3ds-rootfs"
+       path: rootfs.cpio.gz
