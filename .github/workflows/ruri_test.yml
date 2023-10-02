@@ -33,8 +33,9 @@ jobs:
         run: |
           
           cd $HOME
+          mkdir -p -v $HOME/clang
 
-          git clone https://github.com/dpkg123/clang --depth=2
+          wget https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/android12-release/clang-r416183b.tar.gz && tar -xvf clang-r416183b.tar.gz -C $HOME/clang
 
       - name: Pull ruri
         run: |
