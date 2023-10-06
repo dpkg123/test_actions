@@ -22,7 +22,6 @@ jobs:
     - name: Prepare the environment
       run: |
         sudo apt update 
-        sudo apt -y upgrade  
         sudo apt -y install gcc-10 git wget make binutils util-linux e2fsprogs jfsutils reiserfsprogs xfsprogs squashfs-tools btrfs-progs pcmciautils ppp procps oprofile udev iptables libcrypto* openssl* gcc-10-arm-linux-gnueabi g++-10-arm-linux-gnueabi bc sphinx*
 
     - name: Prepare Toolchain
