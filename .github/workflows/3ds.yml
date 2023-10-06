@@ -24,11 +24,11 @@ jobs:
         sudo apt update 
         sudo apt -y install gcc-10 git wget make binutils util-linux e2fsprogs jfsutils reiserfsprogs xfsprogs squashfs-tools btrfs-progs pcmciautils ppp procps oprofile udev iptables libcrypto* openssl* gcc-10-arm-linux-gnueabi g++-10-arm-linux-gnueabi bc sphinx*
 
-    - name: Prepare Toolchain
-      run: | 
-        wget https://toolchains.bootlin.com/downloads/releases/toolchains/armv6-eabihf/tarballs/armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
-        tar -jxvf  armv6-eabihf--glibc--stable-2018.02-2.tar.bz2 -C $HOME/
-        rm -rf -v armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
+#    - name: Prepare Toolchain
+#      run: | 
+   #     wget https://toolchains.bootlin.com/downloads/releases/toolchains/armv6-eabihf/tarballs/armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
+  #      tar -jxvf  armv6-eabihf--glibc--stable-2018.02-2.tar.bz2 -C $HOME/
+    #    rm -rf -v armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
 
     - name: Get Buildroot source
       run: |
