@@ -19,7 +19,7 @@ jobs:
           branch: taffy
           config: arch/arm64/configs/vendor/cas-defconfig
           arch: arm64
-          aosp-gcc-4.9: true
+          aosp-gcc: true
           aosp-clang: r383902
           anykernel3: true
           
