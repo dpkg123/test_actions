@@ -1,0 +1,27 @@
+name: Build 
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    name: Build Linux Binary
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Test
+        uses: dabao1955/kernel_build_action@v1
+        with:
+          kernel-url: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
+          kernel-dir: msm-4.19
+          branch: taffy
+          config: arch/arm64/configs/vendor/cas-defconfig
+          arch: arm64
+          aosp-gcc-4.9: true
+          aosp-clang: r383902
+          anykernel3: true
+          
+          
+       
