@@ -21,6 +21,8 @@ jobs:
           arch: arm64
           aosp-gcc: true
           aosp-clang: true
+          ksu: true
+          ksu-version: main
           version: android12
           aosp-clang-version: r383902
           anykernel3: true
