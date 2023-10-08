@@ -20,7 +20,8 @@ jobs:
           config: arch/arm64/configs/vendor/cas-defconfig
           arch: arm64
           aosp-gcc: true
-          aosp-clang: r383902
+          aosp-clang: true
+          aosp-clang-version: r383902
           anykernel3: true
           
           
