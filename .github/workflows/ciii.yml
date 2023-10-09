@@ -27,6 +27,9 @@ jobs:
           aosp-clang-version: r383902
           anykernel3: true
           python-27: true
+          ccache: true
+          disable-lto: true
+          overlayfs: true
           
           
        
