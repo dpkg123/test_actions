@@ -19,17 +19,17 @@ jobs:
           branch: taffy
           config: cas_defconfig
           arch: arm64
-          aosp-gcc: true
-          aosp-clang: true
+          aosp-gcc: false
+          aosp-clang: false
           ksu: true
           ksu-version: main
           version: android12
           aosp-clang-version: r383902
           anykernel3: true
           python-27: true
-          ccache: true
-          disable-lto: true
-          overlayfs: true
+          android-ndk: true
+          android-ndk-version: r22b
+          android-ndk-x64: true
           
           
        
