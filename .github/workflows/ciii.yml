@@ -23,7 +23,7 @@ jobs:
           aosp-clang: false
           ksu: true
           ksu-version: main
-          version: android12
+          android-version: 12
           aosp-clang-version: r383902
           anykernel3: true
           python-27: true
