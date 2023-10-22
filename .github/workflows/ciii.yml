@@ -28,7 +28,7 @@ jobs:
           anykernel3: true
           python-27: true
           android-ndk: true
-          android-ndk-version: r22b
+          android-ndk-version: r23c
           android-ndk-x64: true
           
           
