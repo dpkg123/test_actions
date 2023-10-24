@@ -11,23 +11,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Test
-        uses: dabao1955/kernel_build_action@main
+      - name: GitHub Workflow Cleaner Action
+        uses: rokibhasansagar/slimhub_actions@v23.13.4
+            
+        
+
+      - name: Install NDK
+      - uses: nttld/setup-ndk@v1
         with:
-          kernel-url: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
-          kernel-dir: msm-4.19
-          branch: taffy
-          config: cas_defconfig
-          arch: arm64
-          aosp-gcc: false
-          aosp-clang: false
-          ksu: true
-          ksu-version: main
-          android-version: 12
-          aosp-clang-version: r383902
-          anykernel3: true
-          python-27: true
-          android-ndk: true
-          android-ndk-version: r23c
-          android-ndk-x64: false
-       
+         ndk-version: r23
+         add-to-path: true
+
+      - name: Find Tree
+        run: |
+          cd /
+          sudo find -name llvm*
