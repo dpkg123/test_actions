@@ -24,5 +24,4 @@ jobs:
 
       - name: Find Tree
         run: |
-          cd /
-          sudo find -name llvm*
+          llvm-objcopy --version
