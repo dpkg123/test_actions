@@ -10,26 +10,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4            
-        
 
-      - name: Install NDK
-        uses: nttld/setup-ndk@v1
+      - name: Test
+        uses: dabao1955/kernel_build_action@2a48815b8c2e8d643da7356f4506845d880e6bcb
         with:
-         ndk-version: r23
-         add-to-path: true
-
-      - name: Find Tree
-        run: |
-          sudo apt install -y binutils binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3
-
-      - name: Run git
-        run: |
-          git clone https://github.com/PixelExperience-Devices/kernel_oneplus_sm8250 --depth=1 msm-4.19
-
-      - name: Tsst
-        run: |
-          cd msm-4.19
-          mkdir -p -v out
-          make ARCH=arm64 O=out vendor/cas_user_defconfig
-          ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./AndroidKernel.mk
-          
+          kernel-url: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
+          kernel-dir: msm-4.19
+          branch: taffy
+          config: cas_defconfig
+          arch: arm64
+          aosp-gcc: false
+          aosp-clang: false
+          ksu: true
+          ksu-version: main
+          android-version: 12
+          aosp-clang-version: r383902
+          anykernel3: true
+          python-27: true
+          android-ndk: true
+          android-ndk-version: r23c
+          android-ndk-x64: false
