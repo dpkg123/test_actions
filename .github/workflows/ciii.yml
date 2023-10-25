@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4            
 
       - name: Test
-        uses: dabao1955/kernel_build_action@2a48815b8c2e8d643da7356f4506845d880e6bcb
+        uses: dabao1955/kernel_build_action@main
         with:
           kernel-url: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
           kernel-dir: msm-4.19
