@@ -85,15 +85,41 @@ jobs:
       run:  |
         make -C linux nintendo3ds_defconfig all -j4
         mkdir -p -v out 
-        cp linux/arch/arm/boot/zImage out 
-        cp linux/arch/arm/boot/dts/nintendo3ds_ctr.dtb out
-        cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out
-        
+        cp linux/arch/arm/boot/zImage out -v
+        cp linux/arch/arm/boot/dts/nintendo3ds_ctr.dtb out -v
+        cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out -v
+
     - name: Upload rootfs to Artifact
       uses: actions/upload-artifact@v3
       with: 
        name: "3ds-kernel"
        path: out/*
+
+  build-firm:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Install Packages"
+      run: |
+        sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi build-essential git python3-pip
+        pip3 install -U git+https://github.com/TuxSH/firmtool.git
+      
+
+    - name: Pull Repo
+      run: git clone https://github.com/linux-3ds/firm_linux_loader/
+
+    - name: Build
+      run: make -C firm_linux_loader -j4
+      env:
+        CC: "arm-none-eabi-gcc"
+        
+    - name: Upload firm to Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "firm_linux_loader"
+       path: firm_linux_loader/firm_linux_loader.firm
  
       
  
