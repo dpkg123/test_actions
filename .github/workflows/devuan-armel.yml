@@ -62,3 +62,37 @@ jobs:
       with: 
        name: "3ds-rootfs"
        path: rootfs.cpio.gz
+
+  build-kernel:
+    needs: build-rootfs
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Pull Repo"
+      run: git clone https://github.com/linux-3ds/linux --depth=1
+
+    - name: Download Rootfs
+      uses: actions/download-artifact@v3
+      with:
+       name: 3ds-rootfs
+       path: linux/
+    - name: "Install Packages"
+      run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
+    - name: Build
+      env:
+        ARCH: "arm"
+        CROSS_COMPILE: "arm-linux-gnueabi-"
+      run:  |
+        make -C linux nintendo3ds_defconfig all -j4
+        mkdir -p -v out 
+        cp linux/arch/arm/boot/zImage out -v
+        cp linux/arch/arm/boot/dts/nintendo3ds_ctr.dtb out -v
+        cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out -v
+
+    - name: Upload rootfs to Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "3ds-kernel"
+       path: out/*
