@@ -72,6 +72,9 @@ jobs:
     - name: "Pull Repo"
       run: git clone https://github.com/linux-3ds/linux --depth=1
     - name: Build
+      env:
+        ARCH: "arm"
+        CROSS_COMPILE: "arm-linux-gnueabi-"
       run:  |
         make -C linux nintendo3ds_defconfig all -j4
         mkdir -p -v out 
