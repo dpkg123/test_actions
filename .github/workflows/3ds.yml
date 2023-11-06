@@ -23,25 +23,19 @@ jobs:
       run: |
         git clone https://github.com/linux-3ds/buildroot.git --depth=1
 
-    - name: Setup ccache
-
-      uses: hendrikmuhs/ccache-action@main
-      with: 
-        max-size: 4G
-
     - name: Set Swap Space
       uses: pierotofy/set-swap-space@master
       with:
         swap-size-gb: 8
 
     - run: |
-        sudo apt-get update && sudo apt-get install -y binutils build-essential git flex bison libssl-dev bc libgmp-dev libmpc-dev
+        sudo apt-get install -y binutils build-essential git flex bison libssl-dev bc libgmp-dev subversion libmpc-dev
     - run: cp 3ds_defconfig buildroot/configs/nintendo3ds_defconfig
     - name: Build
       run: |
         cd buildroot
         make nintendo3ds_defconfig
-        make all
+        make all -j4
         
     - name: Upload rootfs to Artifact
       if: github.event_name == 'push'
