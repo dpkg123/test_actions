@@ -42,3 +42,48 @@ jobs:
       with: 
        name: "3ds-rootfs"
        path: buildroot/output/images/rootfs.cpio.gz
+       
+  build-arm9linuxfw:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Pull Repo"
+      run: git clone  https://github.com/linux-3ds/arm9linuxfw 
+    - name: "Install Packages"
+      run: sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi
+    - name: Build
+      run: make -C arm9linuxfw -j4
+    - name: Upload arm9linuxfw to Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "arm9linuxfw"
+       path: arm9linuxfw/arm9linuxfw.bin
+
+  build-kernel:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Install Packages"
+      run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
+    - name: "Pull Repo"
+      run: git clone https://github.com/linux-3ds/ --depth=1
+    - name: Build
+      run:  |
+        make -C linux nintendo3ds_defconfig all -j4
+        mkdir -p -v out 
+        cp linux/arch/arm/boot/zImage out 
+        cp linux/arch/arm/boot/dts/nintendo3ds_ctr.dtb out
+        cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out
+        
+    - name: Upload rootfs to Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "3ds-kernel"
+       path: out/*
+ 
+      
+ 
