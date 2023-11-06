@@ -70,7 +70,7 @@ jobs:
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
     - name: "Pull Repo"
-      run: git clone https://github.com/linux-3ds/ --depth=1
+      run: git clone https://github.com/linux-3ds/linux --depth=1
     - name: Build
       run:  |
         make -C linux nintendo3ds_defconfig all -j4
