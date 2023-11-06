@@ -19,24 +19,9 @@ jobs:
       uses: rokibhasansagar/slimhub_actions@main
       # That's it! Now use your normal steps
 
-    - name: Prepare the environment
-      run: |
-        sudo apt update 
-        sudo apt -y install gcc-10 git wget make binutils util-linux e2fsprogs jfsutils reiserfsprogs xfsprogs squashfs-tools btrfs-progs pcmciautils ppp procps oprofile udev iptables libcrypto* openssl* gcc-10-arm-linux-gnueabi g++-10-arm-linux-gnueabi bc sphinx*
-
-#    - name: Prepare Toolchain
-#      run: | 
-   #     wget https://toolchains.bootlin.com/downloads/releases/toolchains/armv6-eabihf/tarballs/armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
-  #      tar -jxvf  armv6-eabihf--glibc--stable-2018.02-2.tar.bz2 -C $HOME/
-    #    rm -rf -v armv6-eabihf--glibc--stable-2018.02-2.tar.bz2
-
     - name: Get Buildroot source
       run: |
-        git clone https://github.com/buildroot/buildroot.git --depth=1
-
-    - name: Get Buildroot Config
-      run: |
-        cp -v 3ds_defconfig buildroot/.config
+        git clone https://github.com/linux-3ds/buildroot.git --depth=1
 
     - name: Setup ccache
 
@@ -49,11 +34,15 @@ jobs:
       with:
         swap-size-gb: 8
 
-    - name: Build Rootfs
+    - run: |
+        sudo apt-get update && sudo apt-get install -y binutils build-essential git flex bison libssl-dev bc libgmp-dev libmpc-dev
+    - run: cp 3ds_defconfig buildroot/configs/nintendo3ds_defconfig
+    - name: Build
       run: |
         cd buildroot
-        make -j2 ARCH=arm
-
+        make nintendo3ds_defconfig
+        make all
+        
     - name: Upload rootfs to Artifact
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v3
