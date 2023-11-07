@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-rootfs:
+    needs: srv-info
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -44,6 +45,7 @@ jobs:
        path: buildroot/output/images/rootfs.cpio.gz
        
   build-arm9linuxfw:
+    needs: srv-info
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -62,7 +64,7 @@ jobs:
        path: arm9linuxfw/arm9linuxfw.bin
 
   build-kernel:
-    needs: build-rootfs
+    needs: [srv-info, build-rootfs]
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -97,6 +99,7 @@ jobs:
 
   build-firm:
     runs-on: ubuntu-20.04
+    needs: srv-info
     permissions:
       contents: write
     steps:
@@ -122,7 +125,6 @@ jobs:
        path: firm_linux_loader/firm_linux_loader.firm
 
   srv-info:
-    needs: [build-firm, build-rootfs]
     runs-on: ubuntu-20.04
     permissions:
       contents: write
