@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-3ds-rootfs:
+  build-rootfs:
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -62,7 +62,7 @@ jobs:
        path: arm9linuxfw/arm9linuxfw.bin
 
   build-kernel:
-    needs: build-3ds-rootfs
+    needs: build-rootfs
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -120,6 +120,51 @@ jobs:
       with: 
        name: "firm_linux_loader"
        path: firm_linux_loader/firm_linux_loader.firm
- 
-      
+
+  srv-info:
+    needs: [build-rootfs, build-kernel]
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Install Packages"
+      run: sudo apt install neofetch -y
+    - name: "OS Info"
+      run: sudo neofetch
+    - name: "Disk Info"
+      run: sudo df -h
+    - name: Server Info
+      run: |
+          echo -e "已知CPU型号（降序）：8370C，8272CL，8171M，E5-2673 \n"
+          echo "--------------------------CPU信息--------------------------"
+          echo "CPU物理数量：$(cat /proc/cpuinfo | grep "physical id" | sort | uniq | wc -l)"
+          echo -e "CPU核心信息：$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c) \n"
+          echo "--------------------------内存信息--------------------------"
+          echo "已安装内存详细信息："
+          echo -e "$(sudo lshw -short -C memory | grep GiB) \n"
+          echo "--------------------------硬盘信息--------------------------"
+          echo "硬盘数量：$(ls /dev/sd* | grep -v [1-9] | wc -l)" && df -hT
+
+          # 获取 CPU 信息
+          cpu_info=$(cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c)
+          echo "CPU_INFO<<EOF"
+          echo "$cpu_info" 
+          echo "EOF" 
+
+          # 获取内存信息
+          memory_info=$(sudo lshw -short -C memory | grep GiB)
+          echo "MEMORY_INFO<<EOF" 
+          echo "$memory_info" 
+          echo "EOF" 
+
+          # 获取硬盘信息
+          disk_info=$(ls /dev/sd* | grep -v [1-9] | wc -l)
+          disk_usage=$(df -hT)
+          echo "DISK_INFO<<EOF" 
+          echo "$disk_info" 
+          echo "EOF" >> $GITHUB_ENV
+          echo "DISK_USAGE<<EOF" 
+          echo "$disk_usage" 
+          echo "EOF" 
  
