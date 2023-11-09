@@ -80,12 +80,18 @@ jobs:
        path: linux/
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
+    - name: Ccache for gh actions
+      uses: hendrikmuhs/ccache-action@v1.2.10
+      with:
+        key: ${{ github.job }}-${{ matrix.os }}
+            
     - name: Build
       env:
         ARCH: "arm"
         CROSS_COMPILE: "arm-linux-gnueabi-"
       run:  |
-        make -C linux nintendo3ds_defconfig all -j4
+        export USE_CCACHE=1
+        make -C linux nintendo3ds_defconfig all -j4 CC="ccache gcc" O=out
         mkdir -p -v out 
         cp linux/arch/arm/boot/zImage out -v
         cp linux/arch/arm/boot/dts/nintendo3ds_ctr.dtb out -v
