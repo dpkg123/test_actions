@@ -1,0 +1,24 @@
+name: build blog
+
+on:
+
+  workflow_dispatch:
+
+jobs:
+  build-rootfs:
+#    needs: srv-info
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - name: "Checkout Repo"
+      uses: actions/checkout@v4
+      with:
+        repository: chihuo2104/chiblog
+
+    - uses: actions/setup-node@v3
+      with:
+       node-version: 20
+
+    - run: yarn install && yarn build
