@@ -15,10 +15,8 @@ jobs:
     - name: "Checkout Repo"
       uses: actions/checkout@v4
       with:
-        repository: chihuo2104/chiblog
+        repository: xmake-io/xmake
+        submodules: true
 
-    - uses: actions/setup-node@v3
-      with:
-       node-version: 20
-
-    - run: yarn install && yarn build
+    - run: sed -i '/# A script-only build utility like autotools/a\set -e' configure
+    - run: ./configure && make -j4
