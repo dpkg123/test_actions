@@ -22,8 +22,8 @@ jobs:
         sudo mount --rbind /dev rootfs/dev
         sudo mount --rbind /sys rootfs/sys
         sudo chroot rootfs /bin/apt-get -y install git wget live-build debian-archive-keyring gpg dosfstools genisoimage squashfs-tools python3 xorriso grub-common grub-pc-bin grub-efi-amd64-bin nano
-        sudo chroot rootfs /bin/wget https://github.com/dpkg123/test_actions/raw/main/build -O /root/1.py
-        sudo chroot rootfs /bin/python3 /root/build.py
+        sudo chroot rootfs /bin/wget https://github.com/dpkg123/test_actions/raw/main/build.py -O /root/1.py
+        sudo chroot rootfs /bin/python3 /root/1.py
     - uses: actions/upload-artifact@v3
       with:
         name: iso
