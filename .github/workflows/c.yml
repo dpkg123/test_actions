@@ -27,4 +27,4 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: iso
-        path: rootfs/root/live-image-amd64.hybrid.iso
+        path: rootfs/ci/live-image-amd64.hybrid.iso
