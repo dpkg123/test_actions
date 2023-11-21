@@ -21,7 +21,7 @@ jobs:
         sudo mount -t proc /proc rootfs/proc
         sudo mount --rbind /dev rootfs/dev
         sudo mount --rbind /sys rootfs/sys
-        sudo echo "cd && lb config && lb build" >./rootfs/root/build.sh
+#        sudo echo "cd && lb config && lb build" >./rootfs/root/build.sh
         sudo chroot rootfs /bin/apt-get -y install git wget live-build debian-archive-keyring gpg dosfstools genisoimage squashfs-tools xorriso grub-common grub-pc-bin grub-efi-amd64-bin nano
         sudo chroot rootfs /bin/wget https://github.com/dpkg123/test_actions/raw/main/build -o /root/1.sh
         sudo chroot rootfs /bin/bash /root/1.sh
