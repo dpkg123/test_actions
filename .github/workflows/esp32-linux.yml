@@ -1,6 +1,7 @@
 name: build esp32 linux
 
 on:
+  push:
 
   workflow_dispatch:
 
@@ -11,12 +12,4 @@ jobs:
       contents: write
     steps:
 
-    - run: sudo apt install aria2 -y
-    - run: mkdir -p -v out
-    - name: download
-      run: cd out && aria2c "https://d.pcs.baidu.com/file/176f9d95bse0de57f776b96f94a83492?fid=1099586689180-250528-1059266676887131&rt=pr&sign=FDtAERK-DCb740ccc5511e5e8fedcff06b081203-ACPlpOaCKXEqagixMo%2BOynIaKZk%3D&expires=8h&chkbd=0&chkv=0&dp-logid=2853360318628252386&dp-callid=0&dstime=1699590033&r=687837097&vuk=1099586689180&origin_appid=15195230&file_type=0" --out "3DS_11.17_Luma12.0.1_金手指.zip" --header "User-Agent:pan.baidu.com" --header "Cookie:BDUSS=ZmV3R4eDZBfnBkcVV1NzZETjF1MmZDMVVsWjduUmoxRWhBN0R5V21FSXhPM1ZsRUFBQUFBJCQAAAAAAQAAAAEAAAAWBEN9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADGuTWUxrk1lQm"
-    - name: Upload rootfs to Artifact
-      uses: actions/upload-artifact@v3
-      with: 
-       name: "3ds-rootfs"
-       path: out/*
+    - run: cc || exit 0
