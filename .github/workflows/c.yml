@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v4
     - run: sudo apt-get -y install imagemagick
     - run: sudo patch /etc/ImageMagick-6/policy.xml < 1.patch
+    - run: sudo patch /etc/ImageMagick-6/policy.xml < 2.patch
 
     - run: sudo mkdir output -p -v
     - name: mount
