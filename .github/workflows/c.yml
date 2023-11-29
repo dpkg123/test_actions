@@ -12,20 +12,15 @@ jobs:
     steps:
 
  #   - uses: rokibhasansagar/slimhub_actions@main
-    - run: sudo apt-get update
-    - run: sudo apt-get -y install debootstrap tree live-build
+    - uses: actions/checkout@v4
+    - run: sudo apt-get -y install imagemagick
 
-    - run: sudo debootstrap --arch=amd64 sid rootfs
+    - run: sudo mkdir output -p -v
     - name: mount
       run: |
-        sudo mount -t proc /proc rootfs/proc
-        sudo mount --rbind /dev rootfs/dev
-        sudo mount --rbind /sys rootfs/sys
-        sudo chroot rootfs /bin/apt-get -y install git wget live-build debian-archive-keyring gpg dosfstools genisoimage squashfs-tools python3 xorriso grub-common grub-pc-bin grub-efi-amd64-bin nano
-        sudo chroot rootfs /bin/wget https://github.com/dpkg123/test_actions/raw/main/build.py -O /root/1.py
-        sudo chroot rootfs /bin/python3 /root/1.py
-        sudo cp rootfs/root/live-image-amd64.hybrid.iso ./
+        sudo convert img/1.jpg -resize 3600x4800 output/1-cov.jpg
+        sudo convert img/2.jpg -resize 3600x4800 output/2-cov.jpg
     - uses: actions/upload-artifact@v3
       with:
-        name: iso
-        path: live-image-amd64.hybrid.iso
+        name: img
+        path: output/*
