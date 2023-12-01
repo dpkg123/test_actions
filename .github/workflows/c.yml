@@ -31,7 +31,7 @@ jobs:
         repository: torvalds/linux
         fetch-depth: 10
     - run: apt-get update
-    - run: apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu bc bison flex build-essential python3 python3-pip binutils gcc git gzip libelf-dev libncurses5-dev libssl-dev openssl pahole perl-base rsync tar xz-utils make
+    - run: apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu bc bison flex build-essential python3 python3-pip binutils gcc git gzip libncurses5-dev libssl-dev openssl perl-base cpio tar xz-utils make
     - run: mkdir -p -v output
     - run: export ARCH=arm64 && make defconfig -j4 && make -j4
     - uses: actions/upload-artifact@v3
