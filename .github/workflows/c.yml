@@ -6,6 +6,20 @@ on:
   
 jobs:
   live-build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - os: debian:bullseye
+          id: gcc-10
+
+        - os: debian:bookworm
+          id: gcc-12
+
+        - os: debian:sid
+          id: gcc-13
+
+    container: ${{ matrix.os }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -13,15 +27,13 @@ jobs:
 
  #   - uses: rokibhasansagar/slimhub_actions@main
     - uses: actions/checkout@v4
-    - run: sudo apt-get -y install imagemagick
-    - run: sudo patch /etc/ImageMagick-6/policy.xml < 1.patch
-    - run: sudo patch /etc/ImageMagick-6/policy.xml < 2.patch
-
-    - run: sudo mkdir output -p -v
-    - name: mount
-      run: |
-        sudo convert img/1.jpg -resize 3600x4800 output/1-cov.jpg
-        sudo convert img/2.jpg -resize 3600x4800 output/2-cov.jpg
+      with:
+        repository: torvalds/linux
+        fetch-depth: 10
+    - run: apt-get update
+    - run: apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu bc bison flex build-essential python3 python3-pip binutils gcc git gzip libelf-dev libncurses5-dev libssl-dev openssl pahole perl-base rsync tar xz-utils make
+    - run: mkdir -p -v output
+    - run: export ARCH=arm64 && make defconfig -j4 && make -j4
     - uses: actions/upload-artifact@v3
       with:
         name: img
