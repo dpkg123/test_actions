@@ -73,7 +73,7 @@ jobs:
     needs: [srv-info, build-rootfs]
     runs-on: ubuntu-20.04
     permissions:
-      contents: write
+      contents: read
     steps:
 
     - name: "Pull Repo"
