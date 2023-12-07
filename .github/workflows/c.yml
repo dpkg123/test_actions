@@ -39,14 +39,14 @@ jobs:
       contents: write
     steps:
 
+    - run: sleep 20s
     - uses: actions/checkout@v4
     - name: Commit updates 
       run: |
-        echo "$(date)" >> 1.md
+        echo "$(date)" >> 2.md
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
         git config --global --add safe.directory /github/workspace
-        git pull
         git add .
         git commit -am "$(date)"
 
