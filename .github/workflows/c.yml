@@ -12,17 +12,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - os: debian:bullseye
+        - os: ubuntu-20.04
           id: gcc-10
 
-        - os: debian:bookworm
+        - os: ubuntu-latest
           id: gcc-12
 
-        - os: debian:sid
-          id: gcc-13
-
-    container: ${{ matrix.os }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     permissions:
       contents: write
     steps:
