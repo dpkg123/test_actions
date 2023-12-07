@@ -10,7 +10,6 @@ jobs:
     uses: ./.github/workflows/debian-armel.yml
     secrets: inherit
   ci-2:
-   needs: ci-3
    uses: ./.github/workflows/3ds.yml
    secrets: inherit
   ci-3:
