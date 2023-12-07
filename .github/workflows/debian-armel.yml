@@ -41,7 +41,7 @@ jobs:
     - name: Upload rootfs.cpio to Artifact
       uses: actions/upload-artifact@v3
       with: 
-       name: "3ds-rootfs"
+       name: "3ds-rootfs-debian"
        path: rootfs.cpio.gz
 
   build-kernel:
@@ -57,7 +57,7 @@ jobs:
     - name: Download Rootfs
       uses: actions/download-artifact@v3
       with:
-       name: 3ds-rootfs
+       name: 3ds-rootfs-debian
        path: linux/
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
@@ -75,5 +75,5 @@ jobs:
     - name: Upload rootfs to Artifact
       uses: actions/upload-artifact@v3
       with: 
-       name: "3ds-kernel"
+       name: "3ds-kernel-debian"
        path: out/*
