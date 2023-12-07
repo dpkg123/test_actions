@@ -3,6 +3,8 @@ name: build 3ds rootfs
 on:
 
   workflow_dispatch:
+  workflow_call:
+  push:
 
 jobs:
   build-rootfs:
@@ -37,6 +39,11 @@ jobs:
         cd buildroot
         make nintendo3ds_defconfig
         make all -j4
+    - name: disk status
+      run: |
+        sudo df -h
+        echo ----------
+        sudo du -h buildroot
         
     - name: Upload rootfs to Artifact
       uses: actions/upload-artifact@v3
