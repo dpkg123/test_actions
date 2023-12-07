@@ -9,7 +9,7 @@ jobs:
   build-rootfs:
     runs-on: ubuntu-20.04
     permissions:
-      contents: write
+      contents: read
     steps:
 
     - name: "Checkout Repo"
