@@ -43,6 +43,7 @@ jobs:
 
     - name: rm swapfile
       run: |
+         export SWAP_FILE=$(swapon --show=NAME | tail -n 1)
          sudo swapoff $SWAP_FILE
          sudo rm $SWAP_FILE
          export ROOT_FREE_KB=$(df --block-size=1024 --output=avail / | tail -1)
