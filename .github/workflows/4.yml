@@ -16,7 +16,7 @@ jobs:
    uses: ./.github/workflows/3ds.yml
    secrets: inherit
   ci-3:
-   needs: ci-4
+   needs: ci-5
    uses: ./.github/workflows/devuan-armel.yml
    secrets: inherit
 
