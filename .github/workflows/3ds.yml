@@ -54,7 +54,7 @@ jobs:
     needs: srv-info
     runs-on: ubuntu-20.04
     permissions:
-      contents: write
+      contents: read
     steps:
 
     - name: "Pull Repo"
@@ -113,7 +113,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs: srv-info
     permissions:
-      contents: write
+      contents: read
     steps:
 
     - name: "Install Packages"
@@ -139,7 +139,7 @@ jobs:
   srv-info:
     runs-on: ubuntu-20.04
     permissions:
-      contents: write
+      contents: read
     steps:
 
     - name: "Install Packages"
