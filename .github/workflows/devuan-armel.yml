@@ -3,12 +3,11 @@ name: build devuan armel rootfs
 on:
 
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   build-rootfs:
     runs-on: ubuntu-20.04
-    permissions:
-      contents: write
     steps:
 
     - name: "Checkout Repo"
@@ -66,8 +65,6 @@ jobs:
   build-kernel:
     needs: build-rootfs
     runs-on: ubuntu-20.04
-    permissions:
-      contents: write
     steps:
 
     - name: "Pull Repo"
