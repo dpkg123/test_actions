@@ -3,6 +3,7 @@ name: build debian11 armel rootfs
 on:
 
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   build-rootfs:
