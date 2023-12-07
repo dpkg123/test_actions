@@ -12,7 +12,6 @@ jobs:
     secrets: inherit
   ci-2:
    needs:
-     - ci-4
      - ci-5
    uses: ./.github/workflows/3ds.yml
    secrets: inherit
