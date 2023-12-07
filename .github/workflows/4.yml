@@ -7,11 +7,25 @@ jobs:
     needs:
       - ci-2
       - ci-3
+      - ci-4
     uses: ./.github/workflows/debian-armel.yml
     secrets: inherit
   ci-2:
+   needs: ci-4
    uses: ./.github/workflows/3ds.yml
    secrets: inherit
   ci-3:
+   needs: ci-4
    uses: ./.github/workflows/devuan-armel.yml
    secrets: inherit
+
+  ci-4:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: read
+    steps:
+
+    - name: "Checkout Repo"
+      run: git clone https://github.com/Mangeshrex/rxfetch
+    - run: cd rxfetch && sudo bash rxfetch
+      
