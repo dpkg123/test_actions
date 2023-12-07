@@ -1,0 +1,11 @@
+name: Build-kernel
+on:
+  workflow_dispatch:
+
+jobs:
+  ci-1:
+    uses: ./.github/workflows/debian-armel.yml
+    secrets: inherit
+  ci-2:
+    uses: ./.github/workflows/3ds.yml
+    secrets: inherit
