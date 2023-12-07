@@ -4,9 +4,15 @@ on:
 
 jobs:
   ci-1:
+    needs:
+      - ci-2
+      - ci-3
     uses: ./.github/workflows/debian-armel.yml
     secrets: inherit
   ci-2:
-   needs: ci-1
+   needs: ci-3
    uses: ./.github/workflows/3ds.yml
+   secrets: inherit
+  ci-3:
+   uses: ./.github/workflows/devuan-armel.yml
    secrets: inherit
