@@ -17,7 +17,6 @@ jobs:
   ci-3:
    needs: 
      - ci-4
-     - ci-2
    uses: ./.github/workflows/devuan-armel.yml
    secrets: inherit
 
