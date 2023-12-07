@@ -11,16 +11,18 @@ jobs:
     uses: ./.github/workflows/debian-armel.yml
     secrets: inherit
   ci-2:
-   needs: ci-4
+   needs:
+     - ci-4
+     - ci-5
    uses: ./.github/workflows/3ds.yml
    secrets: inherit
   ci-3:
-   needs: 
-     - ci-4
+   needs: ci-4
    uses: ./.github/workflows/devuan-armel.yml
    secrets: inherit
 
   ci-4:
+    needs: ci-5
     runs-on: ubuntu-20.04
     permissions:
       contents: read
@@ -30,3 +32,40 @@ jobs:
       run: git clone https://github.com/Mangeshrex/rxfetch
     - run: cd rxfetch && sudo bash rxfetch
       
+  ci-5:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: read
+    steps:
+    - name: free disk space
+      uses: rokibhasansagar/slimhub_actions@main
+
+    - run: sudo df -h
+
+    - name: rm swapfile
+      run: |
+         sudo swapoff $SWAP_FILE
+         sudo rm $SWAP_FILE
+         export ROOT_FREE_KB=$(df --block-size=1024 --output=avail / | tail -1)
+         export ROOT_LOOP_KB=$(expr $ROOT_FREE_KB - 1048576)
+         export ROOT_LOOP_BYTES=$(expr $ROOT_LOOP_KB \* 1024)
+         sudo fallocate -l $ROOT_LOOP_BYTES /root.img
+         export ROOT_LOOP_DEVNAME=$(sudo losetup -Pf --show /root.img)
+         sudo pvcreate -f $ROOT_LOOP_DEVNAME
+         export MNT_FREE_KB=$(df --block-size=1024 --output=avail /mnt | tail -1)
+         export MNT_LOOP_KB=$(expr $MNT_FREE_KB - 102400)
+         export MNT_LOOP_BYTES=$(expr $MNT_LOOP_KB \* 1024)
+         sudo fallocate -l $MNT_LOOP_BYTES /mnt/mnt.img
+         export MNT_LOOP_DEVNAME=$(sudo losetup -Pf --show /mnt/mnt.img)
+         sudo pvcreate -f $MNT_LOOP_DEVNAME
+         sudo vgcreate vgstorage $ROOT_LOOP_DEVNAME $MNT_LOOP_DEVNAME
+         sudo lvcreate -n lvstorage -l 100%FREE vgstorage
+         export LV_DEVNAME=$(sudo lvscan | awk -F "'" '{print $2}')
+         sudo mkfs.btrfs -L combinedisk $LV_DEVNAME
+         sudo mount -o compress=zstd $LV_DEVNAME $GITHUB_WORKSPACE
+         sudo chown -R runner:runner $GITHUB_WORKSPACE
+         mkdir -p $GITHUB_WORKSPACE/tmp && chmod 777 $GITHUB_WORKSPACE/tmp
+         sudo cp -rp /tmp/* $GITHUB_WORKSPACE/tmp
+         sudo mount -B $GITHUB_WORKSPACE/tmp /tmp && df -hT
+
+    - run: sudo df -h
