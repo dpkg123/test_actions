@@ -10,15 +10,7 @@ jobs:
   live-build:
     strategy:
       fail-fast: false
-      matrix:
-        include:
-        - os: ubuntu-20.04
-          id: gcc-10
-
-        - os: ubuntu-latest
-          id: gcc-12
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-20.04
     permissions:
       contents: write
     steps:
@@ -26,6 +18,31 @@ jobs:
     - uses: actions/checkout@v4
     - name: Commit updates 
       run: |
+        echo "$(date)" >> 1.md
+        git config user.name "dpkg123"
+        git config user.email "test1@qw5d.onmicrosoft.com"
+        git config --global --add safe.directory /github/workspace
+        git add .
+        git commit -am "$(date)"
+
+    - name: GitHub Push
+      uses: ad-m/github-push-action@master
+      with:
+        force: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  live-build-1:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+
+    - uses: actions/checkout@v4
+    - name: Commit updates 
+      run: |
+        sleep 20s
         echo "$(date)" >> 1.md
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
