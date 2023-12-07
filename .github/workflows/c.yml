@@ -1,6 +1,8 @@
 name: ci
 on:
   pull_request:
+  schedule:
+    - cron: "8,11,14,15,18,21,22,25,28 3,6,9,12,15,18,21 * * *"
   workflow_dispatch:
   push:
   
@@ -25,16 +27,19 @@ jobs:
       contents: write
     steps:
 
- #   - uses: rokibhasansagar/slimhub_actions@main
-    - uses: actions/checkout@v4
+    - uses: actions/acheckout@v4
+    - name: Commit updates 
+      run: |
+        echo "$(date)" >> 1.md
+        git config user.name "dpkg123"
+        git config user.email "test1@qw5d.onmicrosoft.com"
+        git config --global --add safe.directory /github/workspace
+        git add .
+        git commit -am "$(date)"
+
+    - name: GitHub Push
+      uses: ad-m/github-push-action@master
       with:
-        repository: torvalds/linux
-        fetch-depth: 10
-    - run: apt-get update
-    - run: apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu bc bison flex build-essential python3 python3-pip binutils gcc git gzip libncurses5-dev libssl-dev openssl perl-base cpio tar xz-utils make
-    - run: mkdir -p -v output
-    - run: export ARCH=arm64 && make defconfig -j4 && make -j4
-    - uses: actions/upload-artifact@v3
-      with:
-        name: img
-        path: output/*
+        force: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
