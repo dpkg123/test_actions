@@ -17,7 +17,7 @@ jobs:
 
      - name: Checkout Repo
        run: |
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/c7491e03f3b6545fb1cb75632b23f968b28812d0.tar.gz -O 1.tar.gz
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/archive/c7491e03f3b6545fb1cb75632b23f968b28812d0.tar.gz -O 1.tar.gz
          tar -xzf 1.tar.gz
          mv -v android_kernel_OPPO_OP4ED5* source/kernel-4.14
 
