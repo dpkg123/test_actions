@@ -3,6 +3,7 @@ name: deploy blog
 on:
 
  workflow_dispatch:
+ push:
 
 jobs:
 
