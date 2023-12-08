@@ -43,7 +43,7 @@ jobs:
           cd $HOME
 
           git clone https://github.com/dpkg123/clang --depth=2
-     - run: cd source/kernel-4.14 && ls
+     - run: cd source/kernel-4.14 && wget https://github.com/dpkg123/test_actions/raw/main/2.patch -O clang.patch && patch autotest_ksu.sh < clang.patch
      - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
      - run: cd source/kernel-4.14 && bash autotest_ksu.sh
 
