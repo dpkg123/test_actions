@@ -43,6 +43,14 @@ jobs:
           cd $HOME
 
           git clone https://github.com/dpkg123/clang --depth=2
+     - name: disable lto
+       run: |
+          cd source/kernel-4.14
+          sed -i 's/CONFIG_LTO=y/CONFIG_LTO=n/' arch/arm64/configs/vendor/r6_defconfig
+          sed -i 's/CONFIG_LTO_CLANG=y/CONFIG_LTO_CLANG=n/' arch/arm64/configs/vendor/r6_defconfig 
+          sed -i 's/CONFIG_THINLTO=y/CONFIG_THINLTO=n/' arch/arm64/configs/vendor/r6_defconfig
+          echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
+
      - run: cd source/kernel-4.14 && wget https://github.com/dpkg123/test_actions/raw/main/2.patch -O clang.patch && patch autotest_ksu.sh < clang.patch
      - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
      - run: cd source/kernel-4.14 && bash autotest_ksu.sh
