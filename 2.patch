@@ -1,11 +1,11 @@
---- policy.xml	2023-11-29 15:47:39.153579334 +0800
-+++ policy.xml.1	2023-11-29 15:50:20.957579344 +0800
-@@ -57,7 +57,7 @@
- -->
- <policymap>
-   <!-- <policy domain="resource" name="temporary-path" value="/tmp"/> -->
--  <policy domain="resource" name="memory" value="256MiB"/>
-+  <policy domain="resource" name="memory" value="4096MiB"/>
-   <policy domain="resource" name="map" value="512MiB"/>
-   <policy domain="resource" name="width" value="16KP"/>
-   <policy domain="resource" name="height" value="16KP"/>
+--- a/autotest_ksu.sh	2023-12-09 00:53:07.865362902 +0800
++++ b/autotest_ksu.sh	2023-12-09 00:53:19.813362903 +0800
+@@ -24,7 +24,7 @@
+ A=$(date +%s)
+ export USE_CCACHE=1
+ make -j$(nproc) -C $(pwd) O=$(pwd)/out CROSS_COMPILE=$BUILD_CROSS_COMPILE CLANG_TRIPLE=$CLANG_TRIPLE CROSS_COMPILE_ARM32=$CROSS_COMPILE_ARM32 \
+-    CC=clang LD=ld.lld \
++    CC=clang \
+     -Werror \
+     2>&1 | tee build.txt
+ B=$(date +%s)
