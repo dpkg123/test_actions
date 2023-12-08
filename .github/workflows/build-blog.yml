@@ -41,8 +41,8 @@ jobs:
        run: |
           
           cd $HOME
+          git clone https://github.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r417554 $HOME/clang
 
-          git clone https://github.com/dpkg123/clang --depth=2
      - name: disable lto
        run: |
           cd source/kernel-4.14
