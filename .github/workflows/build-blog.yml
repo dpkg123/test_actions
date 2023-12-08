@@ -8,11 +8,9 @@ jobs:
 
   deploy-blog: 
      runs-on: ubuntu-latest 
-  
-     steps: 
-     - uses: rokibhasansagar/slimhub_actions@main
-     # Check out repository under $GITHUB_WORKSPACE, so the job can access it 
+     steps:
      - name: Checkout Repo
-       run: git clone https://github.com/dabao1955/MirlKoi-Image code
-     - run: make -C code -j8 
-     - run: du -h code
+       run: |
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/archive/7fa40d154eae8be451e7f8efb8ff959538c23c10.tar.gz -O 1.tar.gz
+         tar -xzf 1.tar.gz
+         mv -v android_kernel_OPPO_OP4ED5* kernel-4.14
