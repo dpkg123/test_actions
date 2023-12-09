@@ -17,7 +17,7 @@ jobs:
 
      - name: Checkout Repo
        run: |
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/archive/4389cc22896b4af375b4003704c51fa833929276.tar.gz -O 1.tar.gz
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/archive/e7f4ede6a7939575f169cff17c3cce963866d04b.tar.gz -O 1.tar.gz
          tar -xzf 1.tar.gz
          mv -v android_kernel_OPPO_OP4ED5* source/kernel-4.14
 
@@ -52,5 +52,5 @@ jobs:
           echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
 
      - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
-     - run: cd source/kernel-4.14 && bash autotest.sh
+     - run: cd source/kernel-4.14 && bash autotest_ksu.sh
 
