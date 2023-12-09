@@ -51,6 +51,5 @@ jobs:
           sed -i 's/CONFIG_THINLTO=y/CONFIG_THINLTO=n/' arch/arm64/configs/vendor/r6_defconfig
           echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
           
-     - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
-     - run: cd source/kernel-4.14 && bash autotest_ksu.sh
+     - run: cd source/kernel-4.14 && bash autotest.sh
 
