@@ -17,9 +17,9 @@ jobs:
 
      - name: Checkout Repo
        run: |
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/archive/4d5a73f1b66029e96509cd8916b46989a06f8b8e.tar.gz -O 1.tar.gz
+         wget https://github.com/oppo-source/android_kernel_oppo_mt6877/archive/4a0cd0dd4399ed76c1d09b9bf6a218ccd0494f80.tar.gz -O 1.tar.gz
          tar -xzf 1.tar.gz
-         mv -v android_kernel_OPPO_OP4ED5* source/kernel-4.14
+         mv -v android_kernel_oppo_mt6877* source/kernel-4.14
 
      - name: Setup environment
        uses: daaku/gh-action-apt-install@v4
@@ -43,6 +43,14 @@ jobs:
           cd $HOME
           git clone https://github.com/dpkg123/clang $HOME/clang
 
+     - name: prepare 
+       run: |
+         cd source/kernel-4.14
+         mkdir -p -v arch/arm64/configs/vendor
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/arch/arm64/configs/vendor/r6_defconfig -O arch/arm64/configs/vendor/r6_defconfig
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/autotest_ksu.sh
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/oplus_fs_exec.patch
+
      - name: disable lto
        run: |
           cd source/kernel-4.14
@@ -52,6 +60,5 @@ jobs:
           echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
 
      - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
-     - run: echo "CONFIG_KSU=no" >> source/kernel-4.14/arch/arm64/configs/vendor/r6_defconfig
      - run: cd source/kernel-4.14 && bash autotest.sh
 
