@@ -48,7 +48,7 @@ jobs:
          cd source/kernel-4.14
          mkdir -p -v arch/arm64/configs/vendor
          wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/arch/arm64/configs/vendor/r6_defconfig -O arch/arm64/configs/vendor/r6_defconfig
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/autotest_ksu.sh
+         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/autotest.sh
          wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/oplus_fs_exec.patch
 
      - name: disable lto
@@ -59,6 +59,5 @@ jobs:
           sed -i 's/CONFIG_THINLTO=y/CONFIG_THINLTO=n/' arch/arm64/configs/vendor/r6_defconfig
           echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
 
-     - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
-     - run: cd source/kernel-4.14 && bash autotest_ksu.sh
+     - run: cd source/kernel-4.14 && bash autotest.sh
 
