@@ -52,6 +52,6 @@ jobs:
           echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
 
      - run: cd source/kernel-4.14 && rm -rf KernelSU && curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
-     - run: echo "CONFIG_KSU=no" >> source/kernel-4.14/arch/arm64/vendor/r6_defconfig
+     - run: echo "CONFIG_KSU=no" >> source/kernel-4.14/arch/arm64/configs/vendor/r6_defconfig
      - run: cd source/kernel-4.14 && bash autotest.sh
 
