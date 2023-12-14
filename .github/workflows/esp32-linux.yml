@@ -12,4 +12,10 @@ jobs:
       contents: write
     steps:
 
-    - run: cc || exit 0
+    - uses: dabao1955/clone-github-repo-action@main
+      with:
+        depth: 1
+        branch: 'main'
+        owner: 'AndreRH'
+        repository: 'hangover'
+        submodule: true
