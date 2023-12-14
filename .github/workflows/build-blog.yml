@@ -12,52 +12,135 @@ jobs:
      steps:
      - name: vendor
        run: |
-          git clone https://github.com/oppo-source/android_kernel_modules_oppo_mt6877/
-          cp android_kernel_modules_oppo_mt6877/source ./ -R
+          sudo apt-get update
+          sudo apt-get install -y debootstrap
+     - run: sudo debootstrap --variant=minbase bookworm mini
+     - name: Init
+       run: | 
+         cat > mini/init << EOF
+         #!/bin/sh
+         mount -t proc -o nodev,noexec,nosuid proc /proc
+         mount -t sysfs -o nodev,noexec,nosuid sysfs /sys
+         ln -sf /proc/mounts /etc/mtab
+         mount -t tmpfs -o size=64k,mode=0755 tmpfs /dev
+         [ -e /dev/console ] || mknod -m 0600 /dev/console c 5 1
+         [ -e /dev/null ] || mknod /dev/null c 1 3
+         mkdir -p /dev/pts
+         mount -t devpts -o noexec,nosuid,gid=5,mode=0620 devpts /dev/pts
+         mount -t tmpfs -o "noexec,nosuid,size=10%,mode=0755" tmpfs /run
+         echo "Loading modules..."
+         # hotplug with mdev
+         echo /bin/mdev > /proc/sys/kernel/hotplug
+         mdev -s
+         # coldplug: load devices supporting modules
+         find /sys/devices -name modalias | xargs -r cat | xargs -r modprobe -qa
+         # extra modules
+         [ -f /etc/modules ] && cat /etc/modules | grep -v "^[[:blank:]]#" |\
+              xargs -r modprobe -qa
+         exec /sbin/init
+         EOF
+         sudo chmod +x mini/init
 
-     - name: Checkout Repo
+
+     - name: autologin
        run: |
-         wget https://github.com/oppo-source/android_kernel_oppo_mt6877/archive/4a0cd0dd4399ed76c1d09b9bf6a218ccd0494f80.tar.gz -O 1.tar.gz
-         tar -xzf 1.tar.gz
-         mv -v android_kernel_oppo_mt6877* source/kernel-4.14
-
-     - name: Setup environment
-       uses: daaku/gh-action-apt-install@v4
-       with:
-         packages: libncurses5-dev libncurses-dev libssl-dev device-tree-compiler bc cpio lib32ncurses5-dev lib32z1 build-essential binutils bc bison build-essential ccache curl flex g++-multilib gcc-multilib git gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev git aria2 
-
-     - name: Pull toolchain
-
+         for i in $(find mini/etc/init -type f -name "tty*"); do
+            sed -e "s|/sbin/getty -8|/sbin/getty --autologin root -8|" -i $i
+         done
+     - name: download kernel module
        run: |
-
-         cd $HOME
-
-         git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 aarch64-linux-android-4.9
-
-         git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 arm-linux-androideabi-4.9
-
-     - name: Pull clang
-
+         sudo apt-get download linux-image-$(uname -r)
+         sudo rm -rf linux-image-$(uname -r)
+         sudo dpkg -x $(find . -type f -name "linux-image-$(uname -r)*.deb" | head -n 1) linux-image-$(uname -r)
+         sudo cp -af linux-image-$(uname -r)/lib mini/
+         sudo chroot mini depmod
+     - run: sudo chroot mini apt clean
+     - name: Install Packages
        run: |
-          
-          cd $HOME
-          git clone https://github.com/dpkg123/clang $HOME/clang
+         sudo chroot mini apt update
+         sudo chroot mini apt install xinit xorg openbox tree w3m dialog ffmpeg nano neofetch -y
+     - name: Install Busybox
+       run: sudo chroot mini apt-get -y --no-install-recommends install busybox-static
 
-     - name: prepare 
+     - name: replace command
        run: |
-         cd source/kernel-4.14
-         mkdir -p -v arch/arm64/configs/vendor
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/arch/arm64/configs/vendor/r6_defconfig -O arch/arm64/configs/vendor/r6_defconfig
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/autotest.sh
-         wget https://github.com/dabao1955/android_kernel_OPPO_OP4ED5/raw/mt6877-4.14.186%2B/oplus_fs_exec.patch
+         applets=$(mini/bin/busybox --list)
+         apps=
+         for i in $applets; do
+             apps="$apps $(sudo chroot mini which $i)"
+         done
+         extra_apps=
+         for i in $applets; do
+             if ! sudo chroot mini which $i > /dev/null; then
+                 extra_apps="$extra_apps /bin/$i "
+             fi
+         done
 
-     - name: disable lto
+         function fix_missing() {
+             for i in $apps $extra_apps; do
+                 if ! test -f mini/$i; then
+                     sudo ln -sf /bin/busybox mini/$i
+                 fi
+             done
+         }
+     - name: purge packages
        run: |
-          cd source/kernel-4.14
-          sed -i 's/CONFIG_LTO=y/CONFIG_LTO=n/' arch/arm64/configs/vendor/r6_defconfig
-          sed -i 's/CONFIG_LTO_CLANG=y/CONFIG_LTO_CLANG=n/' arch/arm64/configs/vendor/r6_defconfig 
-          sed -i 's/CONFIG_THINLTO=y/CONFIG_THINLTO=n/' arch/arm64/configs/vendor/r6_defconfig
-          echo "CONFIG_LTO_NONE=y" >> arch/arm64/configs/vendor/r6_defconfig
+         sudo chroot mini apt-get -y --force-yes purge adduser busybox-initramfs \
+         cpio ifupdown initramfs-tools initscripts initramfs-tools-bin \
+         iproute2 mountall makedev plymouth procps upstart libprocps3 \
+         libcgmanager0 libusb-1.0-0 usbutils libdbus-1-3 libnih-dbus1 libdrm2 \
+         libjson-c2 libjson0 kmod libkmod2 module-init-tools file libmagic1 \
+         libnih1 libplymouth2 pciutils libudev1 udev
+         fix_missing
 
-     - run: cd source/kernel-4.14 && bash autotest.sh
+         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
+         apt-get -y --force-yes purge diffutils findutils hostname'
+         fix_missing
 
+         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
+         apt-get -y --force-yes purge -y --force-yes login libmount1 mount\
+              grep gzip man sed mount'
+         fix_missing
+
+         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
+         apt-get -y --force-yes purge -y --force-yes sysvinit-utils lsb-base\
+             e2fsprogs e2fslibs bsdutils libblkid1 libuuid1 passwd tzdata insserv'
+          fix_missing
+
+         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
+         apt-get -y --force-yes purge ncurses-base ncurses-bin'
+         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
+         apt-get purge coreutils'
+         fix_missing
+         sudo chroot mini apt-get clean
+         sudo rm -rf -v mini/var/cache/*
+         sudo rm -rf mini/usr/share/man/*
+         sudo rm -rf mini/usr/share/doc/*
+         sudo rm -rf mini/usr/share/man/*
+         sudo rm -rf mini/var/log/*
+
+     - name: fix links
+       run: |
+         ln -sf /bin/busybox mini/bin/sh
+         ln -sf /bin/busybox mini/sbin/init
+         cat > mini/etc/inittab << EOF
+         ::sysinit:/etc/init.d/rcS
+         ::ctrlaltdel:/sbin/reboot
+         ::shutdown:/sbin/swapoff -a
+         ::shutdown:/bin/umount -a -r
+         ::restart:/sbin/init
+         tty1::respawn:/bin/sh
+         tty2::askfirst:/bin/sh
+         tty3::askfirst:/bin/sh
+         tty4::askfirst:/bin/sh
+         EOF
+
+         touch mini/etc/init.d/rcS
+         sudo chmod +x mini/etc/init.d/rcS
+
+     - name: pack image
+       run: |
+         cd mini; sudo find . | sudo cpio -o -H newc | sudo gzip -9 > ../initramfs-mini.gz
+
+
+         
