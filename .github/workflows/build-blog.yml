@@ -17,7 +17,7 @@ jobs:
      - run: sudo debootstrap --variant=minbase bookworm mini
      - name: Init
        run: | 
-         cat > mini/init << EOF
+         sudo cat > mini/init << EOF
          #!/bin/sh
          mount -t proc -o nodev,noexec,nosuid proc /proc
          mount -t sysfs -o nodev,noexec,nosuid sysfs /sys
@@ -44,8 +44,8 @@ jobs:
 
      - name: autologin
        run: |
-         for i in $(find mini/etc/init -type f -name "tty*"); do
-            sed -e "s|/sbin/getty -8|/sbin/getty --autologin root -8|" -i $i
+         for i in $(sudo find mini/etc/init -type f -name "tty*"); do
+            sudo sed -e "s|/sbin/getty -8|/sbin/getty --autologin root -8|" -i $i
          done
      - name: download kernel module
        run: |
@@ -64,7 +64,7 @@ jobs:
 
      - name: replace command
        run: |
-         applets=$(mini/bin/busybox --list)
+         applets=$(sudo mini/bin/busybox --list)
          apps=
          for i in $applets; do
              apps="$apps $(sudo chroot mini which $i)"
@@ -78,7 +78,7 @@ jobs:
 
          function fix_missing() {
              for i in $apps $extra_apps; do
-                 if ! test -f mini/$i; then
+                 if ! sudo test -f mini/$i; then
                      sudo ln -sf /bin/busybox mini/$i
                  fi
              done
@@ -121,9 +121,9 @@ jobs:
 
      - name: fix links
        run: |
-         ln -sf /bin/busybox mini/bin/sh
-         ln -sf /bin/busybox mini/sbin/init
-         cat > mini/etc/inittab << EOF
+         sudo ln -sf /bin/busybox mini/bin/sh
+         sudo ln -sf /bin/busybox mini/sbin/init
+         sudo cat > mini/etc/inittab << EOF
          ::sysinit:/etc/init.d/rcS
          ::ctrlaltdel:/sbin/reboot
          ::shutdown:/sbin/swapoff -a
@@ -135,7 +135,7 @@ jobs:
          tty4::askfirst:/bin/sh
          EOF
 
-         touch mini/etc/init.d/rcS
+         sudo touch mini/etc/init.d/rcS
          sudo chmod +x mini/etc/init.d/rcS
 
      - name: pack image
