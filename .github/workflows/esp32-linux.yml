@@ -15,7 +15,7 @@ jobs:
     - uses: dabao1955/clone-github-repo-action@main
       with:
         depth: 1
-        branch: 'main'
+        branch: 'master'
         owner: 'AndreRH'
         repository: 'hangover'
         submodule: true
