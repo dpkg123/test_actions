@@ -18,4 +18,5 @@ jobs:
         branch: 'master'
         owner: 'AndreRH'
         repository: 'hangover'
-        submodule: true
+        submodule: false
+        path-to-clone: '../hangover-git'
