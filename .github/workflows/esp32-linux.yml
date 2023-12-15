@@ -19,4 +19,4 @@ jobs:
         owner: 'AndreRH'
         repository: 'hangover'
         submodule: false
-        path-to-clone: '../hangover-git'
+        path-to-clone: 'hangover-git'
