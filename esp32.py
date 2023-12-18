@@ -35,7 +35,7 @@ def check(area):
 result = set()
 
 # 定义循环次数，越大越准确，但也越慢
-loop = 100000000
+loop = 2147483648
 
 # 开始循环
 for _ in range(loop):
