@@ -6,7 +6,6 @@ on:
 jobs:
   ci-1:
     needs:
-      - ci-2
       - ci-3
       - ci-4
       - ci-6
@@ -15,6 +14,8 @@ jobs:
   ci-2:
    needs:
      - ci-5
+     - ci-6
+     - ci-1
    uses: ./.github/workflows/3ds.yml
    secrets: inherit
   ci-3:
@@ -34,15 +35,13 @@ jobs:
     - run: cd rxfetch && sudo bash rxfetch
 
   ci-6:
-    runs-on: ubuntu-20.04
-    permissions:
-      contents: read
+    runs-on: ubuntu-latest
     steps:
     - name: free disk space
       uses: rokibhasansagar/slimhub_actions@main
     - run: sudo apt-get update && sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
            build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-           debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev -y
+           debianutils xz-utils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev xterm -y
     - run: git clone -b warrior git://git.yoctoproject.org/poky.git --depth=2
     - name: Build
       run: |
