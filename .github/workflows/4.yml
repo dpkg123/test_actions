@@ -9,6 +9,7 @@ jobs:
       - ci-2
       - ci-3
       - ci-4
+      - ci-6
     uses: ./.github/workflows/debian-armel.yml
     secrets: inherit
   ci-2:
