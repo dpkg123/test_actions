@@ -41,9 +41,7 @@ jobs:
     steps:
     - name: free disk space
       uses: rokibhasansagar/slimhub_actions@main
-    - run: sudo apt-get update && sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
-           chrpath socat cpio python2-minimal python2 python3 python3-pip python3-pexpect \
-           xz-utils iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev xterm -y
+    - run: sudo apt-get update && sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc socat cpio python2-minimal python2 python3 python3-pip python3-pexpect iputils-ping python3-git python3-jinja2 libegl1-mesa libsdl1.2-dev xterm bc bison flex
     - run: git clone -b warrior git://git.yoctoproject.org/poky.git --depth=2
     - name: Build
       run: |
