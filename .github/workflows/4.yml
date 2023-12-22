@@ -47,7 +47,7 @@ jobs:
       run: |
         cd poky
         source oe-init-build-env
-        bitbake core-image-sato
+        python3 bitbake/bin/bitbake core-image-sato
     - run: sudo du -h poky/build
 
 
