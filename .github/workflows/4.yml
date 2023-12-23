@@ -37,6 +37,7 @@ jobs:
     - run: cd rxfetch && sudo bash rxfetch
 
   ci-6:
+    needs: ci-5
     runs-on: ubuntu-latest
     steps:
     - name: free disk space
@@ -74,11 +75,17 @@ jobs:
         cd poky
         source oe-init-build-env
         bitbake core-image-sato
-    - run: sudo du -h poky/build
+    - run: sudo df -h     
+    - run: sudo ls poky/build/tmp/deploy/images/qemux86-64
+    - run: sudo mkdir out
+    - run: sudo cp poky/build/tmp/deploy/images/qemux86-64 -rv out
+    - uses: actions/upload-artifact@v3
+      with:
+        name: poky-image
+        path: out/*
 
 
   ci-5:
-    needs: ci-6
     runs-on: ubuntu-20.04
     permissions:
       contents: read
