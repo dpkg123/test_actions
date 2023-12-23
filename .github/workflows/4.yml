@@ -33,7 +33,10 @@ jobs:
     - run: cd rxfetch && sudo bash rxfetch
 
   ci-7: 
-    needs: ci-5
+    needs: 
+     - ci-1
+     - ci-2
+     - ci-3
     runs-on: ubuntu-latest
     steps:
     - name: Install neofetch
