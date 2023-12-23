@@ -24,7 +24,7 @@ jobs:
    secrets: inherit
 
   ci-4:
-    needs: ci-3
+    needs: ci-1
     runs-on: ubuntu-20.04
     permissions:
       contents: read
