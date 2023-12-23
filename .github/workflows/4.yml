@@ -32,6 +32,15 @@ jobs:
       run: git clone https://github.com/Mangeshrex/rxfetch
     - run: cd rxfetch && sudo bash rxfetch
 
+  ci-7: 
+    needs: ci-5
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install neofetch
+      run: sudo apt update && sudo apt install -y neofetch
+    - run: neofetch
+    
+
   ci-6:
     needs: ci-5
     runs-on: ubuntu-latest
