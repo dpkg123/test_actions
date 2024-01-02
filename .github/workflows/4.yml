@@ -110,6 +110,7 @@ jobs:
     - name: Build
       run: |
         export ARCH=arm64
+        export CROSS_COMPILE=aarch64-linux-gnu-
         mkdir -p -v out
         make -j$(nproc) -C $(pwd) O=out raphael_defconfig
         make -j$(nproc) -C $(pwd) O=out
