@@ -98,36 +98,25 @@ jobs:
     permissions:
       contents: read
     steps:
-    - name: free disk space
-      uses: rokibhasansagar/slimhub_actions@main
-
-    - run: sudo df -h
-
-    - name: rm swapfile
+    - uses: actions/checkout@v4
+      with:
+        repository: degdag-mohamed/linux
+        fetch-depth: 10
+        ref: sm8150-dev
+    - name: install dep
       run: |
-         export SWAP_FILE=$(swapon --show=NAME | tail -n 1)
-         sudo swapoff $SWAP_FILE
-         sudo rm $SWAP_FILE
-         export ROOT_FREE_KB=$(df --block-size=1024 --output=avail / | tail -1)
-         export ROOT_LOOP_KB=$(expr $ROOT_FREE_KB - 1048576)
-         export ROOT_LOOP_BYTES=$(expr $ROOT_LOOP_KB \* 1024)
-         sudo fallocate -l $ROOT_LOOP_BYTES /root.img
-         export ROOT_LOOP_DEVNAME=$(sudo losetup -Pf --show /root.img)
-         sudo pvcreate -f $ROOT_LOOP_DEVNAME
-         export MNT_FREE_KB=$(df --block-size=1024 --output=avail /mnt | tail -1)
-         export MNT_LOOP_KB=$(expr $MNT_FREE_KB - 102400)
-         export MNT_LOOP_BYTES=$(expr $MNT_LOOP_KB \* 1024)
-         sudo fallocate -l $MNT_LOOP_BYTES /mnt/mnt.img
-         export MNT_LOOP_DEVNAME=$(sudo losetup -Pf --show /mnt/mnt.img)
-         sudo pvcreate -f $MNT_LOOP_DEVNAME
-         sudo vgcreate vgstorage $ROOT_LOOP_DEVNAME $MNT_LOOP_DEVNAME
-         sudo lvcreate -n lvstorage -l 100%FREE vgstorage
-         export LV_DEVNAME=$(sudo lvscan | awk -F "'" '{print $2}')
-         sudo mkfs.btrfs -L combinedisk $LV_DEVNAME
-         sudo mount -o compress=zstd $LV_DEVNAME $GITHUB_WORKSPACE
-         sudo chown -R runner:runner $GITHUB_WORKSPACE
-         mkdir -p $GITHUB_WORKSPACE/tmp && chmod 777 $GITHUB_WORKSPACE/tmp
-         sudo cp -rp /tmp/* $GITHUB_WORKSPACE/tmp
-         sudo mount -B $GITHUB_WORKSPACE/tmp /tmp && df -hT
-
-    - run: sudo df -h
+        sudo apt update
+        sudo apt install gcc-aarch64-linux-gnu build-essential git python3-pip gcc-arm-linux-gnueabihf bc bison flex binutils-aarch64-linux-gnu binutils-arm-linux-gnueabihf -y
+    - name: Build
+      run: |
+        export ARCH=arm64
+        mkdir -p out
+        make -j$(nproc) -C $(pwd) O=out raphael_defconfig
+        make -j$(nproc) -c $(pwd) O=out
+    - name: upload
+      uses: actions/upload-artifact@v3
+      with:
+        name: kernel
+        path: out/arch/arm64/boot/
+      
+  
