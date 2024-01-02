@@ -106,7 +106,7 @@ jobs:
     - name: install dep
       run: |
         sudo apt update
-        sudo apt install gcc-aarch64-linux-gnu build-essential git python3-pip gcc-arm-linux-gnueabihf bc bison flex binutils-aarch64-linux-gnu binutils-arm-linux-gnueabihf -y
+        sudo apt install gcc-aarch64-linux-gnu build-essential git python3-pip bc bison flex binutils-aarch64-linux-gnu -y
     - name: Build
       run: |
         export ARCH=arm64
