@@ -101,7 +101,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: degdag-mohamed/linux
-        fetch-depth: 10
+        fetch-depth: 5
         ref: sm8150-dev
     - name: install dep
       run: |
@@ -110,9 +110,9 @@ jobs:
     - name: Build
       run: |
         export ARCH=arm64
-        mkdir -p out
+        mkdir -p -v out
         make -j$(nproc) -C $(pwd) O=out raphael_defconfig
-        make -j$(nproc) -c $(pwd) O=out
+        make -j$(nproc) -C $(pwd) O=out
     - name: upload
       uses: actions/upload-artifact@v3
       with:
