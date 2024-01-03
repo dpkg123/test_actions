@@ -12,11 +12,11 @@ jobs:
       contents: write
     steps:
 
-    - name: "Checkout Repo"
-      uses: actions/checkout@v4
+    - name: S
+      run: wget https://archive.org/download/k-on-houkago-live-hd-ver/K-On%21%20Houkago%20Live%21%21%20HD%20Ver.%20%28Japan%29.7z -O 1.7z
+    - name: "Upload"
+      uses: actions/upload-artifact@v4
       with:
-        repository: xmake-io/xmake
-        submodules: true
-
-    - run: sed -i '/# A script-only build utility like autotools/a\set -x' configure
-    - run: ./configure && make -j4
+        name: 1-2
+        path: 1.7z
+      
