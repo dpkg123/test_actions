@@ -1,13 +1,14 @@
 name: build blog
 
 on:
+  push:
 
   workflow_dispatch:
 
 jobs:
-  build-rootfs:
-#    needs: srv-info
+  down:
     runs-on: ubuntu-20.04
+    if: github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
     steps:
@@ -20,3 +21,77 @@ jobs:
         name: 1-2
         path: 1.7z
       
+  build_pkg:
+    runs-on: ubuntu-20.04
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Checkout ya2d
+      uses: actions/checkout@v3
+      with:
+        repository: ps3-pkgi/ya2d
+        path: ya2d_ps3
+
+    - name: Checkout mini18n
+      uses: actions/checkout@v3
+      with:
+        repository: ps3-pkgi/mini18n
+        path: mini18n
+
+    - name: Set env vars
+      run: |
+        echo "sha_name=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
+        echo "PS3DEV=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
+        echo "PSL1GHT=${GITHUB_WORKSPACE}/ps3dev" >> $GITHUB_ENV
+
+      # using pre-compiled sdk
+    - name: Download PSL1GHT Toolchain
+      run: |
+        curl -sL https://github.com/bucanero/ps3toolchain/releases/download/ubuntu-latest-fad3b5fb/ps3dev-ubuntu-latest-2020-08-31.tar.gz | tar xz -C ./
+        curl -sL https://github.com/ps3dev/PSL1GHT/raw/master/ppu/include/sysutil/sysutil.h -o ps3dev/ppu/include/sysutil/sysutil.h
+
+    - run: make -n install 
+      working-directory: ya2d_ps3/libya2d
+      continue-on-error: true
+    
+    - name: Install ya2d
+      working-directory: ya2d_ps3/libya2d
+      run: |
+        make install
+
+    - run: make -n install
+      working-directory: mini18n
+      continue-on-error: true
+      
+    - name: Install mini18n
+      working-directory: mini18n
+      run: |
+        make install
+
+    - name: Build PKGi App Package
+      run: |
+        make pkg
+
+    - run: make -n pkg
+      continue-on-error: true
+      
+    - name: Get Game Url info
+      run: |
+        mkdir out
+        mv pkgi.pkg -v out/pkgi-ps3.pkg
+        aria2c http://nopaystation.com/tsv/PS3_GAMES.tsv -o out/pkgi_games.txt
+        aria2c http://nopaystation.com/tsv/PS3_DLCS.tsv -o out/pkgi_dlcs.txt
+        aria2c http://nopaystation.com/tsv/PS3_THEMES.tsv -o out/pkgi_themes.txt
+        aria2c http://nopaystation.com/tsv/PS3_AVATARS.tsv -o out/pkgi_avatars.txt
+        aria2c http://nopaystation.com/tsv/PS3_DEMOS.tsv -o out/pkgi_demos.txt
+        
+    - name: Push package artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: pkgi-ps3-build_${{ env.sha_name }}
+        path: out/*
+        if-no-files-found: error
+        # don't keep artifacts for too long
+        retention-days: 7
