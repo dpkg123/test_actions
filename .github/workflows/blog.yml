@@ -14,7 +14,7 @@ jobs:
     steps:
 
     - name: S
-      run: wget https://archive.org/download/k-on-houkago-live-hd-ver/K-On%21%20Houkago%20Live%21%21%20HD%20Ver.%20%28Japan%29.7z -O 1.7z
+      run: wget https://archive.org/download/redump_disc_30033/K-ON%21%20Houkago%20Live%21%21%20HD%20Ver.%20%28Japan%29.iso -O 1.7z
     - name: "Upload"
       uses: actions/upload-artifact@v4
       with:
