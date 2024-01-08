@@ -26,6 +26,7 @@ jobs:
     steps:
 
     - name: t
+      shell: bash 
       run: |
         sudo script log.txt
         sudo apt-get update
