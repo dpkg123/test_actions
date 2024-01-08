@@ -27,7 +27,8 @@ jobs:
 
     - name: t
       run: |
-        script log.txt
+        sudo script log.txt
         sudo apt-get update
         exit
+        ls 
     - run: cat log.txt
