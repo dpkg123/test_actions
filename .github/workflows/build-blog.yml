@@ -3,7 +3,6 @@ name: deploy blog
 on:
 
  workflow_dispatch:
- push:
 
 jobs:
 
@@ -28,8 +27,8 @@ jobs:
              git clone https://github.com/dpkg123/clang --depth=2
          - name: build
            run: |
-             curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
              cd kernel-4.19
+             curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
              mkdir -p -v out
              BUILD_CROSS_COMPILE=$HOME/aarch64-linux-android-4.9/bin/aarch64-linux-android-
              CLANG_PATH=$HOME/clang/bin
