@@ -11,7 +11,7 @@ jobs:
      runs-on: ubuntu-latest 
      steps:
          - run: sudo apt update && sudo apt install -y aria2 binutils binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 aria2
-         - run: curl -sL https://github.com/dabao1955/android_kernel_oppo_mt6877/archive/268e4309eae0ef0da2f910ef9308eae307d4b898.tar.gz | tar xz -C ./
+         - run: curl -sL https://github.com/dabao1955/android_kernel_oppo_mt6877/archive/5c389e046ecc5d3259fb660cd412597186df245b.tar.gz | tar xz -C ./
          - run: mv android_kernel* kernel-4.19
          - run: git clone https://github.com/oppo-source/android_kernel_modules_oppo_mt6877/ vnd -b oppo/mt6877_t_13.1.0_reno6_5g
          - run: cp -R vnd/vendor ./ 
