@@ -9,137 +9,38 @@ jobs:
   deploy-blog: 
      runs-on: ubuntu-latest 
      steps:
-     - name: vendor
-       run: |
-          sudo apt-get update
-          sudo apt-get install -y debootstrap
-     - run: sudo debootstrap --variant=minbase bookworm mini
-     - name: Init
-       run: | 
-         sudo cat > mini/init << EOF
-         #!/bin/sh
-         mount -t proc -o nodev,noexec,nosuid proc /proc
-         mount -t sysfs -o nodev,noexec,nosuid sysfs /sys
-         ln -sf /proc/mounts /etc/mtab
-         mount -t tmpfs -o size=64k,mode=0755 tmpfs /dev
-         [ -e /dev/console ] || mknod -m 0600 /dev/console c 5 1
-         [ -e /dev/null ] || mknod /dev/null c 1 3
-         mkdir -p /dev/pts
-         mount -t devpts -o noexec,nosuid,gid=5,mode=0620 devpts /dev/pts
-         mount -t tmpfs -o "noexec,nosuid,size=10%,mode=0755" tmpfs /run
-         echo "Loading modules..."
-         # hotplug with mdev
-         echo /bin/mdev > /proc/sys/kernel/hotplug
-         mdev -s
-         # coldplug: load devices supporting modules
-         find /sys/devices -name modalias | xargs -r cat | xargs -r modprobe -qa
-         # extra modules
-         [ -f /etc/modules ] && cat /etc/modules | grep -v "^[[:blank:]]#" |\
-              xargs -r modprobe -qa
-         exec /sbin/init
-         EOF
-         sudo chmod +x mini/init
+         - run: sudo apt update && sudo apt install -y aria2 binutils binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 aria2
+         - run: curl -SsL https://github.com/oppo-source/android_kernel_oppo_mt6877/archive/f59de3ad55447cacc97d37dbcebec3919599a6f0.tar.gz | tar -x 
+         - run: mv android_kernel* kernel-4.19
+         - run: git clone https://github.com/oppo-source/android_kernel_modules_oppo_mt6877/ -b oppo/mt6877_t_13.1.0_reno6_5g/
+         - name: Install binutils
+           run:  |
+             cd $HOME
+
+             git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 aarch64-linux-android-4.9
+
+             git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 arm-linux-androideabi-4.9
+         - name: Install Clang
+           run: |
+             cd $HOME
+
+             git clone https://github.com/dpkg123/clang --depth=2
+         - name: build
+           run: |
+             curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
+             cd kernel-4.19
+             mkdir -p -v out
+             BUILD_CROSS_COMPILE=$HOME/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+             CLANG_PATH=$HOME/clang/bin
+             CROSS_COMPILE_ARM32=$HOME/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+
+             CLANG_TRIPLE=aarch64-linux-gnu-
+
+             export ARCH=arm64
+             export PATH=${CLANG_PATH}:${PATH}
+             make -j$(nproc) -C $(pwd) O=$(pwd)/out CROSS_COMPILE=$BUILD_CROSS_COMPILE CLANG_TRIPLE=$CLANG_TRIPLE CROSS_COMPILE_ARM32=$CROSS_COMPILE_ARM32 CC=clang k6877v1_64_k419_defconfig
+             make -j$(nproc) -C $(pwd) O=$(pwd)/out CROSS_COMPILE=$BUILD_CROSS_COMPILE CLANG_TRIPLE=$CLANG_TRIPLE CROSS_COMPILE_ARM32=$CROSS_COMPILE_ARM32 CC=clang LD=ld.lld
+           
 
 
-     - name: autologin
-       run: |
-         for i in $(sudo find mini/etc/init -type f -name "tty*"); do
-            sudo sed -e "s|/sbin/getty -8|/sbin/getty --autologin root -8|" -i $i
-         done
-     - name: download kernel module
-       run: |
-         sudo apt-get download linux-image-$(uname -r)
-         sudo rm -rf linux-image-$(uname -r)
-         sudo dpkg -x $(find . -type f -name "linux-image-$(uname -r)*.deb" | head -n 1) linux-image-$(uname -r)
-         sudo cp -af linux-image-$(uname -r)/lib mini/
-         sudo chroot mini depmod
-     - run: sudo chroot mini apt clean
-     - name: Install Packages
-       run: |
-         sudo chroot mini apt update
-         sudo chroot mini apt install xinit xorg openbox tree w3m dialog ffmpeg nano neofetch -y
-     - name: Install Busybox
-       run: sudo chroot mini apt-get -y --no-install-recommends install busybox-static
-
-     - name: replace command
-       run: |
-         applets=$(sudo mini/bin/busybox --list)
-         apps=
-         for i in $applets; do
-             apps="$apps $(sudo chroot mini which $i)"
-         done
-         extra_apps=
-         for i in $applets; do
-             if ! sudo chroot mini which $i > /dev/null; then
-                 extra_apps="$extra_apps /bin/$i "
-             fi
-         done
-
-         function fix_missing() {
-             for i in $apps $extra_apps; do
-                 if ! sudo test -f mini/$i; then
-                     sudo ln -sf /bin/busybox mini/$i
-                 fi
-             done
-         }
-     - name: purge packages
-       run: |
-         sudo chroot mini apt-get -y --force-yes purge adduser busybox-initramfs \
-         cpio ifupdown initramfs-tools initscripts initramfs-tools-bin \
-         iproute2 mountall makedev plymouth procps upstart libprocps3 \
-         libcgmanager0 libusb-1.0-0 usbutils libdbus-1-3 libnih-dbus1 libdrm2 \
-         libjson-c2 libjson0 kmod libkmod2 module-init-tools file libmagic1 \
-         libnih1 libplymouth2 pciutils libudev1 udev
-         fix_missing
-
-         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
-         apt-get -y --force-yes purge diffutils findutils hostname'
-         fix_missing
-
-         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
-         apt-get -y --force-yes purge -y --force-yes login libmount1 mount\
-              grep gzip man sed mount'
-         fix_missing
-
-         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
-         apt-get -y --force-yes purge -y --force-yes sysvinit-utils lsb-base\
-             e2fsprogs e2fslibs bsdutils libblkid1 libuuid1 passwd tzdata insserv'
-          fix_missing
-
-         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
-         apt-get -y --force-yes purge ncurses-base ncurses-bin'
-         sudo chroot mini /bin/sh -c 'echo "Yes, do as I say!" |\
-         apt-get purge coreutils'
-         fix_missing
-         sudo chroot mini apt-get clean
-         sudo rm -rf -v mini/var/cache/*
-         sudo rm -rf mini/usr/share/man/*
-         sudo rm -rf mini/usr/share/doc/*
-         sudo rm -rf mini/usr/share/man/*
-         sudo rm -rf mini/var/log/*
-
-     - name: fix links
-       run: |
-         sudo ln -sf /bin/busybox mini/bin/sh
-         sudo ln -sf /bin/busybox mini/sbin/init
-         sudo cat > mini/etc/inittab << EOF
-         ::sysinit:/etc/init.d/rcS
-         ::ctrlaltdel:/sbin/reboot
-         ::shutdown:/sbin/swapoff -a
-         ::shutdown:/bin/umount -a -r
-         ::restart:/sbin/init
-         tty1::respawn:/bin/sh
-         tty2::askfirst:/bin/sh
-         tty3::askfirst:/bin/sh
-         tty4::askfirst:/bin/sh
-         EOF
-
-         sudo touch mini/etc/init.d/rcS
-         sudo chmod +x mini/etc/init.d/rcS
-
-     - name: pack image
-       run: |
-         cd mini; sudo find . | sudo cpio -o -H newc | sudo gzip -9 > ../initramfs-mini.gz
-
-
-         
+   
