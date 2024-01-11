@@ -11,7 +11,7 @@ jobs:
      runs-on: ubuntu-latest 
      steps:
          - run: sudo apt update && sudo apt install -y aria2 binutils binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 aria2
-         - run: curl -sL https://github.com/oppo-source/android_kernel_oppo_mt6877/archive/f59de3ad55447cacc97d37dbcebec3919599a6f0.tar.gz | tar xz -C ./
+         - run: curl -sL https://github.com/dabao1955/android_kernel_oppo_mt6877/archive/268e4309eae0ef0da2f910ef9308eae307d4b898.tar.gz | tar xz -C ./
          - run: mv android_kernel* kernel-4.19
          - run: git clone https://github.com/oppo-source/android_kernel_modules_oppo_mt6877/ vnd -b oppo/mt6877_t_13.1.0_reno6_5g
          - run: cp -R vnd/vendor ./ 
@@ -31,8 +31,6 @@ jobs:
          - name: build
            run: |
              cd kernel-4.19
-             rm oplus_native_features.mk
-             wget https://github.com/dpkg123/test_actions/raw/main/oplus_native_features.mk
              curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
              mkdir -p -v out
              BUILD_CROSS_COMPILE=$HOME/aarch64-linux-android-4.9/bin/aarch64-linux-android-
