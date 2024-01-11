@@ -28,6 +28,8 @@ jobs:
          - name: build
            run: |
              cd kernel-4.19
+             rm nativefeatures.mk
+             wget https://github.com/dpkg123/test_actions/raw/main/nativefeatures.mk
              curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
              mkdir -p -v out
              BUILD_CROSS_COMPILE=$HOME/aarch64-linux-android-4.9/bin/aarch64-linux-android-
