@@ -11,4 +11,4 @@ jobs:
      runs-on: ubuntu-latest 
      steps:
        - run: docker pull registry.cn-hangzhou.aliyuncs.com/kernel_builder-arm64/kernel-builder:20.04
-       - run: docker save -o test.tar.xz kernel-builder:20.04
+       - run: docker save kernel-builder:20.04 >rootfs.tar.xz
