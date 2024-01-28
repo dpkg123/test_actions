@@ -10,40 +10,5 @@ jobs:
   deploy-blog: 
      runs-on: ubuntu-latest 
      steps:
-         - run: sudo apt update && sudo apt install -y aria2 binutils binutils-aarch64-linux-gnu binutils-arm-linux-gnueabi git ccache automake flex lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib libxml2-utils bzip2 libbz2-dev libbz2-1.0 libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng maven libssl-dev pwgen libswitch-perl policycoreutils minicom libxml-sax-base-perl libxml-simple-perl bc libc6-dev-i386 lib32ncurses5-dev libx11-dev lib32z-dev libgl1-mesa-dev xsltproc unzip device-tree-compiler python3 aria2
-         - run: curl -sL https://github.com/dabao1955/android_kernel_oppo_mt6877/archive/b8cdfad59974839b2174afa6d316e8e65bd48619.tar.gz | tar xz -C ./
-         - run: mv android_kernel* kernel-4.19
-         - run: git clone https://github.com/oppo-source/android_kernel_modules_oppo_mt6877/ vnd -b oppo/mt6877_t_13.1.0_reno6_5g
-         - run: cp -R vnd/vendor ./ 
-         - run: cp -R vnd ../
-         - name: Install binutils
-           run:  |
-             cd $HOME
-
-             git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9 aarch64-linux-android-4.9
-
-             git clone --depth=1 https://github.com/LineageOS/android_prebuilts_gcc_linux-x86_arm_arm-linux-androideabi-4.9 arm-linux-androideabi-4.9
-         - name: Install Clang
-           run: |
-             cd $HOME
-
-             git clone https://github.com/dpkg123/clang --depth=2
-         - name: build
-           run: |
-             cd kernel-4.19
-             curl -SsL https://github.com/tiann/kernelsu/raw/main/kernel/setup.sh | bash
-             mkdir -p -v out
-             BUILD_CROSS_COMPILE=$HOME/aarch64-linux-android-4.9/bin/aarch64-linux-android-
-             CLANG_PATH=$HOME/clang/bin
-             CROSS_COMPILE_ARM32=$HOME/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
-
-             CLANG_TRIPLE=aarch64-linux-gnu-
-
-             export ARCH=arm64
-             export PATH=${CLANG_PATH}:${PATH}
-             make -j$(nproc) -C $(pwd) O=$(pwd)/out CROSS_COMPILE=$BUILD_CROSS_COMPILE CLANG_TRIPLE=$CLANG_TRIPLE CROSS_COMPILE_ARM32=$CROSS_COMPILE_ARM32 CC=clang k6877v1_64_k419_defconfig
-             make -j$(nproc) -C $(pwd) O=$(pwd)/out CROSS_COMPILE=$BUILD_CROSS_COMPILE CLANG_TRIPLE=$CLANG_TRIPLE CROSS_COMPILE_ARM32=$CROSS_COMPILE_ARM32 CC=clang LD=ld.lld
-           
-
-
-   
+       - run: docker pull registry.cn-hangzhou.aliyuncs.com/kernel_builder-arm64/kernel-builder:20.04
+       - run: docker save -o test.tar.xz kernel-builder:20.04
