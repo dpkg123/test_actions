@@ -1,0 +1,20 @@
+name: ciddd
+on:
+  workflow_dispatch:
+  push:
+  
+jobs:
+  live-build:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    steps:
+
+    - run: wget -O xxx.tar.gz https://sakustar.moe/redirect?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc2FrdXN0YXIubW9lIiwiaWF0IjoxNzA4MjU4ODk0LCJuYmYiOjE3MDgyNTg4OTQsImV4cCI6MTcwODI1OTE5NCwiZGF0YSI6eyJzaWduIjoiODU4NTIzOWJhYTY1N2EwYWM0Nzk4MGE4NzUzMTg1ODIiLCJ1c2VyX2lkIjowLCJwb3N0X2lkIjoiNjAyNiIsImluZGV4IjoiMCIsImkiOiIwIn19.U8nUg1wr_At5nHa4CL_2piFjaqhf6w_Boa5VRh8EEBk
+    - name: Upload rootfs to Artifact
+      uses: actions/upload-artifact@v3
+      with: 
+       name: "3ds-kernel-debian"
+       path: xxx.tar.gz
