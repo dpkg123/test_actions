@@ -97,7 +97,9 @@ jobs:
         CROSS_COMPILE: "ccache arm-linux-gnueabi-"
       run:  |
         export USE_CCACHE=1
-        make -C linux nintendo3ds_defconfig all -j4 
+        make -C linux nintendo3ds_defconfig all -j4 V=1 VERBOSE=1
+    - name: Post Build
+      run: |
         mkdir -p -v out 
         cp linux/arch/arm/boot/zImage out -v
         cp linux/arch/arm/boot/dts/nintendo3ds_ctr.dtb out -v
