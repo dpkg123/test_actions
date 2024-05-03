@@ -36,8 +36,8 @@ jobs:
     - name: Build
       run: |
         cd buildroot
-        make nintendo3ds_defconfig
-        make all -j4
+        make nintendo3ds_defconfig V=1 VERBOSE=1
+        make all -j4 V=1 VERBOSE=1
     - name: disk status
       run: |
         sudo df -h
@@ -45,7 +45,7 @@ jobs:
         sudo du -h buildroot
         
     - name: Upload rootfs to Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
        name: "3ds-rootfs"
        path: buildroot/output/images/rootfs.cpio.gz
@@ -62,9 +62,9 @@ jobs:
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-none-eabi binutils-arm-none-eabi
     - name: Build
-      run: make -C arm9linuxfw -j4
+      run: make -C arm9linuxfw -j4 V=1 VERBOSE=1
     - name: Upload arm9linuxfw to Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
        name: "arm9linuxfw"
        path: arm9linuxfw/arm9linuxfw.bin
@@ -80,7 +80,7 @@ jobs:
       run: git clone https://github.com/linux-3ds/linux --depth=1
 
     - name: Download Rootfs
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
        name: 3ds-rootfs
        path: linux/
@@ -106,7 +106,7 @@ jobs:
         cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out -v
 
     - name: Upload rootfs to Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
        name: "3ds-kernel"
        path: out/*
@@ -128,12 +128,12 @@ jobs:
       run: git clone https://github.com/linux-3ds/firm_linux_loader/
 
     - name: Build
-      run: make -C firm_linux_loader -j4
+      run: make -C firm_linux_loader -j4 V=1 VERBOSE=1
       env:
         CC: "arm-none-eabi-gcc"
         
     - name: Upload firm to Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
        name: "firm_linux_loader"
        path: firm_linux_loader/firm_linux_loader.firm
