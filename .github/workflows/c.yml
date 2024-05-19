@@ -30,9 +30,9 @@ jobs:
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
         git config --global --add safe.directory /github/workspace
-        git pull --rebase
         git add .
         git commit -am "$(date)"
+        git pull --rebase
 
     - name: GitHub Push
       uses: ad-m/github-push-action@master
