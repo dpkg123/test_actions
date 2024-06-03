@@ -39,7 +39,7 @@ jobs:
         gzip -c ../rootfs.cpio > ../rootfs.cpio.gz
 
     - name: Upload rootfs.cpio to Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
        name: "3ds-rootfs-debian"
        path: rootfs.cpio.gz
@@ -73,7 +73,7 @@ jobs:
         cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out -v
 
     - name: Upload rootfs to Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
        name: "3ds-kernel-debian"
        path: out/*

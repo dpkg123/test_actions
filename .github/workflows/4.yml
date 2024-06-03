@@ -86,7 +86,7 @@ jobs:
     - run: sudo ls poky/build/tmp/deploy/images/qemux86-64
     - run: sudo mkdir out
     - run: sudo cp poky/build/tmp/deploy/images/qemux86-64 -rv out
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: poky-image
         path: out/*
@@ -114,7 +114,7 @@ jobs:
         make -j$(nproc) -C $(pwd) O=out raphael_defconfig
         make -j$(nproc) -C $(pwd) O=out
     - name: upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kernel
         path: out/arch/arm64/boot/
