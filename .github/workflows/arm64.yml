@@ -1,0 +1,15 @@
+name: Macos Arm64
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    container: debian:bookworm
+    runs-on: macos-latest
+    permissions:
+      contents: read
+    steps:
+
+    - run: apt update && apt install neofetch -y
