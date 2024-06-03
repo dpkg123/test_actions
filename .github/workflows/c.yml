@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest-large, windows-latest, macos-latest]
      
     
     runs-on: ${{ matrix.os }}
@@ -36,9 +36,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 7.x
-    - name: Install go
-      uses: actions/setup-go@v4
-
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '^1.18' 
     - name: Commit updates
       continue-on-error: true
       run: |
