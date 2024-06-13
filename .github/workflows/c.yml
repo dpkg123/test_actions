@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
   push:
   pull_request:
+  workflow_call:
   
 jobs:
   live-build:
@@ -73,7 +74,7 @@ jobs:
       contents: write
     steps:
 
-    - run: apt install git -y
+    - run: apt update && apt install git nodejs -y
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
