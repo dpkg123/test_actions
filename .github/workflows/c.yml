@@ -66,9 +66,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: [debian:latest, ubuntu:latest]
+        container: [debian, ubuntu]
     runs-on: ubuntu-latest
-    container: ${{ matrix.container }}
+    container: ${{ matrix.container }}:latest
     permissions:
       contents: write
     steps:
