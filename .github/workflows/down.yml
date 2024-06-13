@@ -6,16 +6,13 @@ jobs:
   live-build:
     strategy:
       fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-     
     
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
 
-    - run: wget "https://2565143240.tapecontent.net/radosgw/9emvM41j6Asa4e4/PmizPMQkf8lDATFIMHzCfOssGdgTV0Bu-51xdgkMlPtPfoGLKvDyGwdqdS5_49slHYOe-GRYwDWBP9lHQWG-KmUoncQdI_3_InQfHScu43p6g7S2u5UNZQ0wiO_TxMf91gv5Z1KiVORw80rdi4TQItEd8r3whXO_Hy47BUHq4UbF7OY9bLrIRzzDueoHX4w8Pato--EUJOWVql6snKa8G4xO0jLhK-cCtwduMu9yc4IJPblhleVMZRnom5VHJ_JpexdXp1ZkP9ANbhJv5siXfdQJObVcr7Vbt-ps_w/76c6154aaa6a7543215d3eb056541363.mp4?stream=1" -O index.mp4
+    - run: wget "https://2565143240.tapecontent.net/radosgw/9emvM41j6Asa4e4/kxY1oF__SZTZUi8CYdlUYfXKa8eSud1KsXK3tAogitUaW139JuHFMYNIsBDbeLyvNX6APnciFL1hkp2eDhJk8AHXUH1UjwA87WG4Aytj2dGUTHxRquALOFWfq0UMcREuRbY5eZghPRg_-jN7Pd0S79sT5_X0Y4TZK2og0B9mDQoaNAQEWDy_Jbt1yzpDii3Zz0bu1fTLZ4clAWWIcqWW4c8teYHerG1yFGuooTHjNbTuvVOAsEK0Q2nq4h9fknFHsix6iMKk0zdEYE9OkkvPRJp2cA1nllffpnbNaw/76c6154aaa6a7543215d3eb056541363.mp4?stream=1" -O index.mp4
     - uses: actions/upload-artifact@v4
       with:
         name: mp4
