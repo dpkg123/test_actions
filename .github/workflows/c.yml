@@ -40,6 +40,7 @@ jobs:
     - uses: actions/setup-go@v5
       with:
         go-version: '^1.18' 
+        cache: false
     - name: Commit updates
       continue-on-error: true
       run: |
@@ -95,6 +96,7 @@ jobs:
     - uses: actions/setup-go@v5
       with:
         go-version: '^1.18' 
+        cache: false
     - name: Commit updates
       continue-on-error: true
       run: |
@@ -152,6 +154,7 @@ jobs:
     - uses: actions/setup-go@v5
       with:
         go-version: '^1.18' 
+        cache: false
     - name: Commit updates
       continue-on-error: true
       run: |
@@ -208,7 +211,8 @@ jobs:
         dotnet-version: 7.x
     - uses: actions/setup-go@v5
       with:
-        go-version: '^1.18' 
+        go-version: '^1.18'
+        cache: false
     - name: Commit updates
       continue-on-error: true
       run: |
