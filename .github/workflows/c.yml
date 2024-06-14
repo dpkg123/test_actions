@@ -123,8 +123,10 @@ jobs:
     needs: live-build
     strategy:
       fail-fast: false
+      matrix:
+        version: [latest, edge]
     runs-on: ubuntu-latest
-    container: alpine:edge
+    container: alpine:${{ matrix.version }}
     permissions:
       contents: write
     steps:
@@ -177,7 +179,6 @@ jobs:
 
   fedora:
     needs: 
-      - live-build-1
       - alpine
     strategy:
       fail-fast: false
