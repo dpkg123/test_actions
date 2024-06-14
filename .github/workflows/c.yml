@@ -129,7 +129,7 @@ jobs:
       contents: write
     steps:
 
-    - run: apk update && apk add nodejs git curl -y
+    - run: apk update && apk add nodejs git curl
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
@@ -176,13 +176,13 @@ jobs:
 
 
   fedora:
-    needs: live-build
+    needs: 
+      - live-build-1
+      - alpine
     strategy:
       fail-fast: false
-      matrix:
-        container: [fedora, centos]
     runs-on: ubuntu-latest
-    container: ${{ matrix.container }}:latest
+    container: fedora:latest
     permissions:
       contents: write
     steps:
