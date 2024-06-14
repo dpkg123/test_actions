@@ -131,7 +131,7 @@ jobs:
       contents: write
     steps:
 
-    - run: apk update && apk add nodejs git curl
+    - run: apk update && apk add nodejs git curl bash
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
@@ -188,7 +188,7 @@ jobs:
       contents: write
     steps:
 
-    - run: dnf update && dnf install git nodejs wget -y
+    - run: dnf install git nodejs wget -y
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
