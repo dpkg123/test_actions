@@ -68,7 +68,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: [debian, ubuntu]
+        container: [debian, ubuntu, codercom/code-server]
     runs-on: ubuntu-latest
     container: ${{ matrix.container }}:latest
     permissions:
