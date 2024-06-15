@@ -253,18 +253,21 @@ jobs:
       continue-on-error: true
       run: |
         cd tmp
-        git config --global --add safe.directory /__w/test_actions/test_actions
-        git pull
-        git config user.name "dpkg123"
-        git pull
-        git config user.email "test1@qw5d.onmicrosoft.com"
-        git pull
-        git config --global --add safe.directory /github/workspace
-        git pull
-        echo "$(date)" >> 1.md
-        git add .
-        git commit -am "$(date)"
-        git pull --rebase
+        sudo git pull
+        sudo git config --global --add safe.directory /__w/test_actions/test_actions/
+        sudo git pull
+        sudo git config --global --add safe.directory /__w/test_actions/test_actions/tmp
+        sudo git pull
+        sudo git config user.name "dpkg123"
+        sudo git pull
+        sudo git config user.email "test1@qw5d.onmicrosoft.com"
+        sudo git pull
+        sudo git config --global --add safe.directory /github/workspace
+        sudo git pull
+        echo "$(date)" | sudo tee -a 1.md
+        sudo git add .
+        sudo git commit -am "$(date)"
+        sudo git pull --rebase
 
     - name: GitHub Push
       continue-on-error: true
