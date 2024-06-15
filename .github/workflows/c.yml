@@ -68,7 +68,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: [debian, ubuntu, linuxmint]
+        container: [debian, ubuntu]
     runs-on: ubuntu-latest
     container: ${{ matrix.container }}:latest
     permissions:
