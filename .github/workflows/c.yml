@@ -247,7 +247,7 @@ jobs:
       contents: write
     steps:
 
-    - run: sudo apt install git nodejs wget -y
+    - run: sudo apt update && sudo apt install git nodejs wget -y
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
