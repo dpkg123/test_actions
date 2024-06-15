@@ -248,7 +248,7 @@ jobs:
     steps:
 
     - run: sudo apt update && sudo apt install git nodejs wget -y
-    - run: sudo git clone https://github.com/dpkg123/test_actions/ tmp && chmod +x -R tmp
+    - run: sudo git clone https://github.com/dpkg123/test_actions/ tmp && sudo chmod +x -R tmp
     - name: Commit updates
       continue-on-error: true
       run: |
