@@ -36,8 +36,8 @@ jobs:
     - name: Build
       run: |
         cd buildroot
-        make nintendo3ds_defconfig V=1 VERBOSE=1
-        make all -j4 V=1 VERBOSE=1
+        make nintendo3ds_defconfig all  V=1 VERBOSE=1 -j4
+        
     - name: disk status
       run: |
         sudo df -h
