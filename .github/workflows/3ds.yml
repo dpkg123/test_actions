@@ -40,7 +40,7 @@ jobs:
         cd buildroot
         time make nintendo3ds_defconfig V=1 VERBOSE=1 -j4
 
-   - name: Build
+    - name: Build
       run: |
         cd buildroot
         time make all V=1 VERBOSE=1 -j4
