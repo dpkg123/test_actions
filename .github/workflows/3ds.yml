@@ -33,11 +33,17 @@ jobs:
     - run: |
         sudo apt-get install -y binutils build-essential git flex bison libssl-dev bc libgmp-dev subversion libmpc-dev
     - run: cp 3ds_defconfig buildroot/configs/nintendo3ds_defconfig
-    - name: Build
+
+    - name: Configure
       run: |
         cd buildroot
-        make nintendo3ds_defconfig all  V=1 VERBOSE=1 -j4
-        
+        time make nintendo3ds_defconfig V=1 VERBOSE=1 -j4
+
+   - name: Build
+      run: |
+        cd buildroot
+        time make all V=1 VERBOSE=1 -j4
+
     - name: disk status
       run: |
         sudo df -h
