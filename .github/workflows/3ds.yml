@@ -77,20 +77,19 @@ jobs:
        path: arm9linuxfw/arm9linuxfw.bin
 
   build-kernel:
-    needs: [srv-info, build-rootfs]
+    needs: srv-info
     runs-on: ubuntu-20.04
     permissions:
       contents: read
     steps:
 
     - name: "Pull Repo"
-      run: git clone https://github.com/linux-3ds/linux --depth=1
-
-    - name: Download Rootfs
-      uses: actions/download-artifact@v4
+      uses: actions/checkout@v4
       with:
-       name: 3ds-rootfs
-       path: linux/
+        repository: linux-3ds/linux
+        path: linux
+        fetch-depth: 1
+
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
     - name: Ccache for gh actions
