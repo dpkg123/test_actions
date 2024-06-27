@@ -4,6 +4,7 @@ on:
 
   workflow_dispatch:
   workflow_call:
+  push:
   
 jobs:
   build-rootfs:
@@ -95,7 +96,7 @@ jobs:
     - name: Ccache for gh actions
       uses: hendrikmuhs/ccache-action@v1.2.13
       with:
-        key: ${{ github.job }}-${{ matrix.os }}
+        key: ee2b31d23ae6068c6aecc2e81e4b71c40ed72654
             
     - name: Build
       env:
