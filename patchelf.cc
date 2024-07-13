@@ -43,8 +43,10 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "elf.h"
-#include "patchelf.h"
+#include "elf.hpp"
+#include "patchelf.hpp"
+#include <iostream>
+#include <filesystem>
 
 #ifndef PACKAGE_STRING
 #define PACKAGE_STRING "patchelf"

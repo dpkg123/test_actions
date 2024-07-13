@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "elf.h"
+#include "elf.hpp"
 
 using FileContents = std::shared_ptr<std::vector<unsigned char>>;
 
