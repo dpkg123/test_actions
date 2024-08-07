@@ -1,5 +1,5 @@
-#ifndef BASEHEADERS_HPP
-#define BASEHEADERS_HPP
+#ifndef BASEHEADERS_H
+#define BASEHEADERS_H
 
 #include <iostream>
 #include <cstdlib>

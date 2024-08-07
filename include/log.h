@@ -8,8 +8,8 @@
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/rotating_file_sink.h"
 
-#ifndef LOG_HPP
-#define LOG_HPP
+#ifndef LOG_H
+#define LOG_H
 
 static inline int NowDateToInt()
 {
