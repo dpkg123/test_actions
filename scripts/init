@@ -1,0 +1,37 @@
+#!/bin/bash -e
+
+if [[ "$#" != 2 ]] || [[ "$1" != "-f" ]]; then
+	exit 1
+fi
+
+if [[ "$BOOTMODE" == "" ]]; then
+	if [[ -e /sys/firmware/efi ]]; then
+		BOOTMODE="UEFI"
+	else
+		BOOTMODE="Legacy"
+	fi
+fi
+
+DISK="$2"
+dd if=/dev/zero of="$DISK" bs=1M count=5 >/dev/null 2>&1 && sync
+partprobe "$DISK"
+sync
+sleep 1
+
+if [[ "${BOOTMODE}" == "UEFI" ]]; then
+	echo -e 'g\nn\n\n\n256K\nn\n\n\n\nw' | fdisk "$DISK"
+	sync
+	partprobe "$DISK"
+	sync
+	while ! ls ${DISK}*1 >/dev/null 2>&1; do echo "Waiting for partition to get ready.."; sleep 1; done
+	while ! /bin/echo -e 't\n1\n1\nw\n' | fdisk "$DISK" >/dev/null 2>&1; do sleep 1; done
+	sync
+	while ! mkfs.vfat -F32 ${DISK}*1; do sleep 1; done
+else
+	echo -e 'o\nn\n\n\n\n\nw' | fdisk "$DISK"
+	sync
+	partprobe "$DISK"
+fi
+partprobe "$DISK"
+sync
+

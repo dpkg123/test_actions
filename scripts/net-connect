@@ -1,0 +1,127 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import time
+import subprocess
+
+if os.path.exists('/usr/bin/nmtui-connect'):
+  os.execl('/usr/bin/nmtui-connect', '/usr/bin/nmtui-connect')
+
+if os.getuid() != 0:
+  exit(os.system(f'sudo {sys.argv[0]}'))
+
+def wait_for(timeout=2):
+  print(f'No active WLAN devices found from list below, retrying in {timeout} second..')
+  os.system('lspci | grep -i -e wireless -e wlan')
+  if timeout != 0:
+    time.sleep(timeout)
+
+iface = None
+for timeout in (1, 2, 4, 5):
+  for iface_ in os.listdir('/sys/class/net'):
+    if os.path.exists(f'/sys/class/net/{iface_}/wireless'):
+      iface = iface_
+      break
+  if iface is None:
+    wait_for(timeout)
+  else:
+    break
+
+if iface is not None:
+  os.system(f'ifconfig {iface} up')
+
+is_service = (len(sys.argv) == 2 and sys.argv[1] == '-u')
+
+if not is_service:
+  print('Scanning WLAN devices..')
+  assert iface is not None, "No active WLAN devices found."
+  while True:
+    # outputs = subprocess.getoutput('LANG=en_US.UTF-8 iwlist scanning 2>/dev/null | grep ESSID:')
+    outputs = subprocess.getoutput(f'LANG=en_US.UTF-8 iw dev {iface} scan | grep "SSID: "')
+    if not outputs:
+      wait_for(5)
+    else:
+      break
+
+  ssid_list, raw_dict = [], {}
+  for line in outputs.split('\n'):
+    # if 'ESSID:' not in line:
+    if not line.startswith('\tSSID: '):
+      continue
+    ssid = line[line.index(':') + 1:].strip()
+    if ssid[:1] == '"':
+      ssid = ssid[1:]
+    if ssid[-1:] == '"':
+      ssid = ssid[:-1]
+    if not ssid:
+      continue
+    raw_data = ssid
+    if '\\x' in ssid:
+      if ssid.startswith('\\x00'):
+        continue
+      try:
+        i, buff = 0, b''
+        while i < len(ssid):
+          if i + 4 <= len(ssid) and ssid[i:i+2] == '\\x':
+            buff += bytes.fromhex(ssid[i+2:i+4])
+            i += 4
+          else:
+            buff += ssid[i].encode('utf-8')
+            i += 1
+        ssid = buff.decode('utf-8')
+      except:
+        continue
+    if '"' not in ssid and ssid not in raw_dict:
+      raw_dict[ssid] = raw_data
+      ssid_list += [ssid, '']
+
+  from subprocess import PIPE, Popen
+  p = Popen(['whiptail', '--title', 'WIFI Connect', '--menu', 'Choose a WIFI SSID:', '', '', ''] + ssid_list, stderr=PIPE)
+  _, utf8_ssid = p.communicate()
+
+  if p.returncode != 0:
+    exit(p.returncode)
+
+  utf8_ssid = utf8_ssid.decode("utf-8")
+  wifi_ssid = raw_dict[utf8_ssid]
+  p = Popen(['whiptail', '--title', 'WIFI Connect', '--passwordbox', f'Enter the password for "{utf8_ssid}":', '10', '60'], stderr=PIPE)
+  while True:
+    _, wifi_pass = p.communicate()
+    wifi_pass = wifi_pass.decode("utf-8")
+
+    if p.returncode != 0:
+      exit(p.returncode)
+    if len(wifi_pass) >= 8 and len(wifi_pass) < 64 or len(wifi_pass) == 0:
+      break
+    p = Popen(['whiptail', '--title', 'WIFI Connect', '--passwordbox', f'Password must be empty or 8 to 63 characters, please input again:', '10', '60'], stderr=PIPE)
+
+  default_config = subprocess.check_output(['wpa_passphrase', utf8_ssid, wifi_pass or '00000000'])
+  with open('/etc/wpa_supplicant/default.conf', 'w') as fp:
+    for conf in default_config.decode('utf-8').split('\n'):
+      if conf.startswith('	#psk='):
+        continue
+      if conf.startswith('	psk=') and len(wifi_pass) == 0:
+        fp.write('	key_mgmt=NONE')
+      else:
+        fp.write(conf)
+      fp.write('\n')
+  print(f'Connecting to "{utf8_ssid}"...')
+
+os.system('pkill wpa_supplicant >/dev/null 2>&1')
+
+if os.path.exists('/etc/wpa_supplicant/default.conf'):
+  if 0 != os.system(f'wpa_supplicant -B -D nl80211 -i {iface} -c /etc/wpa_supplicant/default.conf >/dev/null 2>&1'):
+    print('Connection failed due to incorrect password or deny from server.')
+    if not is_service:
+      exit(1)
+  else:
+    print(f'WLAN connection established, waiting to configure DHCP..')
+
+os.system('systemd-run sh -c "sleep 2; pkill dhclient -9; /usr/sbin/dhclient >/dev/null 2>&1; while true; do sleep 8; pkill dhclient -9; /usr/sbin/dhclient >/dev/null 2>&1; done"')
+os.system('service systemd-resolved restart')
+os.system('ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf')
+
+# resolv = subprocess.getoutput(f'resolvectl dns {iface}').split()[-1]
+os.execl('/usr/bin/true', '/usr/bin/true')
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+[ "$#" = "0" ] && exit 1
+
+FILE="$1"
+
+if [ "x${FILE:0:1}" != "x/" ]; then
+  FILE="$(pwd)/${FILE}"
+fi
+
+f() {
+  sudo apt-get --simulate install "${FILE}" | grep -v '^Inst\|^Conf';
+  read -p 'Do you want to continue (y/N): ' ans;
+  case $ans in
+    [yY] | [yY][eE][sS])
+      sudo apt-get -y install "${FILE}";
+    ;;
+    *)
+
+    ;;
+  esac
+}
+
+f "$@"
+read -p 'Press [Enter] to continue..'

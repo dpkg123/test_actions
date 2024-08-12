@@ -1,0 +1,401 @@
+#!/bin/bash
+
+( [[ "$(whoami)" != "root" ]] || ! mountpoint /cdrom -q ) && exit 1
+
+declare -A msg_gettext
+
+msg_gettext=(
+['The disk partition type does not match current booting mode. You may need to erase the entire disk with all old data erased which is unrecoverable, you do want to continue?']='主磁盘的分区表类型与当前引导模式不匹配， 你可能需要擦除整个磁盘，所有数据旧数据将会丢失，是否继续？'
+
+['The disk seems to be new, do you want to create new partition table?\n\nPlease note that creating new partition table will erase the entire disk, which is unrecoverable!!!']='磁盘貌似是新的，是否进行快速全新分区？\n\n谨慎：将整个磁盘进行完全重置，如果原始存在分区，则所有分区、所有文件都将被抹掉，请注意该抹除操作是不可恢复的！！！'
+
+['Fast Reparition']='快速全新分区'
+
+['Loading Partition Tables ..']='正在加载分区表 ..'
+
+['Volumn:=']='容量：'
+
+['FsType:=']='类型：'
+
+['Partition(manually)']='手动编辑磁盘分区'
+
+['Please select the partition to setup:']='请选择根系统的安装分区：'
+
+['Partition Selection']='系统分区选择（格式化）'
+
+['Select']='选择'
+
+['Exit']='退出'
+
+['WARN: Parition ']='警告：分区'
+
+[' will be formatted which is unrecoverable, are you sure to continue?']='将会被格式化且旧数据不可恢复，是否继续？'
+
+['Setup Confirmation']='系统安装确认'
+
+['Please set a hostname for system:']='请为系统设置主机名：'
+
+['Setup Configuration']='安装设置'
+
+['The typed content is illegal, please input again!']='输入内容不合法，请重新输入！'
+
+['Please set a default non-root username for system:']='请为系统设置管理员用户名：'
+
+['Please set a password for user ']='请设置一个登录密码给用户'
+
+['Please type the password again to confirm:']='请再次输入密码以确认：'
+
+['Twice passwords are different, please set the password again!']='两次密码输入不一致，请重新设置密码！'
+
+['Configuration of Installation:']='即将安装：'
+
+['Partition to setup:']='安装分区：'
+
+['Hostname:']='主机名：'
+
+['Username:']='用户名：'
+
+['OpenSSH Server']='OpenSSH 服务器'
+
+['Do you want to install OpenSSH Server?']='是否安装 OpenSSH 服务？'
+
+['EFI Partition:']='EFI 分区：'
+
+['Installing system files']='正在安装系统文件'
+
+['Setup done, press [Enter] to reboot system!']='安装完成，按 [确定] 键将重启系统！'
+
+['boot mode detected!']='为当前引导模式。'
+
+['disk mode detected!']='为当前主磁盘分区表类型。'
+
+['is mounted, please unmount it before installation!']='处于正挂载状态，请先卸载此设备以继续安装。'
+
+['not found. Setup is unable to continue!']='磁盘找不到，安装过程无法继续。'
+
+['Small FAT32 partition for EFI is not detected, please create one (size <= 1GB) and reinstall again.']='FAT32 格式、小容量（<=1GB）的分区未找到，为了引导 EFI 系统，请自行创建一个小容量分区并格式化为 FAT32，例如：sudo mkfs.vfat -F32 /dev/sdaX'
+
+['The small EFI partition is deteced to be']='小容量的EFI分区检测到为'
+)
+
+L=$(echo ${LANG:-en_US.UTF-8} | awk -F\. '{print $1}')
+
+function _ {
+	if [[ "$L" == "zh_CN" ]]; then
+		echo "${msg_gettext[$@]:-$@}"
+	else
+		echo "$@"
+	fi
+}
+
+if [[ "$DISK" == "" ]]; then
+	DISK=/dev/nvme0n1
+	[[ ! -e $DISK ]] && [[ -e /dev/mmcblk0 ]] && DISK=/dev/mmcblk0
+	[[ ! -e $DISK ]] && [[ -e /dev/sda ]] && DISK=/dev/sda
+fi
+
+umount -l /isodevice 2>/dev/null || true
+
+[[ ! -e "$DISK" ]] && whiptail --msgbox "$DISK $(_ 'not found. Setup is unable to continue!')" --fb 15 51 && exit 1
+
+
+if [[ -e /sys/firmware/efi ]]; then
+	echo "UEFI $(_ 'boot mode detected!')"
+	BOOTMODE="UEFI"
+else
+	echo "Legacy $(_ 'boot mode detected!')"
+	BOOTMODE="Legacy"
+fi
+
+DISKMODE=$(LANG=en_US.UTF-8 fdisk -l "$DISK" 2>/dev/null | grep "Disklabel type:" | awk '{print $NF}')
+DISKMODE="${DISKMODE:-unknown}"
+echo "$DISKMODE $(_ 'disk mode detected!')"
+
+sleep 1
+
+
+if ([[ "$BOOTMODE" == "UEFI" ]] && [[ "$DISKMODE" == "dos" ]]) ||
+	([[ "$BOOTMODE" == "Legacy" ]] && [[ "$DISKMODE" == "gpt" ]]) ; then
+	if whiptail --yesno --defaultno "$(_ 'The disk partition type does not match current booting mode. You may need to erase the entire disk with all old data erased which is unrecoverable, you do want to continue?')" --fb 16 51; then
+		swapoff -a
+		disk-init -f "$DISK"
+		sleep 1
+	else
+		clear && exit 1
+	fi
+fi
+
+while ! ls ${DISK}[p0-9]* >/dev/null 2>&1; do
+	if whiptail --yesno --defaultno "$(_ 'The disk seems to be new, do you want to create new partition table?\n\nPlease note that creating new partition table will erase the entire disk, which is unrecoverable!!!')" --title "$(_ 'Fast Reparition')" --fb 16 51; then
+		swapoff -a
+		disk-init -f "$DISK"
+		sleep 1
+	else
+		clear && exit 1
+	fi
+done
+
+if [[ "${BOOTMODE}" == "UEFI" ]]; then
+	EFI_PART=$(cat /proc/partitions | grep -E $(basename "${DISK}")'[p0-9]{1,3}$' | awk '{ if (int($3) < 1100000) print $NF;}')
+	if [[ "${EFI_PART}" != "" ]]; then
+		FAT_PART=""
+		for PART in ${EFI_PART}; do
+			if blkid /dev/${PART} | grep fat >/dev/null; then
+				FAT_PART=${PART}
+				break
+			fi
+		done
+	fi
+	if [[ "${FAT_PART}" == "" ]]; then
+		whiptail --msgbox "$(_ 'Small FAT32 partition for EFI is not detected, please create one (size <= 1GB) and reinstall again.')" --fb 15 61
+		exit 1
+	else
+		echo "$(_ 'The small EFI partition is deteced to be') /dev/$FAT_PART"
+		sleep 2
+	fi
+fi
+
+while true; do
+	echo "$(_ 'Loading Partition Tables ..')" >/dev/stderr
+	sleep 1
+	MENU_ITEMS=$(cat /proc/partitions | grep -E $(basename "${DISK}")'[p0-9]{1,3}$' | awk '{ if (int($3)>=2000000) print $0}' | while read TYPE NUM SIZE DEV; do
+		TYPE=$(blkid /dev/${DEV} | tr \  \\n | grep ^TYPE= | awk -F\" '{print $2}')
+		TYPE=${TYPE:-unknown}
+		SIZE=$(( ${SIZE} / 1024 / 1024 ))
+		echo "/dev/${DEV} $(_ 'Volumn:=')${SIZE}G,$(_ 'FsType:=')${TYPE}"
+	done && echo "cfdisk $(_ 'Partition(manually)')")
+
+	PARITION=$(whiptail --menu "$(_ 'Please select the partition for clean setup:')" --title "$(_ 'Partition Selection')" --ok-button "$(_ 'Select')" --cancel-button "$(_ 'Exit')" --fb 20 51 12 ${MENU_ITEMS} 3>&1 1>&2 2>&3)
+
+	if df -l | grep "^$PARITION " >/dev/null 2>&1; then
+		whiptail --msgbox "$PARITION $(_ 'is mounted, please unmount it before installation!')" --fb 15 51
+		continue
+	fi
+
+	if [[ "$?" != "0" ]]; then
+		clear && exit 1
+	elif ! echo ${PARITION} | grep ^\/dev\/; then
+		if which gparted >/dev/null 2>&1; then
+			gparted "$DISK"
+		else
+			cfdisk "$DISK"
+		fi
+		partprobe "$DISK"
+	elif whiptail --yesno "$(_ 'WARN: Parition ')'${PARITION}'$(_ ' will be formatted which is unrecoverable, are you sure to continue?')" --title "$(_ 'Setup Confirmation')" --fb 12 51; then
+		break
+	fi
+done
+
+while true; do
+	HOST_NAME=$(whiptail --inputbox "$(_ 'Please set a hostname for system:')" --title "$(_ 'Setup Configuration')" --nocancel --fb 10 51 ubuntu-pc 3>&1 1>&2 2>&3)
+	if [[ "$?" != "0" ]]; then
+		clear && exit 1
+	elif echo ${HOST_NAME} | grep -E "^[a-zA-Z0-9\_\-]{1,60}$"; then
+		break
+	fi
+	whiptail --msgbox "$(_ 'The typed content is illegal, please input again!')" --fb 10 51
+done
+
+while true; do
+	USER_NAME=$(whiptail --inputbox "$(_ 'Please set a default non-root username for system:')" --title "$(_ 'Setup Configuration')" --nocancel --fb 10 51 admin 3>&1 1>&2 2>&3)
+	if [[ "$?" != "0" ]]; then
+		clear && exit 1
+	elif echo "${USER_NAME}" | grep -E "^[a-zA-Z0-9\-\_]{1,20}$" && [[ "${USER_NAME}" != "root" ]]; then
+		break
+	fi
+	whiptail --msgbox "$(_ 'The typed content is illegal, please input again!')" --fb 10 51
+done
+
+while true; do
+	while true; do
+		PASS_WORD=$(whiptail --passwordbox "$(_ 'Please set a password for user ')'${USER_NAME}':" --title "$(_ 'Setup Configuration')" --nocancel --fb 10 51 3>&1 1>&2 2>&3)
+		if [[ "$?" != "0" ]]; then
+			clear && exit 1
+		elif echo ${PASS_WORD} | grep -E "^[a-zA-Z0-9\-\_\.]{1,20}$"; then
+			break
+		fi
+		whiptail --msgbox "$(_ 'The typed content is illegal, please input again!')" --fb 10 51
+	done
+
+	while true; do
+		PASS_WORD2=$(whiptail --passwordbox "$(_ 'Please type the password again to confirm:')" --title "$(_ 'Setup Configuration')" --nocancel --fb 10 51 3>&1 1>&2 2>&3)
+		if [[ "$?" != "0" ]]; then
+			clear && exit 1
+		elif echo ${PASS_WORD2} | grep -E "^[a-zA-Z0-9\-\_\.]{1,20}$"; then
+			break
+		fi
+		whiptail --msgbox "$(_ 'The typed content is illegal, please input again!')" --fb 10 51
+	done
+	
+	if [[ "${PASS_WORD}" == "${PASS_WORD2}" ]]; then
+		break
+	fi
+	
+	whiptail --msgbox "$(_ 'Twice passwords are different, please set the password again!')" --fb 10 51
+done
+
+if dpkg -L openssh-server >/dev/null 2>&1 && ! whiptail --yesno --defaultno "$(_ 'Do you want to install OpenSSH Server?')" --title "$(_ 'OpenSSH Server')" --fb 12 51; then
+	DISABLE_SSH=1
+fi
+
+if [[ "$BOOTMODE" == "UEFI" ]]; then
+	UEFI_ADDITION="\n\n$(_ 'EFI Partition:') /dev/${FAT_PART}"
+fi
+
+if ! whiptail --yesno "$(_ 'Configuration of Installation:')\n\n$(_ 'Partition to setup:')${PARITION}\n$(_ 'Hostname:')${HOST_NAME}\n$(_ 'Username:')${USER_NAME}${UEFI_ADDITION}" --title "$(_ 'Setup Confirmation')" --fb 16 51; then
+	exit 1
+fi
+
+MNT=$(mktemp -d)
+
+function format {
+	umount -l ${PARITION} ${DISK}?* >/dev/null 2>&1 || true
+	swapoff -a
+	umount -l ${MNT}/target/* ${MNT}/target >/dev/null 2>&1 || true
+
+	# skip these if format is unwanted
+	if [[ "$FORMAT" != "0" ]]; then
+		wipefs ${PARITION} -a >/dev/null 2>&1 || true
+		yes | mkfs.ext4 ${PARITION}
+		e2label ${PARITION} Ubuntu
+	fi
+
+	rm -rf ${MNT}/target
+	mkdir -p ${MNT}/target
+	mount ${PARITION} ${MNT}/target
+	chmod a+x ${MNT}/target
+}
+
+function copy {
+	unsquashfs -f -d ${MNT}/target /cdrom/casper/filesystem.squashfs
+}
+
+function users {
+	# chroot ${MNT}/target useradd -m -G sudo ${USER_NAME} -s /bin/bash
+	chroot ${MNT}/target adduser --disabled-password --gecos "" ${USER_NAME}
+	chroot ${MNT}/target usermod -a -G sudo ${USER_NAME}
+
+	echo "${USER_NAME}:${PASS_WORD}" | chroot ${MNT}/target chpasswd
+	echo ${HOST_NAME} > ${MNT}/target/etc/hostname
+	
+	cat <<-EOF > ${MNT}/target/etc/hosts
+	127.0.0.1 localhost
+	127.0.1.1 ${HOST_NAME}
+	# The following lines are desirable for IPv6 capable hosts
+	::1 ip6-localhost ip6-loopback
+	fe00::0 ip6-localnet
+	ff00::0 ip6-mcastprefix
+	ff02::1 ip6-allnodes
+	ff02::2 ip6-allrouters
+	ff02::3 ip6-allhosts
+	EOF
+
+	rm -f ${MNT}/target/etc/ssh/ssh_host_*
+	chroot ${MNT}/target dpkg-reconfigure openssh-server >/dev/null 2>&1 || true
+
+	if ! chroot ${MNT}/target dpkg -L network-manager >/dev/null; then
+		NET_DEV=$(ip addr show | grep -E "^[0-9]{1,3}:" | grep -v LOOPBACK | head -n 1 | awk '{print $2}' | awk -F\: '{print $1}')
+
+		cat <<-EOF >> ${MNT}/target/etc/network/interfaces
+		auto ${NET_DEV}
+
+		iface ${NET_DEV} inet dhcp
+		# iface ${NET_DEV} inet manual
+		#
+		# auto br1
+		# iface br1 inet static
+		#	address 10.0.2.15
+		#	netmask 255.255.255.0
+		#	gateway 10.0.2.2
+		#	bridge_ports ${NET_DEV}
+		#	bridge_stp off
+		#	bridge_fd 0
+		#	bridge_maxwait 0
+		#	dns-nameservers 10.0.2.3
+		EOF
+	else
+		chroot ${MNT}/target set-autologin ${USER_NAME}
+	fi
+
+	if [[ "$DISABLE_SSH" == "1" ]]; then
+		SSH_PACKAGE="openssh-sftp-server openssh-server"
+	fi
+
+	cp /etc/default/locale ${MNT}/target/etc/default/locale
+	chroot ${MNT}/target apt-get purge lupin-casper casper ${SSH_PACKAGE} --auto-remove -y
+	sync
+}
+
+function boot {
+	cp /cdrom/casper/vmlinuz ${MNT}/target/boot/vmlinuz-`uname -r`
+	mount -o bind /dev ${MNT}/target/dev
+	mount -o bind /proc ${MNT}/target/proc
+	mount -o bind /sys ${MNT}/target/sys
+	cp /cdrom/casper/initrd.* ${MNT}/target/boot/initrd.img-`uname -r`
+	# chroot ${MNT}/target update-initramfs -u
+	# chroot ${MNT}/target mkinitramfs -c gzip -o /boot/initrd.img-*-generic $(ls /boot/initrd.img-*-generic -1 | tail -n 1 | awk -F"initrd.img-" '{print $2}')
+	touch ${MNT}/target/boot/System.map-`uname -r`
+
+	fallocate -l 1G ${MNT}/target/swapfile.sys
+	chmod 600 ${MNT}/target/swapfile.sys
+	mkswap ${MNT}/target/swapfile.sys
+
+	if which mkfs.xfs >/dev/null; then
+		echo "${PARITION} / xfs pquota 0 2" > ${MNT}/target/etc/fstab
+	else
+		echo "${PARITION} / ext4 errors=remount-ro 0 1" > ${MNT}/target/etc/fstab
+	fi
+	echo "/swapfile.sys swap swap defaults 0 0" >> ${MNT}/target/etc/fstab
+	
+	if [[ "$BOOTMODE" == "UEFI" ]]; then
+		EFI_PART_NUM=$(echo ${FAT_PART} | grep -o '[0-9]*$')
+		/bin/echo -e "t\n${EFI_PART_NUM}\n1\nw\n" | fdisk ${DISK} >/dev/null 2>&1
+		echo "# /dev/${FAT_PART} /boot/efi vfat ro,defaults,noatime 0 2" >> ${MNT}/target/etc/fstab
+		mkdir -p ${MNT}/target/boot/efi
+		umount -l /dev/${FAT_PART} ${MNT}/target/boot/efi >/dev/null 2>&1 || true
+		mount /dev/${FAT_PART} ${MNT}/target/boot/efi
+		mkdir -p ${MNT}/target/boot/efi/boot/grub
+		/bin/echo -e 'search -s -f /etc/lsb-release\nconfigfile /boot/grub/grub.cfg' > ${MNT}/target/boot/efi/boot/grub/grub.cfg
+
+		mkdir -p ${MNT}/target/boot/efi/efi/Boot
+		cp /cdrom/efi/boot/*.efi ${MNT}/target/boot/efi/efi/Boot
+		
+		efibootmgr -c -d ${DISK} -p ${EFI_PART_NUM} -L Ubuntu -l '\EFI\boot\grubx64.efi'
+		efibootmgr -D
+		# chroot ${MNT}/target grub-install "$DISK" --efi-directory=/boot/efi --bootloader-id=grub
+	else
+		chroot ${MNT}/target grub-install "$DISK"
+	fi
+	
+	chroot ${MNT}/target update-grub
+}
+
+function setup {
+	echo 10
+	format >/dev/null 2>&1
+
+	echo 20
+	copy >/dev/null 2>&1
+
+	echo 60
+	users >/dev/null 2>&1
+	
+	echo 80
+	boot >/dev/null 2>&1
+
+	echo 95
+	umount ${MNT}/target/boot/efi >/dev/null 2>&1 || true
+	umount ${MNT}/target/* >/dev/null 2>&1 || true
+	umount -l ${MNT}/* >/dev/null 2>&1 || true
+
+	echo 100
+}
+
+setup $@ | whiptail --gauge "$(_ 'Installing system files') .." 8 51 0
+
+if whiptail --msgbox "$(_ 'Setup done, press [Enter] to reboot system!')" --fb 10 51; then
+	clear
+	systemd-run bash -c "service lightdm stop; reboot"
+else
+	clear && exit 0
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ ( "$1" == "" ) || ( "$2" != "" ) ]]; then
+	echo "Usage: undeb <dpkgname>.deb"
+else
+	DPKGNAME=$(basename "$1" .deb)
+	dpkg -X "$1" "$DPKGNAME"
+	dpkg -e "$1" "$DPKGNAME/DEBIAN"
+fi
