@@ -1,4 +1,4 @@
-project( yabause-qt )
+project( qt )
 
 yab_port_start()
 
