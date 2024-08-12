@@ -1,0 +1,35 @@
+.material-icons {
+  vertical-align: middle;
+  font-size: 18px;
+}
+
+.material-icons.description {
+  color: #346df1;
+}
+
+.material-icons.grid_on,
+.material-icons.border_all {
+  color: #178f46;
+}
+
+.material-icons.web_asset,
+.material-icons.video_label {
+  color: #f0a607;
+}
+
+.material-icons.edit,
+.material-icons.colorize,
+.material-icons.brush,
+.material-icons.color_lens,
+.material-icons.dashboard {
+  color: #d02e2a;
+}
+
+.material-icons.photo,
+.material-icons.crop_original {
+  color: #ce191d;
+}
+
+.material-icons.picture_as_pdf {
+  color: #e22c28;
+}
