@@ -43,8 +43,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-#include "elf.hpp"
-#include "patchelf.hpp"
+#include "elf.h"
+#include "patchelf.h"
 #include <iostream>
 #include <filesystem>
 
