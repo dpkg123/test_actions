@@ -21,17 +21,7 @@
 #include <stdio.h>
 extern "C"
 {
-#include "../yui.h"
-#include "../peripheral.h"
-#include "../cs0.h"
-#include "../m68kcore.h"
-#include "../m68kc68k.h"
-#include "../vidsoft.h"
-#include "../vdp2.h"
 #include "../titan/titan.h"
-#ifdef _MSC_VER
-#include <Windows.h>
-#endif
 
 extern u8 *vdp1backframebuffer;
 }
