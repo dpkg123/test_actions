@@ -1,50 +1,27 @@
 /* main.cpp -- main entry
 
-   This file is part of the UPX executable compressor.
-
-   Copyright (C) 1996-2024 Markus Franz Xaver Johannes Oberhumer
-   Copyright (C) 1996-2024 Laszlo Molnar
-   All Rights Reserved.
-
-   UPX and the UCL library are free software; you can redistribute them
-   and/or modify them under the terms of the GNU General Public License as
-   published by the Free Software Foundation; either version 2 of
-   the License, or (at your option) any later version.
-
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-
-   You should have received a copy of the GNU General Public License
-   along with this program; see the file COPYING.
-   If not, write to the Free Software Foundation, Inc.,
-   59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-
-   Markus F.X.J. Oberhumer              Laszlo Molnar
-   <markus@oberhumer.com>               <ezerotven+github@gmail.com>
- */
-
 // main entry, mostly boring stuff; see work.cpp for actual action
 
 #include "conf.h"
 #include "packer.h"            // Packer::isValidCompressionMethod()
 #include "p_elf.h"             // ELFOSABI_xxx
 #include "compress/compress.h" // upx_ucl_init()
+#include <QObject>
+#include <QMainWindow>
+#include <QProcess>
+#include <QThread>
 
+#include <QDebug>
+#include <QCoreApplication>
+#include <QFile>
+#include <QStandardPaths>
+#include <QStyleFactory>
+#include <QScreen>
 /*************************************************************************
 // options
 **************************************************************************/
 
-#ifndef OPTIONS_VAR
-// historical note: "UPX_OPTIONS" would be a better name, but back in the old
-// days environment variables used to be short; and we cannot change that now
-// because of backward compatibility issues
-#define OPTIONS_VAR "UPX"
-#endif
-
 static const char *argv0 = "";
-const char *progname = "upx";
 
 static acc_getopt_t mfx_getopt;
 #define mfx_optarg mfx_getopt.optarg
