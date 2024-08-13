@@ -51,7 +51,7 @@ jobs:
         git pull
         git config --global --add safe.directory /github/workspace
         git pull
-        printf "$(date)\n\n" >> 1.md
+        printf "$(date)\n\n" > 1.md
         git add .
         git commit -am "$(date)"
         git pull --rebase
@@ -108,7 +108,7 @@ jobs:
         git pull
         git config --global --add safe.directory /github/workspace
         git pull
-        printf "$(date)\n\n" >> 1.md
+        printf "$(date)\n\n" > 1.md
         git add .
         git commit -am "$(date)"
         git pull --rebase
@@ -166,7 +166,7 @@ jobs:
         git pull
         git config --global --add safe.directory /github/workspace
         git pull
-        printf "$(date)\n\n" >> 1.md
+        printf "$(date)\n\n" > 1.md
         git add .
         git commit -am "$(date)"
         git pull --rebase
@@ -224,7 +224,7 @@ jobs:
         git pull
         git config --global --add safe.directory /github/workspace
         git pull
-        printf "$(date)\n\n" >> 1.md
+        printf "$(date)\n\n" > 1.md
         git add .
         git commit -am "$(date)"
         git pull --rebase
