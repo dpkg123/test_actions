@@ -1,0 +1,33 @@
+material canvas
+{
+    //对应inputSampler到shader中uniform的绑定描述
+    texture
+    {
+        mipmap = false
+        wrapS = CLAMP
+        wrapT = CLAMP
+        minFilter = LINEAR
+        magFilter = LINEAR
+
+        //对应inputSampler计算uvMatrix时的裁剪模式
+        cropMode = ASPECT_FILL
+
+        //对应shader中的sampler uniform name
+        uniformSamplerName = u_diffuseTexture
+
+        //如果有，对应shader中的uvmatrix uniform name
+        uniformUVMatrixName = u_uvMatrix
+
+        //对应输入inputFrame列表中的index, 可不设，默认为0
+        inputSamplerIndex = 0
+    }
+
+    technique
+    {
+        pass
+        {
+            vertexShader = texture.vert
+            fragmentShader = texture.frag
+        }
+    }
+}
