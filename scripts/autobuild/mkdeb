@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ ( "$1" == "" ) || ( "$2" != "" ) ]]; then
-	echo "Usage: mkdeb <dpkgdirname>"
-else
-	DPKGNAME=$(basename "$1")
-	dpkg-deb -bZ xz -z9 "$1" "$DPKGNAME.deb"
-fi
