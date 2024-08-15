@@ -1,4 +1,0 @@
-// Copyright (C) Microsoft Corporation. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-const e="record_histogram";export const RecordEnum=(o,a,t)=>window.edgeContext?.sendSystemMessage({action:e,type:"enum",payload:{name:o,value:a,maxValue:t}});export const RecordBool=(o,a)=>window.edgeContext?.sendSystemMessage({action:e,type:"bool",payload:{name:o,value:a}});export const RecordLinear=(o,a,t)=>window.edgeContext?.sendSystemMessage({action:e,type:"linear",payload:{name:o,value:a,maxValue:t}});export const RecordTimes=(o,a)=>window.edgeContext?.sendSystemMessage({action:e,type:"times",payload:{name:o,value:a}});

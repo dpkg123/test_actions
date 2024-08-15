@@ -1,4 +1,0 @@
-// Copyright (C) Microsoft Corporation. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-const t=new URLSearchParams(location.search),e=t.get("systemLanguage")?.toLowerCase()||"en";window.document.documentElement.setAttribute("lang",e);const o=t.get("market")?.toLowerCase()||"en-us",n=t.get("fontSizeRatio")||1;window.document.documentElement.style.fontSize=`${n}px`;const a=["ar","fa","he","iw"].includes(e)?"rtl":"ltr";window.document.documentElement.setAttribute("dir",a);const i=t.get("clientVersion")||"1.0",r={};t.forEach(((t,e)=>{r[e]=t}));const c=()=>(/iPad|iPhone|iPod/.test(navigator.platform)||"MacIntel"===navigator.platform&&navigator.maxTouchPoints>1)&&!window.MSStream?"iOS":"android",s=()=>!!window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;export{e as lang,o as market,n as fontRatio,a as direction,i as clientVersion,r as urlQuery,c as getDeviceType,s as isDarkMode};

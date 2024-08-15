@@ -1,4 +1,0 @@
-// Copyright (C) Microsoft Corporation. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-import{lang as t}from"./environment.js";const e=/\{\{\s*([^\}^\:^\s]+).*?\}\}/g,s={init:async function(){const e=t=>fetch(`../locales/${t}.json`).then((t=>t.json())).catch((()=>({}))),s=await Promise.all([e(t),e("en")]),[n,o]=s;this.result=n,this.fallback=o},text:function(t,s){const n=this.result?.[t]??this.fallback?.[t]??"";if(s){const t=Object.keys(s).reduce(((t,e)=>(t[e.toLowerCase()]=s[e],t)),{});return n.replace(e,((e,s)=>t[s.toLowerCase()]??""))}return n}};export default s;

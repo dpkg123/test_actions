@@ -1,4 +1,0 @@
-// Copyright (C) Microsoft Corporation. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-export function debounce(e,t){let x;return function(...n){x&&clearTimeout(x),x=setTimeout((()=>{x=void 0,e.apply(this,n)}),t)}}export function throttle(e,t){let x,n=0;return function(...o){x&&(clearTimeout(x),x=void 0);const r=Date.now(),i=r-n;i>=t?(n=r,e.apply(this,o)):x=setTimeout((()=>{x=void 0,n=Date.now(),e.apply(this,o)}),t-i)}}export function generateUUID(){let e=(new Date).getTime();return"undefined"!=typeof performance&&"function"==typeof performance.now&&(e+=performance.now()),"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,(function(t){const x=(e+16*Math.random())%16|0;return e=Math.floor(e/16),("x"===t?x:3&x|8).toString(16)}))}
