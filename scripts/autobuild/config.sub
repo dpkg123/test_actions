@@ -1,0 +1,28 @@
+#!/bin/bash
+
+DIR=`dirname $0`
+
+# Allow wsl
+if echo $* | grep pc-wsl >/dev/null ; then
+    echo $*
+    exit
+fi
+
+while test $# -gt 0 ; do
+    case $1 in
+        -- )   # Stop option processing
+            shift; break ;;
+        - )    # Use stdin as input.
+            sub_args="$sub_args $1"
+            shift; break ;;
+        * )
+            sub_args="$sub_args $1"
+            shift; ;;
+    esac
+done
+
+result=`. $DIR/autoconf-config.sub $sub_args "$@"`
+exitcode=$?
+
+echo $result
+exit $exitcode
