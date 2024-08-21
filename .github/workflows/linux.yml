@@ -29,7 +29,7 @@ jobs:
       - name: Initialize pmbootstrap
         run: |
            yes '' | ./pmbootstrap/pmbootstrap.py -q init
-           ./pmbootstrap zap
+           ./pmbootstrap/pmbootstrap.py zap
            printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py --aports=/home/runner/pmaports -q init
 
       - name: Build rootfs
