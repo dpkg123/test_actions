@@ -3,7 +3,7 @@ name: Sync GitLab to GitHub
 on:
   push:
   schedule:
-    - cron: '0 0,12 * * *'  # 每小时同步一次
+    - cron: '0 0,12 * * *'  
 
 jobs:
   sync:
@@ -21,7 +21,7 @@ jobs:
           git config --global user.email "your_email@example.com"
 
       - name: Add GitLab remote
-        run: git remote add gitlab https://gitlab.com/postmatketos/pmaports.git
+        run: git remote add gitlab https://gitlab.com/postmarketos/pmaports.git
 
       - name: Fetch from GitLab
         run: git fetch gitlab --prune
