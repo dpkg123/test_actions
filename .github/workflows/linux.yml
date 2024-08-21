@@ -18,11 +18,11 @@ jobs:
           
       - name: Fetch from GitLab
         run: |
-          cd pmaports
+          cd pmaports.git
           git remote set-url origin https://github.com/dpkg123/pmaports
 
       - name: GitHub Push
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cd pmaports && git push
+        run: cd pmaports.git && git push
