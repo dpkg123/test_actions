@@ -26,5 +26,9 @@ jobs:
       - name: Fetch from GitLab
         run: git fetch gitlab --prune
 
-      - name: Push to GitHub
-        run: git push origin --all --force
+      - name: GitHub Push
+        continue-on-error: true
+        uses: ad-m/github-push-action@master
+        with:
+          force: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
