@@ -21,7 +21,7 @@ jobs:
         run: |
           mv pmaports $HOME/
           git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
-          cd pmbootstrap.git
+          cd pmbootstrap
           sudo ln -s ./pmbootstrap.py /usr/bin/pmbootstrap
           
       - name: Initialize pmbootstrap
