@@ -23,7 +23,7 @@ jobs:
           git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
           cd pmbootstrap
           chmod +x pmbootstrap.py
-          sudo rm /usr/bin/pmbootstrap
+          #sudo rm /usr/bin/pmbootstrap
           sudo ln -sfv ./pmbootstrap.py /usr/bin/pmbootstrap
           
       - name: Initialize pmbootstrap
