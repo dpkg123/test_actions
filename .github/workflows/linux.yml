@@ -13,13 +13,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: dpkg123/pmaports
-          path: ./pmaports
+          path: /home/runner/pmaports
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pmbootstrap
         run: |
-          mv -v pmaports $HOME/
+          #mv -v pmaports $HOME/
           git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
           cd pmbootstrap
           chmod +x pmbootstrap.py
@@ -27,7 +27,7 @@ jobs:
           sudo ln -sfv ./pmbootstrap.py /usr/bin/pmbootstrap
           
       - name: Initialize pmbootstrap
-        run: printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py --aports=$HOME/pmaports init
+        run: printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py --aports=/home/runner/pmaports init
 
       - name: Build rootfs
         run: yes "123456" | ./pmbootstrap/pmbootstrap.py --aports=$PWD/pmaports install --android-recovery-zip
