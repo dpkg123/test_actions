@@ -27,7 +27,10 @@ jobs:
           sudo ln -sfv ./pmbootstrap.py /usr/bin/pmbootstrap
           
       - name: Initialize pmbootstrap
-        run: printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py --aports=/home/runner/pmaports -q init
+        run: |
+           yes '' | ./pmbootstrap/pmbootstrap.py -q init
+           ./pmbootstrap zap
+           printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py --aports=/home/runner/pmaports -q init
 
       - name: Build rootfs
         run: yes "123456" | ./pmbootstrap/pmbootstrap.py -q --aports=$PWD/pmaports  install --android-recovery-zip
