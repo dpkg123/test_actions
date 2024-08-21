@@ -1,21 +1,30 @@
-name: CI
+name: Sync GitLab to GitHub
 
 on:
-  workflow_dispatch:
+  push:
+  schedule:
+    - cron: '0 0,12 * * *'  # 每小时同步一次
 
 jobs:
-  build-kernel:
-    name: Build Kernel
-    runs-on: ubuntu-20.04
+  sync:
+    runs-on: ubuntu-latest
     steps:
-      - name: Build
-        uses: dabao1955/kernel_build_action@v1.6.3
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v4
         with:
-          kernel-url: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
-          kernel-branch: taffy
-          config: cas_defconfig
-          arch: arm64
-          aosp-gcc: true
-          aosp-clang: true
-          android-version: 12
-          aosp-clang-version: r383902
+          repository: dpkg123/pmaports
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Git
+        run: |
+          git config --global user.name "your_github_username"
+          git config --global user.email "your_email@example.com"
+
+      - name: Add GitLab remote
+        run: git remote add gitlab https://gitlab.com/postmatketos/pmaports.git
+
+      - name: Fetch from GitLab
+        run: git fetch gitlab --prune
+
+      - name: Push to GitHub
+        run: git push origin --all --force
