@@ -19,7 +19,7 @@ jobs:
       - name: Fetch from GitLab
         run: |
           cd pmaports.git
-          git remote set-url origin https://github.com/dpkg123/pmaports
+          git remote set-url origin https://${{ secrets.MY_FINE_GRAINED_TOKEN }}@github.com/dpkg123/pmaports
 
       - name: GitHub Push
         continue-on-error: true
