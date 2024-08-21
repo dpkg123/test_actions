@@ -1,9 +1,7 @@
-name: Sync GitLab to GitHub
+name: Build rootfs
 
 on:
   push:
-  schedule:
-    - cron: '0 0,12 * * *'  
 
 jobs:
   sync:
@@ -15,21 +13,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: dpkg123/pmaports
+          path: ./pmaports
+          submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Git
+      - name: Setup pmbootstrap
         run: |
-          git config --global user.name "your_github_username"
-          git config --global user.email "your_email@example.com"
+          mv pmaports $HOME/
+          git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
+          cd pmbootstrap.git
+          sudo ln -s ./pmbootstrap.py /usr/bin/pmbootstrap
+          
+      - name: Initialize pmbootstrap
+        run: printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | pmbootstrap --aports=$PWD/pmaports -q init
 
-      - name: Add GitLab remote
-        run: git remote add gitlab https://gitlab.com/postmarketos/pmaports.git
-
-      - name: Fetch from GitLab
-        run: git fetch gitlab --prune
-
-      - name: GitHub Push
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: git push
+      - name: Build rootfs
+        run: yes "123456" | pmbootstrap --aports=$PWD/pmaports -q install --android-recovery-zip
