@@ -29,7 +29,7 @@ jobs:
       - name: Initialize pmbootstrap
         run: |
            yes '' | ./pmbootstrap/pmbootstrap.py -q init
-           printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py -q init
+           #printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py -q init
 
-      - name: Build rootfs
-        run: yes "123456" | ./pmbootstrap/pmbootstrap.py -q --aports=$PWD/pmaports  install --android-recovery-zip
+      - name: Build packages
+        run: ./pmbootstrap/pmbootstrap.py build linux-xiaomi-raphael && ./pmbootstrap/pmbootstrap.py build firmware-xiaomi-raphael && ./pmbootstrap/pmbootstrap.py build device-xiaomi-raphael
