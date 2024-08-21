@@ -10,26 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout GitHub repository
-        uses: actions/checkout@v4
-        with:
-          repository: dpkg123/pmaports
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0  # 获取完整的 Git 历史记录
-
+        run: git clone https://gitlab.com/postmarketos/pmaports --mirror
       - name: Setup Git
         run: |
           git config --global user.name "your_github_username"
           git config --global user.email "your_email@example.com"
-
-      - name: Add GitLab remote
-        run: git remote add gitlab https://gitlab.com/postmarketos/pmaports.git
-
+          
       - name: Fetch from GitLab
-        run: git fetch gitlab --prune
+        run: |
+          cd pmaports
+          git remote set-url origin https://github.com/dpkg123/pmaports
 
       - name: GitHub Push
         continue-on-error: true
-        uses: ad-m/github-push-action@master
-        with:
-          force: false
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd pmaports && git push
