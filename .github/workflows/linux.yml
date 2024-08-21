@@ -23,7 +23,7 @@ jobs:
           git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
           cd pmbootstrap
           chmod +x pmbootstrap.py
-          sudo ln -sfv ./pmbootstrap.py /usr/bin/pmbootstrap
+          sudo ln -sfv /usr/bin/pmbootstrap ./pmbootstrap.py
           
       - name: Initialize pmbootstrap
         run: printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | pmbootstrap --aports=$PWD/pmaports init
