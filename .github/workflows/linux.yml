@@ -12,19 +12,25 @@ jobs:
       contents: write
     steps:
       - name: Checkout GitHub repository
-        run: git clone https://gitlab.com/postmarketos/pmaports --mirror
+        uses: actions/checkout@v4
+        with:
+          repository: dpkg123/pmaports
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Setup Git
         run: |
-          git config --global user.name "Github actions"
-          git config --global user.email "actions@github.com"
-          
+          git config --global user.name "your_github_username"
+          git config --global user.email "your_email@example.com"
+
+      - name: Add GitLab remote
+        run: git remote add gitlab https://gitlab.com/postmarketos/pmaports.git
+
       - name: Fetch from GitLab
-        run: |
-          cd pmaports.git
-          git remote set-url origin https://${{ secrets.MY_FINE_GRAINED_TOKEN }}@github.com/dpkg123/pmaports
+        run: git fetch gitlab --prune
 
       - name: GitHub Push
         continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cd pmaports.git && git push
+        uses: ad-m/github-push-action@master
+        with:
+          force: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
