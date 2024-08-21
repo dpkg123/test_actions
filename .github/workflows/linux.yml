@@ -13,13 +13,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: dpkg123/pmaports
-          path: /home/runner/pmaports
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup pmbootstrap
         run: |
-          #mv -v pmaports $HOME/
+          sudo mv -v pmaports /home/runner/
           git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
           cd pmbootstrap
           chmod +x pmbootstrap.py
