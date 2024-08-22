@@ -24,12 +24,13 @@ jobs:
           cd pmbootstrap
           chmod +x pmbootstrap.py
           #sudo rm /usr/bin/pmbootstrap
-          sudo ln -sfv ./pmbootstrap.py /usr/bin/pmbootstrap
+          #sudo ln -sfv ./pmbootstrap.py /usr/bin/pmbootstrap
           
       - name: Initialize pmbootstrap
         run: |
+           sudo aria2c  https://github.com/dpkg123/test_actions/raw/main/pmbootstrap.cfg -o /home/runner/.config/pmbootstrap.cfg
            yes '' | ./pmbootstrap/pmbootstrap.py --details-to-stdout init
            #printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py -q init
 
       - name: Build packages
-        run: ./pmbootstrap/pmbootstrap.py build linux-xiaomi-raphael --force --details-to-stdout && ./pmbootstrap/pmbootstrap.py build firmware-xiaomi-raphael --force --details-to-stdout && ./pmbootstrap/pmbootstrap.py build device-xiaomi-raphael --force --details-to-stdout
+        run: ./pmbootstrap/pmbootstrap.py install --android-recovery-zip
