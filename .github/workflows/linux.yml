@@ -33,7 +33,7 @@ jobs:
         run: ./pmbootstrap/pmbootstrap.py export
 
       - name: Upload rootfs
-        uses: actions/upload-artifacts@v4
+        uses: actions/upload-artifact@v4
         with:
           name: rootfs
           path: /tmp/postmarketOS-export/*
