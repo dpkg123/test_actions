@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Setup pmbootstrap
         run: |
-          sudo mv -v pmaports /home/runner/
+          #sudo mv -v pmaports /home/runner/
           git clone https://gitlab.com/postmarketOS/pmbootstrap --depth=1
           cd pmbootstrap
           chmod +x pmbootstrap.py
