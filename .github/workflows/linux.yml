@@ -9,14 +9,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout GitHub repository
-        uses: actions/checkout@v4
-        with:
-          repository: dpkg123/pmaports
-          submodules: true
-          path: pmaports
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Setup pmbootstrap
         run: |
           sudo mv -v pmaports /home/runner/
@@ -34,5 +26,14 @@ jobs:
            yes '' | ./pmbootstrap/pmbootstrap.py --details-to-stdout init
            #printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py -q init
 
-      - name: Build packages
-        run: yes '123456' | ./pmbootstrap/pmbootstrap.py install --android-recovery-zip
+      - name: Build rootfs
+        run: yes '123456' | ./pmbootstrap/pmbootstrap.py install --android-recovery-zip --recovery-install-partition=data
+
+      - name: Export rootfs
+        run: ./pmbootstrap/pmbootstrap.py export
+
+      - name: Upload rootfs
+        uses: actions/upload-artifacts@v4
+        with:
+          name: rootfs
+          path: /tmp/postmarketOS-export/*
