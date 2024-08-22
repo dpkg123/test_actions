@@ -30,7 +30,7 @@ jobs:
         run: |
            sudo aria2c  https://github.com/dpkg123/test_actions/raw/main/pmbootstrap_v3.cfg
            sudo mv pmbootstrap_v3.cfg -v /home/runner/.config/pmbootstrap_v3.cfg
-           sudo chmod +x -v /home/runner/.config/pmbootstrap_v3.cfg
+           sudo chmod 777 -v /home/runner/.config/pmbootstrap_v3.cfg
            yes '' | ./pmbootstrap/pmbootstrap.py --details-to-stdout init
            #printf "%s\n" "edge" "xiaomi" "raphael" "user" "xfce4" "n" "none" "en_US" "xiaomi-raphael" "y" | ./pmbootstrap/pmbootstrap.py -q init
 
