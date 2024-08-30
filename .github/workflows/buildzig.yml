@@ -12,12 +12,18 @@ jobs:
       contents: read
     steps:
 
+    - name: clean
+      run: |
+        test -f /bin/docker && docker rmi -f $(docker images -q)
+        wget -q https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh && NONINTERACTIVE=1 bash ./uninstall.sh -f
+        sudo apt update && sudo apt install python3 debhelper dpkg-dev make -y
+
     - name: "Checkout Repo"
       uses: actions/checkout@v4
       with: 
         repository: ziglang/zig
         fetch-depth: 2
-
+        
     - name: Checkout build files
       uses: actions/checkout@v4
       with:
