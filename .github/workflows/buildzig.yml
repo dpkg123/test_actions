@@ -21,7 +21,7 @@ jobs:
     - name: "Checkout Repo"
       uses: actions/checkout@v4
       with: 
-        repository: ziglang/zig
+        repository: ziglang/zig-bootstrap
         fetch-depth: 2
         
     - name: Checkout build files
