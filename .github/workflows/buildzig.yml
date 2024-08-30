@@ -25,4 +25,5 @@ jobs:
         fetch-depth: 2
         path: debian
 
-    - name: bash build.sh aarch64-linux-gnu baseline
+    - name: Build
+      run: bash build.sh aarch64-linux-gnu baseline
