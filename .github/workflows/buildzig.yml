@@ -21,7 +21,7 @@ jobs:
         repository: ziglang/zig-bootstrap
         fetch-depth: 2
     - name: Install package
-      run: sudo apt update && sudo apt -y install cmake ninja-build python3-pip python3
+      run: sudo apt update && sudo apt -y install cmake ninja-build python3-pip python3 debhelper dpkg-dev
         
     - name: Checkout build files
       uses: actions/checkout@v4
