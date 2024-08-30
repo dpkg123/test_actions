@@ -1,0 +1,28 @@
+name: build debian11 armel rootfs
+
+on:
+
+  workflow_dispatch:
+  push:
+
+jobs:
+  build-rootfs:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+
+    - name: "Checkout Repo"
+      uses: actions/checkout@v4
+      with: 
+        repository: ziglang/zig
+        fetch-depth: 2
+
+    - name: Checkout build files
+      uses: actions/checkout@v4
+      with:
+        repository: dryzig/zig-debian
+        fetch-depth: 2
+        path: debian
+
+    - name: bash build.sh aarch64-linux-gnu baseline
