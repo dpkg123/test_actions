@@ -1,4 +1,4 @@
-name: build debian11 armel rootfs
+name: build zig
 
 on:
 
@@ -21,9 +21,9 @@ jobs:
     - name: Checkout build files
       uses: actions/checkout@v4
       with:
-        repository: dryzig/zig-debian
+        repository: dpkg123/zig-debian
         fetch-depth: 2
         path: debian
 
     - name: Build
-      run: bash build.sh aarch64-linux-gnu baseline
+      run: sudo dpkg-buildpackage -b -us -uc
