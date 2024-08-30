@@ -16,7 +16,7 @@ jobs:
       run: |
         test -f /bin/docker && docker rmi -f $(docker images -q)
         wget -q https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh && NONINTERACTIVE=1 bash ./uninstall.sh -f
-        sudo apt update && sudo apt install python3 debhelper dpkg-dev make -y
+        sudo apt update && sudo apt install python3 debhelper dpkg-dev make ninja-build -y
 
     - name: "Checkout Repo"
       uses: actions/checkout@v4
@@ -32,4 +32,7 @@ jobs:
         path: debian
 
     - name: Build
-      run: sudo dpkg-buildpackage -b -us -uc
+      run: |
+        rm build
+        cp debian/build.sh ./build
+        sudo dpkg-buildpackage -b -us -uc
