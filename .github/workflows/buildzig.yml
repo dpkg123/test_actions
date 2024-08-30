@@ -13,16 +13,15 @@ jobs:
     steps:
 
     - name: clean
-      run: |
-        test -f /bin/docker && docker rmi -f $(docker images -q)
-        wget -q https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh && NONINTERACTIVE=1 bash ./uninstall.sh -f
-        sudo apt update && sudo apt install python3 debhelper dpkg-dev make ninja-build -y
-
+      uses: rokibhasansagar/slimhub_actions@main
+        
     - name: "Checkout Repo"
       uses: actions/checkout@v4
       with: 
         repository: ziglang/zig-bootstrap
         fetch-depth: 2
+    - name: Install package
+      run: sudo apt update && sudo apt -y install cmake ninja-build python3-pip python3
         
     - name: Checkout build files
       uses: actions/checkout@v4
