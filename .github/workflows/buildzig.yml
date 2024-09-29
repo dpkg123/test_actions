@@ -39,4 +39,4 @@ jobs:
         cp rootfs/zig/debian/build.sh rootfs/zig/build 
     - name: Build
       run: |        
-        debsh "cd /zig/ && apt build-dep . && dpkg-buildpackage -b -us -uc"
+        debsh "cd /zig/ && apt build-dep . -y && dpkg-buildpackage -b -us -uc"
