@@ -12,8 +12,8 @@ jobs:
       contents: read
     steps:
 
-    - name: clean
-      uses: rokibhasansagar/slimhub_actions@main
+    #- name: clean
+    #  uses: rokibhasansagar/slimhub_actions@main
         
     - name: "Checkout Repo"
       uses: actions/checkout@v4
@@ -23,8 +23,6 @@ jobs:
         path: rootfs/zig
     - name: Install package
       uses: NekoSekaiMoe/debchroot@v1
-      with:
-        version: sid
             
     - name: Checkout build files
       uses: actions/checkout@v4
