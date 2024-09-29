@@ -20,18 +20,23 @@ jobs:
       with: 
         repository: ziglang/zig-bootstrap
         fetch-depth: 2
+        path: rootfs/zig
     - name: Install package
-      run: sudo apt update && sudo apt -y install cmake ninja-build python3-pip python3 debhelper dpkg-dev
-        
+      uses: NekoSekaiMoe/debchroot@v1
+      with:
+        version: sid
+            
     - name: Checkout build files
       uses: actions/checkout@v4
       with:
         repository: dpkg123/zig-debian
         fetch-depth: 2
-        path: debian
+        path: rootfs/zig/debian
 
-    - name: Build
+    - name: configure
       run: |
-        rm build
-        cp debian/build.sh ./build
-        sudo dpkg-buildpackage -b -us -uc
+        rm rootfs/zig/build
+        cp rootfs/zig/debian/build.sh rootfs/zig/build 
+    - name: Build
+      run: |        
+        debsh "cd /zig/ && apt build-dep . && dpkg-buildpackage -b -us -uc"
