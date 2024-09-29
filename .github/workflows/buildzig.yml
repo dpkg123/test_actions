@@ -37,4 +37,4 @@ jobs:
         cp rootfs/zig/debian/build.sh rootfs/zig/build 
     - name: Build
       run: |        
-        debsh "cd /zig/ && apt build-dep . -y && dpkg-buildpackage -b -us -uc"
+        debsh "wget https://github.com/dpkg123/test_actions/raw/main/build.sh && bash build.sh"
