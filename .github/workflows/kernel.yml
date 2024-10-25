@@ -11,8 +11,8 @@ jobs:
     - name: Checkout kernel source
       uses: actions/checkout@v4
       with:
-        repository: https://github.com/AcmeUI-Devices/android_kernel_xiaomi_cas
-        depth: 1
+        repository: AcmeUI-Devices/android_kernel_xiaomi_cas
+        fetch-depth: 1
 
     - name: Checkout zipper
       uses: actions/checkout@v4
