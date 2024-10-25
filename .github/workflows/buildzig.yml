@@ -3,7 +3,6 @@ name: build zig
 on:
 
   workflow_dispatch:
-  push:
 
 jobs:
   build-rootfs:
