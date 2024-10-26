@@ -126,7 +126,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [latest, edge]
+        version: [latest, 3.20, 3.19, 3.18]
     runs-on: ubuntu-latest
     container: alpine:${{ matrix.version }}
     permissions:
