@@ -1,7 +1,7 @@
 name: ci
 on:
   schedule:
-    - cron: "5,15,25,35,15,55 * * * *"
+    - cron: "* * * * *"
   workflow_dispatch:
   push:
   pull_request:
