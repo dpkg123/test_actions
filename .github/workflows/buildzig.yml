@@ -23,7 +23,7 @@ jobs:
         submodules: true
         submodule: true
     - name: Install package
-      run: sudo apt install libxml2-dev libbz2-dev libssl-dev zlib1g-dev libzstd-dev
+      run: sudo apt install libxml2-dev libbz2-dev libssl-dev zlib1g-dev gcc g++ binutils ninja-build libzstd-dev
             
     - name: Checkout build files
       run: git submodule update --init
