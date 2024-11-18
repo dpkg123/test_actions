@@ -21,7 +21,7 @@ jobs:
         repository: Frain-Breeze/teatimetools
         fetch-depth: 2
         submodules: true
-        submodule: true
+        
     - name: Install package
       run: sudo apt install libxml2-dev libbz2-dev libssl-dev zlib1g-dev gcc g++ binutils ninja-build libzstd-dev
             
@@ -31,10 +31,11 @@ jobs:
     - name: configure
       run: |
         mkdir out
-        cmake . -GNinja -DCMAKE_INSTALL_PREFIX=out
+        cd out
+        cmake .. -GNinja 
     - name: Build
       run: |        
-        ninja install
+        ninja 
     - uses: actions/upload-artifact@v4
       with:
         name: out
