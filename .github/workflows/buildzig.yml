@@ -35,7 +35,7 @@ jobs:
         cmake .. -GNinja 
     - name: Build
       run: |        
-        ninja 
+        ninja -C out
     - uses: actions/upload-artifact@v4
       with:
         name: out
