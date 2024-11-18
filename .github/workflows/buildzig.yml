@@ -30,7 +30,12 @@ jobs:
 
     - name: configure
       run: |
-        cmake . -GNinja
+        mkdir out
+        cmake . -GNinja -DCMAKE_INSTALL_PREFIX=out
     - name: Build
       run: |        
         ninja
+    - uses: actions/upload-artifact@v4
+      with:
+        name: out
+        path: out
