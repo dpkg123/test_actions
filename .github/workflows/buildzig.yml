@@ -34,7 +34,7 @@ jobs:
         cmake . -GNinja -DCMAKE_INSTALL_PREFIX=out
     - name: Build
       run: |        
-        ninja
+        ninja install
     - uses: actions/upload-artifact@v4
       with:
         name: out
