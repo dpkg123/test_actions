@@ -1,12 +1,13 @@
-name: build zig
+name: build cli
 
 on:
 
   workflow_dispatch:
+  push:
 
 jobs:
   build-rootfs:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -17,25 +18,19 @@ jobs:
     - name: "Checkout Repo"
       uses: actions/checkout@v4
       with: 
-        repository: ziglang/zig-bootstrap
+        repository: Frain-Breeze/teatimetools
         fetch-depth: 2
-        path: rootfs/zig
+        submodules: true
+        submodule: true
     - name: Install package
-      uses: NekoSekaiMoe/debchroot@v1
+      run: sudo apt install libxml2-dev libbz2-dev libssl-dev zlib1g-dev libzstd-dev
             
     - name: Checkout build files
-      uses: actions/checkout@v4
-      with:
-        repository: dpkg123/zig-debian
-        fetch-depth: 2
-        path: rootfs/zig/debian
+      run: git submodule update --init
 
     - name: configure
       run: |
-        rm rootfs/zig/build
-        cp rootfs/zig/debian/build.sh rootfs/zig/build 
-        wget https://github.com/dpkg123/test_actions/raw/main/build.sh -O rootfs/1.sh
-        chmod +x rootfs/1.sh
+        cmake . -GNinja
     - name: Build
       run: |        
-        debsh "/1.sh"
+        ninja
