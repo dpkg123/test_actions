@@ -18,8 +18,8 @@ jobs:
     - name: "Checkout Repo"
       uses: actions/checkout@v4
       with: 
-        #repository: Frain-Breeze/teatimetools
-        repository: mos9527/mages-tools
+        repository: Frain-Breeze/teatimetools
+        #repository: mos9527/mages-tools
         fetch-depth: 2
         submodules: true
         
@@ -36,7 +36,7 @@ jobs:
         cmake .. -GNinja 
     - name: Build
       run: |        
-        ninja -C out
+        ninja -C out -v 
     - uses: actions/upload-artifact@v4
       with:
         name: out
