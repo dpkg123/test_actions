@@ -1,0 +1,116 @@
+[
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_xdg-shell-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_xdg-shell-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_xdg-shell-protocol.c.o -c protocol/libwl_protos.a.p/xdg-shell-protocol.c",
+    "file": "protocol/libwl_protos.a.p/xdg-shell-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_xdg-shell-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_ext-idle-notify-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_ext-idle-notify-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_ext-idle-notify-v1-protocol.c.o -c protocol/libwl_protos.a.p/ext-idle-notify-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/ext-idle-notify-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_ext-idle-notify-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_idle-inhibit-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_idle-inhibit-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_idle-inhibit-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/idle-inhibit-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/idle-inhibit-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_idle-inhibit-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_primary-selection-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_primary-selection-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_primary-selection-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/primary-selection-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/primary-selection-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_primary-selection-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_xdg-decoration-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_xdg-decoration-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_xdg-decoration-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/xdg-decoration-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/xdg-decoration-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_xdg-decoration-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_xdg-output-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_xdg-output-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_xdg-output-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/xdg-output-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/xdg-output-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_xdg-output-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_wlr-gamma-control-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_wlr-gamma-control-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_wlr-gamma-control-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/wlr-gamma-control-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/wlr-gamma-control-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_wlr-gamma-control-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_wlr-layer-shell-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_wlr-layer-shell-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_wlr-layer-shell-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/wlr-layer-shell-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/wlr-layer-shell-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_wlr-layer-shell-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iprotocol/libwl_protos.a.p -Iprotocol -I../protocol -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -fPIC -MD -MQ protocol/libwl_protos.a.p/meson-generated_wlr-screencopy-unstable-v1-protocol.c.o -MF protocol/libwl_protos.a.p/meson-generated_wlr-screencopy-unstable-v1-protocol.c.o.d -o protocol/libwl_protos.a.p/meson-generated_wlr-screencopy-unstable-v1-protocol.c.o -c protocol/libwl_protos.a.p/wlr-screencopy-unstable-v1-protocol.c",
+    "file": "protocol/libwl_protos.a.p/wlr-screencopy-unstable-v1-protocol.c",
+    "output": "protocol/libwl_protos.a.p/meson-generated_wlr-screencopy-unstable-v1-protocol.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/config.c.o -MF waybox/waybox.p/config.c.o.d -o waybox/waybox.p/config.c.o -c ../waybox/config.c",
+    "file": "../waybox/config.c",
+    "output": "waybox/waybox.p/config.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/cursor.c.o -MF waybox/waybox.p/cursor.c.o.d -o waybox/waybox.p/cursor.c.o -c ../waybox/cursor.c",
+    "file": "../waybox/cursor.c",
+    "output": "waybox/waybox.p/cursor.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/decoration.c.o -MF waybox/waybox.p/decoration.c.o.d -o waybox/waybox.p/decoration.c.o -c ../waybox/decoration.c",
+    "file": "../waybox/decoration.c",
+    "output": "waybox/waybox.p/decoration.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/idle.c.o -MF waybox/waybox.p/idle.c.o.d -o waybox/waybox.p/idle.c.o -c ../waybox/idle.c",
+    "file": "../waybox/idle.c",
+    "output": "waybox/waybox.p/idle.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/layer_shell.c.o -MF waybox/waybox.p/layer_shell.c.o.d -o waybox/waybox.p/layer_shell.c.o -c ../waybox/layer_shell.c",
+    "file": "../waybox/layer_shell.c",
+    "output": "waybox/waybox.p/layer_shell.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/main.c.o -MF waybox/waybox.p/main.c.o.d -o waybox/waybox.p/main.c.o -c ../waybox/main.c",
+    "file": "../waybox/main.c",
+    "output": "waybox/waybox.p/main.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/output.c.o -MF waybox/waybox.p/output.c.o.d -o waybox/waybox.p/output.c.o -c ../waybox/output.c",
+    "file": "../waybox/output.c",
+    "output": "waybox/waybox.p/output.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/seat.c.o -MF waybox/waybox.p/seat.c.o.d -o waybox/waybox.p/seat.c.o -c ../waybox/seat.c",
+    "file": "../waybox/seat.c",
+    "output": "waybox/waybox.p/seat.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/server.c.o -MF waybox/waybox.p/server.c.o.d -o waybox/waybox.p/server.c.o -c ../waybox/server.c",
+    "file": "../waybox/server.c",
+    "output": "waybox/waybox.p/server.c.o"
+  },
+  {
+    "directory": "/home/user/985211helper-liaoning2025/cpp/waybox/6",
+    "command": "cc -Iwaybox/waybox.p -Iwaybox -I../waybox -I../include -I/usr/include/libevdev-1.0/ -I/usr/include/libxml2 -I/usr/include/libdrm -I/usr/include/pixman-1 -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -Werror -std=c11 -O0 -g -Wno-unused-parameter -D_DEFAULT_SOURCE -D_POSIX_C_SOURCE=200112L -DWL_HIDE_DEPRECATED -DWLR_USE_UNSTABLE '-DPACKAGE_NAME=\"Waybox\"' '-DPACKAGE_VERSION=\"0.2.3\"' -DHAS_LIBINPUT '-DGETTEXT_PACKAGE=\"waybox\"' '-DLOCALEDIR=\"/usr/local/share/locale\"' -DUSE_NLS=1 -MD -MQ waybox/waybox.p/xdg_shell.c.o -MF waybox/waybox.p/xdg_shell.c.o.d -o waybox/waybox.p/xdg_shell.c.o -c ../waybox/xdg_shell.c",
+    "file": "../waybox/xdg_shell.c",
+    "output": "waybox/waybox.p/xdg_shell.c.o"
+  }
+]

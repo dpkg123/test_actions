@@ -1,0 +1,376 @@
+Build started at 2024-11-27T19:50:06.953446
+Main binary: /usr/bin/python3
+Build Options: 
+Python system: Linux
+The Meson build system
+Version: 1.0.1
+Source dir: /home/user/985211helper-liaoning2025/cpp/waybox
+Build dir: /home/user/985211helper-liaoning2025/cpp/waybox/6
+Build type: native build
+Project name: Waybox
+Project version: 0.2.3
+-----
+Detecting compiler via: cc --version
+compiler returned <Popen: returncode: 0 args: ['cc', '--version']>
+compiler stdout:
+cc (Debian 12.2.0-14) 12.2.0
+Copyright © 2022 Free Software Foundation, Inc.
+本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；
+包括没有适销性和某一专用目的下的适用性担保。
+
+compiler stderr:
+
+Running command: cc -E -dM -
+-----
+Detecting linker via: cc -Wl,--version
+linker returned <Popen: returncode: 0 args: ['cc', '-Wl,--version']>
+linker stdout:
+GNU ld (GNU Binutils for Debian) 2.40
+Copyright (C) 2023 Free Software Foundation, Inc.
+这个程序是自由软件；您可以遵循GNU 通用公共授权版本 3 或
+(您自行选择的) 稍后版本以再次散布它。
+这个程序完全没有任何担保。
+
+linker stderr:
+collect2 版本 12.2.0
+/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccxesiNm.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
+
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc sanitycheckc.c -o sanitycheckc.exe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command:  /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/sanitycheckc.exe
+C compiler for the host machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14) 12.2.0")
+C linker for the host machine: cc ld.bfd 2.40
+-----
+Detecting compiler via: cc --version
+compiler returned <Popen: returncode: 0 args: ['cc', '--version']>
+compiler stdout:
+cc (Debian 12.2.0-14) 12.2.0
+Copyright © 2022 Free Software Foundation, Inc.
+本程序是自由软件；请参看源代码的版权声明。本软件没有任何担保；
+包括没有适销性和某一专用目的下的适用性担保。
+
+compiler stderr:
+
+Running command: cc -E -dM -
+-----
+Detecting linker via: cc -Wl,--version
+linker returned <Popen: returncode: 0 args: ['cc', '-Wl,--version']>
+linker stdout:
+GNU ld (GNU Binutils for Debian) 2.40
+Copyright (C) 2023 Free Software Foundation, Inc.
+这个程序是自由软件；您可以遵循GNU 通用公共授权版本 3 或
+(您自行选择的) 稍后版本以再次散布它。
+这个程序完全没有任何担保。
+
+linker stderr:
+collect2 版本 12.2.0
+/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc7nF55O.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. --version -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
+
+Sanity testing C compiler: cc
+Is cross compiler: False.
+Sanity check compiler command line: cc sanitycheckc.c -o sanitycheckc.exe -D_FILE_OFFSET_BITS=64
+Sanity check compile stdout:
+
+-----
+Sanity check compile stderr:
+
+-----
+Running test binary command:  /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/sanitycheckc.exe
+C compiler for the build machine: cc (gcc 12.2.0 "cc (Debian 12.2.0-14) 12.2.0")
+C linker for the build machine: cc ld.bfd 2.40
+Build machine cpu family: aarch64
+Build machine cpu: aarch64
+Host machine cpu family: aarch64
+Host machine cpu: aarch64
+Target machine cpu family: aarch64
+Target machine cpu: aarch64
+Pkg-config binary for 1 is not cached.
+Pkg-config binary missing from cross or native file, or env var undefined.
+Trying a default Pkg-config fallback at pkg-config
+Found pkg-config: /bin/pkg-config (1.8.1)
+Determining dependency 'libevdev' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion libevdev` -> 0
+stdout:
+1.13.0
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags libevdev` -> 0
+stdout:
+-I/usr/include/libevdev-1.0/
+-----------
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs libevdev` -> 0
+stdout:
+-L/usr/lib/aarch64-linux-gnu -levdev
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs libevdev` -> 0
+stdout:
+-levdev
+-----------
+Running compile:
+Working directory:  /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/tmpz8yuzyl_
+Command line:  cc /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/tmpz8yuzyl_/testfile.c -o /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/tmpz8yuzyl_/output.exe -D_FILE_OFFSET_BITS=64 -O0 
+
+Code:
+ #include<stdio.h>
+        
+        int main(void) {
+            printf("%ld\n", (long)(sizeof(void *)));
+            return 0;
+        }
+Compiler stdout:
+ 
+Compiler stderr:
+ 
+Program stdout:
+
+8
+
+Program stderr:
+
+
+Running compile:
+Working directory:  /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/tmpj5cz5mp4
+Command line:  cc /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/tmpj5cz5mp4/testfile.c -o /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/tmpj5cz5mp4/output.obj -c -D_FILE_OFFSET_BITS=64 -O0 --print-search-dirs 
+
+Code:
+ 
+Compiler stdout:
+ install: /usr/lib/gcc/aarch64-linux-gnu/12/
+programs: =/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/bin/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/bin/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/bin/
+libraries: =/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/lib/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/lib/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/12/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/12/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../aarch64-linux-gnu/lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/
+
+Compiler stderr:
+ 
+Run-time dependency libevdev found: YES 1.13.0
+Pkg-config binary for 1 is cached.
+Determining dependency 'libinput' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion libinput` -> 0
+stdout:
+1.22.1
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags libinput` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs libinput` -> 0
+stdout:
+-L/usr/lib/aarch64-linux-gnu -linput
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs libinput` -> 0
+stdout:
+-linput
+-----------
+Run-time dependency libinput found: YES 1.22.1
+Pkg-config binary for 1 is cached.
+Determining dependency 'libxml-2.0' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion libxml-2.0` -> 0
+stdout:
+2.9.14
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags libxml-2.0` -> 0
+stdout:
+-I/usr/include/libxml2
+-----------
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs libxml-2.0` -> 0
+stdout:
+-L/usr/lib/aarch64-linux-gnu -lxml2
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs libxml-2.0` -> 0
+stdout:
+-lxml2
+-----------
+Run-time dependency libxml-2.0 found: YES 2.9.14
+Pkg-config binary for 1 is cached.
+Determining dependency 'wayland-protocols' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion wayland-protocols` -> 0
+stdout:
+1.31
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags wayland-protocols` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wayland-protocols` -> 0
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wayland-protocols` -> 0
+Run-time dependency wayland-protocols found: YES 1.31
+Pkg-config binary for 1 is cached.
+Determining dependency 'wayland-server' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion wayland-server` -> 0
+stdout:
+1.21.0
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags wayland-server` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wayland-server` -> 0
+stdout:
+-L/usr/lib/aarch64-linux-gnu -lwayland-server
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wayland-server` -> 0
+stdout:
+-lwayland-server
+-----------
+Run-time dependency wayland-server found: YES 1.21.0
+Pkg-config binary for 1 is cached.
+Determining dependency 'wlroots-0.13' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion wlroots-0.13` -> 1
+stderr:
+Package wlroots-0.13 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `wlroots-0.13.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'wlroots-0.13', required by 'virtual:world', not found
+-----------
+CMake binary for 1 is not cached
+CMake binary missing from cross or native file, or env var undefined.
+Trying a default CMake fallback at cmake
+Found CMake: /bin/cmake (3.25.1)
+Extracting basic cmake information
+CMake Toolchain: Calling CMake once to generate the compiler state
+Calling CMake (['/bin/cmake']) in /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/__CMake_compiler_info__ with:
+  - "--trace-expand"
+  - "--trace-format=json-v1"
+  - "--no-warn-unused-cli"
+  - "--trace-redirect=cmake_trace.txt"
+  - "-G"
+  - "Ninja"
+  - "-DCMAKE_TOOLCHAIN_FILE=/home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/__CMake_compiler_info__/CMakeMesonTempToolchainFile.cmake"
+  - "."
+Try CMake generator: auto
+Calling CMake (['/bin/cmake']) in /home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/cmake_wlroots-0.13 with:
+  - "--trace-expand"
+  - "--trace-format=json-v1"
+  - "--no-warn-unused-cli"
+  - "--trace-redirect=cmake_trace.txt"
+  - "-DCMAKE_TOOLCHAIN_FILE=/home/user/985211helper-liaoning2025/cpp/waybox/6/meson-private/cmake_wlroots-0.13/CMakeMesonToolchainFile.cmake"
+  - "."
+  -- Module search paths:    ['/', '/opt', '/usr', '/usr/local']
+  -- CMake root:             /usr/share/cmake-3.25
+  -- CMake architectures:    ['aarch64-linux-gnu', 'arm-linux-gnueabi', 'powerpc64le-linux-gnu', 'x86_64-linux-gnu']
+  -- CMake lib search paths: ['lib', 'lib32', 'lib64', 'libx32', 'share', 'lib/aarch64-linux-gnu', 'lib/arm-linux-gnueabi', 'lib/powerpc64le-linux-gnu', 'lib/x86_64-linux-gnu']
+Preliminary CMake check failed. Aborting.
+Run-time dependency wlroots-0.13 found: NO (tried pkgconfig and cmake)
+Pkg-config binary for 1 is cached.
+Determining dependency 'wlroots-0.14' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion wlroots-0.14` -> 1
+stderr:
+Package wlroots-0.14 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `wlroots-0.14.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'wlroots-0.14', required by 'virtual:world', not found
+-----------
+CMake binary for 1 is cached.
+Preliminary CMake check failed. Aborting.
+Run-time dependency wlroots-0.14 found: NO (tried pkgconfig and cmake)
+Pkg-config binary for 1 is cached.
+Determining dependency 'wlroots' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion wlroots` -> 0
+stdout:
+0.15.1
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags wlroots` -> 0
+stdout:
+-I/usr/include/libdrm -I/usr/include/pixman-1
+-----------
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wlroots` -> 0
+stdout:
+-L/usr/lib/aarch64-linux-gnu -lwlroots
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wlroots` -> 0
+stdout:
+-lwlroots
+-----------
+Run-time dependency wlroots found: YES 0.15.1
+Pkg-config binary for 1 is cached.
+Determining dependency 'xkbcommon' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion xkbcommon` -> 0
+stdout:
+1.5.0
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags xkbcommon` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs xkbcommon` -> 0
+stdout:
+-L/usr/lib/aarch64-linux-gnu -lxkbcommon
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs xkbcommon` -> 0
+stdout:
+-lxkbcommon
+-----------
+Run-time dependency xkbcommon found: YES 1.5.0
+Program msgfmt found: YES (/bin/msgfmt)
+Program msgfmt found: YES (/bin/msgfmt)
+Program msginit found: YES (/bin/msginit)
+Program msgmerge found: YES (/bin/msgmerge)
+Program xgettext found: YES (/bin/xgettext)
+Configuring waybox using configuration
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --variable=pkgdatadir wayland-protocols` -> 0
+stdout:
+//usr/share/wayland-protocols
+-----------
+Got pkgconfig variable pkgdatadir : //usr/share/wayland-protocols
+Pkg-config binary for 1 is cached.
+Determining dependency 'wayland-scanner' with pkg-config executable '/bin/pkg-config'
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --modversion wayland-scanner` -> 0
+stdout:
+1.21.0
+-----------
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --cflags wayland-scanner` -> 0
+env[PKG_CONFIG_ALLOW_SYSTEM_LIBS]: 1
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wayland-scanner` -> 0
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --libs wayland-scanner` -> 0
+Run-time dependency wayland-scanner found: YES 1.21.0
+env[PKG_CONFIG_PATH]: 
+Called `/bin/pkg-config --variable=wayland_scanner wayland-scanner` -> 0
+stdout:
+/usr/bin/wayland-scanner
+-----------
+Got pkgconfig variable wayland_scanner : /usr/bin/wayland-scanner
+Program /usr/bin/wayland-scanner found: YES (/usr/bin/wayland-scanner)
+Build targets in project: 45
+
+Found ninja-1.11.1 at /bin/ninja
+Failed to guess install tag for /usr/local/etc/xdg/waybox/autostart
+Failed to guess install tag for /usr/local/etc/xdg/waybox/environment
+Failed to guess install tag for /usr/local/etc/xdg/waybox/xdg-autostart
+Failed to guess install tag for /usr/local/etc/xdg/waybox/rc.xml
+Failed to guess install tag for /usr/local/share/icons/waybox.svg
+Failed to guess install tag for /usr/local/share/wayland-sessions/waybox.desktop
