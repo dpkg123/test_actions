@@ -1,0 +1,2122 @@
+Determining if the environ exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e357e/fast && /bin/gmake  -f CMakeFiles/cmTC_e357e.dir/build.make CMakeFiles/cmTC_e357e.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr”
+Building C object CMakeFiles/cmTC_e357e.dir/CheckSymbolExists.c.o
+/bin/cc   -std=gnu11 -o CMakeFiles/cmTC_e357e.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr/CheckSymbolExists.c:8:19: 笨蛋！‘environ’未声明(在此函数内第一次使用)
+    8 |   return ((int*)(&environ))[argc];
+      |                   ^~~~~~~
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_e357e.dir/build.make:78：CMakeFiles/cmTC_e357e.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-r46kLr”
+gmake: *** [Makefile:127：cmTC_e357e/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef environ
+  return ((int*)(&environ))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Checking whether CXX compiler has environ in stdlib.h failed to compile with the following output:
+Change Dir: /home/user/out/cmake/2/Source/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_eea2d/fast && /bin/gmake  -f CMakeFiles/cmTC_eea2d.dir/build.make CMakeFiles/cmTC_eea2d.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/Source/kwsys/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_eea2d.dir/kwsysPlatformTestsCXX.cxx.o
+/bin/c++ -DTEST_KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H   -o CMakeFiles/cmTC_eea2d.dir/kwsysPlatformTestsCXX.cxx.o -c /home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx: 就...就在那个叫‘int main()’的函数里！:
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx:53:13: 笨蛋！‘environ’ was not declared in this scope; did you mean ‘union’?
+   53 |   char* e = environ[0];
+      |             ^~~~~~~
+      |             union
+gmake[1]: *** [CMakeFiles/cmTC_eea2d.dir/build.make:78：CMakeFiles/cmTC_eea2d.dir/kwsysPlatformTestsCXX.cxx.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/Source/kwsys/CMakeFiles/CMakeTmp”
+gmake: *** [Makefile:127：cmTC_eea2d/fast] 错误 2
+
+
+
+Checking whether CXX compiler struct stat has st_mtimespec member failed to compile with the following output:
+Change Dir: /home/user/out/cmake/2/Source/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_d4c94/fast && /bin/gmake  -f CMakeFiles/cmTC_d4c94.dir/build.make CMakeFiles/cmTC_d4c94.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/Source/kwsys/CMakeFiles/CMakeTmp”
+Building CXX object CMakeFiles/cmTC_d4c94.dir/kwsysPlatformTestsCXX.cxx.o
+/bin/c++ -DTEST_KWSYS_CXX_STAT_HAS_ST_MTIMESPEC   -o CMakeFiles/cmTC_d4c94.dir/kwsysPlatformTestsCXX.cxx.o -c /home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx: 就...就在那个叫‘int main()’的函数里！:
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx:26:15: 笨蛋！‘struct stat’ has no member named ‘st_mtimespec’
+   26 |   (void)stat1.st_mtimespec.tv_sec;
+      |               ^~~~~~~~~~~~
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx:27:15: 笨蛋！‘struct stat’ has no member named ‘st_mtimespec’
+   27 |   (void)stat1.st_mtimespec.tv_nsec;
+      |               ^~~~~~~~~~~~
+gmake[1]: *** [CMakeFiles/cmTC_d4c94.dir/build.make:78：CMakeFiles/cmTC_d4c94.dir/kwsysPlatformTestsCXX.cxx.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/Source/kwsys/CMakeFiles/CMakeTmp”
+gmake: *** [Makefile:127：cmTC_d4c94/fast] 错误 2
+
+
+
+Determining if the function connect exists in the socket failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dgM0HR
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e747d/fast && /bin/gmake  -f CMakeFiles/cmTC_e747d.dir/build.make CMakeFiles/cmTC_e747d.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dgM0HR”
+Building C object CMakeFiles/cmTC_e747d.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=connect -std=gnu11 -o CMakeFiles/cmTC_e747d.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dgM0HR/CheckFunctionExists.c
+Linking C executable cmTC_e747d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e747d.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_e747d.dir/CheckFunctionExists.c.o -o cmTC_e747d  -lsocket 
+/bin/ld: 找不到 -lsocket: 没有那个文件或目录
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_e747d.dir/build.make:99：cmTC_e747d] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dgM0HR”
+gmake: *** [Makefile:127：cmTC_e747d/fast] 错误 2
+
+
+
+Determining if the OPENSSL_IS_AWSLC exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-rzmGSz
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_68b6e/fast && /bin/gmake  -f CMakeFiles/cmTC_68b6e.dir/build.make CMakeFiles/cmTC_68b6e.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-rzmGSz”
+Building C object CMakeFiles/cmTC_68b6e.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_68b6e.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-rzmGSz/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-rzmGSz/CheckSymbolExists.c:2:10: 寄了：openssl/base.h：没有那个文件或目录
+    2 | #include <openssl/base.h>
+      |          ^~~~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_68b6e.dir/build.make:78：CMakeFiles/cmTC_68b6e.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-rzmGSz”
+gmake: *** [Makefile:127：cmTC_68b6e/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <openssl/base.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef OPENSSL_IS_AWSLC
+  return ((int*)(&OPENSSL_IS_AWSLC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the SSL_set0_wbio exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-3whOjc
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_3ce45/fast && /bin/gmake  -f CMakeFiles/cmTC_3ce45.dir/build.make CMakeFiles/cmTC_3ce45.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-3whOjc”
+Building C object CMakeFiles/cmTC_3ce45.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_3ce45.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-3whOjc/CheckSymbolExists.c
+Linking C executable cmTC_3ce45
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ce45.dir/link.txt --verbose=1
+/bin/cc  -w  CMakeFiles/cmTC_3ce45.dir/CheckSymbolExists.c.o -o cmTC_3ce45  /usr/lib/aarch64-linux-gnu/libssl.so /usr/lib/aarch64-linux-gnu/libcrypto.so -lcmzlib 
+/bin/ld: 找不到 -lcmzlib: 没有那个文件或目录
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_3ce45.dir/build.make:101：cmTC_3ce45] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-3whOjc”
+gmake: *** [Makefile:127：cmTC_3ce45/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <openssl/ssl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SSL_set0_wbio
+  return ((int*)(&SSL_set0_wbio))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the SSL_CTX_set_srp_username exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-SRSI25
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_8ff14/fast && /bin/gmake  -f CMakeFiles/cmTC_8ff14.dir/build.make CMakeFiles/cmTC_8ff14.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-SRSI25”
+Building C object CMakeFiles/cmTC_8ff14.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_8ff14.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-SRSI25/CheckSymbolExists.c
+Linking C executable cmTC_8ff14
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8ff14.dir/link.txt --verbose=1
+/bin/cc  -w  CMakeFiles/cmTC_8ff14.dir/CheckSymbolExists.c.o -o cmTC_8ff14  /usr/lib/aarch64-linux-gnu/libssl.so /usr/lib/aarch64-linux-gnu/libcrypto.so -lcmzlib 
+/bin/ld: 找不到 -lcmzlib: 没有那个文件或目录
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_8ff14.dir/build.make:101：cmTC_8ff14] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-SRSI25”
+gmake: *** [Makefile:127：cmTC_8ff14/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <openssl/ssl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SSL_CTX_set_srp_username
+  return ((int*)(&SSL_CTX_set_srp_username))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if files sys/eventfd.h;sys/filio.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-k4s0R2
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_98311/fast && /bin/gmake  -f CMakeFiles/cmTC_98311.dir/build.make CMakeFiles/cmTC_98311.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-k4s0R2”
+Building C object CMakeFiles/cmTC_98311.dir/HAVE_SYS_FILIO_H.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_98311.dir/HAVE_SYS_FILIO_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-k4s0R2/HAVE_SYS_FILIO_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-k4s0R2/HAVE_SYS_FILIO_H.c:3:10: 寄了：sys/filio.h：没有那个文件或目录
+    3 | #include <sys/filio.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_98311.dir/build.make:78：CMakeFiles/cmTC_98311.dir/HAVE_SYS_FILIO_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-k4s0R2”
+gmake: *** [Makefile:127：cmTC_98311/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/filio.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/sockio.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-oJbiW2
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_397cb/fast && /bin/gmake  -f CMakeFiles/cmTC_397cb.dir/build.make CMakeFiles/cmTC_397cb.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-oJbiW2”
+Building C object CMakeFiles/cmTC_397cb.dir/HAVE_SYS_SOCKIO_H.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_397cb.dir/HAVE_SYS_SOCKIO_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-oJbiW2/HAVE_SYS_SOCKIO_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-oJbiW2/HAVE_SYS_SOCKIO_H.c:10:10: 寄了：sys/sockio.h：没有那个文件或目录
+   10 | #include <sys/sockio.h>
+      |          ^~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_397cb.dir/build.make:78：CMakeFiles/cmTC_397cb.dir/HAVE_SYS_SOCKIO_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-oJbiW2”
+gmake: *** [Makefile:127：cmTC_397cb/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/sockio.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/un.h;sys/utime.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-USiuo4
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_4464b/fast && /bin/gmake  -f CMakeFiles/cmTC_4464b.dir/build.make CMakeFiles/cmTC_4464b.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-USiuo4”
+Building C object CMakeFiles/cmTC_4464b.dir/HAVE_SYS_UTIME_H.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_4464b.dir/HAVE_SYS_UTIME_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-USiuo4/HAVE_SYS_UTIME_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-USiuo4/HAVE_SYS_UTIME_H.c:14:10: 寄了：sys/utime.h：没有那个文件或目录
+   14 | #include <sys/utime.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_4464b.dir/build.make:78：CMakeFiles/cmTC_4464b.dir/HAVE_SYS_UTIME_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-USiuo4”
+gmake: *** [Makefile:127：cmTC_4464b/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/utime.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/un.h;sys/xattr.h;arpa/inet.h;dirent.h;fcntl.h;ifaddrs.h;io.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-s3IzhV
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_254a0/fast && /bin/gmake  -f CMakeFiles/cmTC_254a0.dir/build.make CMakeFiles/cmTC_254a0.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-s3IzhV”
+Building C object CMakeFiles/cmTC_254a0.dir/HAVE_IO_H.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_254a0.dir/HAVE_IO_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-s3IzhV/HAVE_IO_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-s3IzhV/HAVE_IO_H.c:19:10: 寄了：io.h：没有那个文件或目录
+   19 | #include <io.h>
+      |          ^~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_254a0.dir/build.make:78：CMakeFiles/cmTC_254a0.dir/HAVE_IO_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-s3IzhV”
+gmake: *** [Makefile:127：cmTC_254a0/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <io.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/un.h;sys/xattr.h;arpa/inet.h;dirent.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;netinet/udp.h;poll.h;pwd.h;stdbool.h;strings.h;stropts.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ZW3DMi
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_29e30/fast && /bin/gmake  -f CMakeFiles/cmTC_29e30.dir/build.make CMakeFiles/cmTC_29e30.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ZW3DMi”
+Building C object CMakeFiles/cmTC_29e30.dir/HAVE_STROPTS_H.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_29e30.dir/HAVE_STROPTS_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ZW3DMi/HAVE_STROPTS_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ZW3DMi/HAVE_STROPTS_H.c:30:10: 寄了：stropts.h：没有那个文件或目录
+   30 | #include <stropts.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_29e30.dir/build.make:78：CMakeFiles/cmTC_29e30.dir/HAVE_STROPTS_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ZW3DMi”
+gmake: *** [Makefile:127：cmTC_29e30/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <stropts.h>
+
+
+int main(void){return 0;}
+
+Determining if the stricmp exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_16898/fast && /bin/gmake  -f CMakeFiles/cmTC_16898.dir/build.make CMakeFiles/cmTC_16898.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV”
+Building C object CMakeFiles/cmTC_16898.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_16898.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV/CheckSymbolExists.c:40:19: 笨蛋！‘stricmp’ undeclared (first use in this function); did you mean ‘strncmp’?
+   40 |   return ((int*)(&stricmp))[argc];
+      |                   ^~~~~~~
+      |                   strncmp
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_16898.dir/build.make:78：CMakeFiles/cmTC_16898.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-xELsBV”
+gmake: *** [Makefile:127：cmTC_16898/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef stricmp
+  return ((int*)(&stricmp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strcmpi exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_2329d/fast && /bin/gmake  -f CMakeFiles/cmTC_2329d.dir/build.make CMakeFiles/cmTC_2329d.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU”
+Building C object CMakeFiles/cmTC_2329d.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_2329d.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU/CheckSymbolExists.c:40:19: 笨蛋！‘strcmpi’ undeclared (first use in this function); did you mean ‘strcmp’?
+   40 |   return ((int*)(&strcmpi))[argc];
+      |                   ^~~~~~~
+      |                   strcmp
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_2329d.dir/build.make:78：CMakeFiles/cmTC_2329d.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-BkGfXU”
+gmake: *** [Makefile:127：cmTC_2329d/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strcmpi
+  return ((int*)(&strcmpi))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the memrchr exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_dbe47/fast && /bin/gmake  -f CMakeFiles/cmTC_dbe47.dir/build.make CMakeFiles/cmTC_dbe47.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk”
+Building C object CMakeFiles/cmTC_dbe47.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_dbe47.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk/CheckSymbolExists.c:40:19: 笨蛋！‘memrchr’ undeclared (first use in this function); did you mean ‘memchr’?
+   40 |   return ((int*)(&memrchr))[argc];
+      |                   ^~~~~~~
+      |                   memchr
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_dbe47.dir/build.make:78：CMakeFiles/cmTC_dbe47.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uaPELk”
+gmake: *** [Makefile:127：cmTC_dbe47/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memrchr
+  return ((int*)(&memrchr))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the closesocket exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e18a7/fast && /bin/gmake  -f CMakeFiles/cmTC_e18a7.dir/build.make CMakeFiles/cmTC_e18a7.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D”
+Building C object CMakeFiles/cmTC_e18a7.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_e18a7.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D/CheckSymbolExists.c:39:19: 笨蛋！‘closesocket’未声明(在此函数内第一次使用)
+   39 |   return ((int*)(&closesocket))[argc];
+      |                   ^~~~~~~~~~~
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D/CheckSymbolExists.c:39:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_e18a7.dir/build.make:78：CMakeFiles/cmTC_e18a7.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-g12D7D”
+gmake: *** [Makefile:127：cmTC_e18a7/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef closesocket
+  return ((int*)(&closesocket))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the getpass_r exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_65c28/fast && /bin/gmake  -f CMakeFiles/cmTC_65c28.dir/build.make CMakeFiles/cmTC_65c28.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH”
+Building C object CMakeFiles/cmTC_65c28.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_65c28.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH/CheckSymbolExists.c:39:19: 笨蛋！‘getpass_r’ undeclared (first use in this function); did you mean ‘getpass’?
+   39 |   return ((int*)(&getpass_r))[argc];
+      |                   ^~~~~~~~~
+      |                   getpass
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH/CheckSymbolExists.c:39:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_65c28.dir/build.make:78：CMakeFiles/cmTC_65c28.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-kq9IDH”
+gmake: *** [Makefile:127：cmTC_65c28/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getpass_r
+  return ((int*)(&getpass_r))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the _fseeki64 exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_58df7/fast && /bin/gmake  -f CMakeFiles/cmTC_58df7.dir/build.make CMakeFiles/cmTC_58df7.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo”
+Building C object CMakeFiles/cmTC_58df7.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_58df7.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo/CheckSymbolExists.c:40:19: 笨蛋！‘_fseeki64’未声明(在此函数内第一次使用)
+   40 |   return ((int*)(&_fseeki64))[argc];
+      |                   ^~~~~~~~~
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_58df7.dir/build.make:78：CMakeFiles/cmTC_58df7.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yefMZo”
+gmake: *** [Makefile:127：cmTC_58df7/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _fseeki64
+  return ((int*)(&_fseeki64))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the setmode exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_08018/fast && /bin/gmake  -f CMakeFiles/cmTC_08018.dir/build.make CMakeFiles/cmTC_08018.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl”
+Building C object CMakeFiles/cmTC_08018.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_08018.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl/CheckSymbolExists.c:39:19: 笨蛋！‘setmode’未声明(在此函数内第一次使用)
+   39 |   return ((int*)(&setmode))[argc];
+      |                   ^~~~~~~
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl/CheckSymbolExists.c:39:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_08018.dir/build.make:78：CMakeFiles/cmTC_08018.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-H5wbEl”
+gmake: *** [Makefile:127：cmTC_08018/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef setmode
+  return ((int*)(&setmode))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function mach_absolute_time exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-7sp9Gk
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_55421/fast && /bin/gmake  -f CMakeFiles/cmTC_55421.dir/build.make CMakeFiles/cmTC_55421.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-7sp9Gk”
+Building C object CMakeFiles/cmTC_55421.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=mach_absolute_time -std=gnu11 -o CMakeFiles/cmTC_55421.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-7sp9Gk/CheckFunctionExists.c
+Linking C executable cmTC_55421
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_55421.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=mach_absolute_time CMakeFiles/cmTC_55421.dir/CheckFunctionExists.c.o -o cmTC_55421 
+/bin/ld: CMakeFiles/cmTC_55421.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `mach_absolute_time'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_55421.dir/build.make:99：cmTC_55421] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-7sp9Gk”
+gmake: *** [Makefile:127：cmTC_55421/fast] 错误 2
+
+
+
+Determining if the include file sys/sysctl.h exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dGF2cu
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_13819/fast && /bin/gmake  -f CMakeFiles/cmTC_13819.dir/build.make CMakeFiles/cmTC_13819.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dGF2cu”
+Building C object CMakeFiles/cmTC_13819.dir/CheckIncludeFile.c.o
+/bin/cc   -std=gnu11 -o CMakeFiles/cmTC_13819.dir/CheckIncludeFile.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dGF2cu/CheckIncludeFile.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dGF2cu/CheckIncludeFile.c:1:10: 寄了：sys/sysctl.h：没有那个文件或目录
+    1 | #include <sys/sysctl.h>
+      |          ^~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_13819.dir/build.make:78：CMakeFiles/cmTC_13819.dir/CheckIncludeFile.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-dGF2cu”
+gmake: *** [Makefile:127：cmTC_13819/fast] 错误 2
+
+
+
+Determining if files sys/types.h;ctype.h;copyfile.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-A5GgRH
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_4c1fd/fast && /bin/gmake  -f CMakeFiles/cmTC_4c1fd.dir/build.make CMakeFiles/cmTC_4c1fd.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-A5GgRH”
+Building C object CMakeFiles/cmTC_4c1fd.dir/HAVE_COPYFILE_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_4c1fd.dir/HAVE_COPYFILE_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-A5GgRH/HAVE_COPYFILE_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-A5GgRH/HAVE_COPYFILE_H.c:4:10: 寄了：copyfile.h：没有那个文件或目录
+    4 | #include <copyfile.h>
+      |          ^~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_4c1fd.dir/build.make:78：CMakeFiles/cmTC_4c1fd.dir/HAVE_COPYFILE_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-A5GgRH”
+gmake: *** [Makefile:127：cmTC_4c1fd/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <copyfile.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;direct.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-x4BvZW
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_63a1e/fast && /bin/gmake  -f CMakeFiles/cmTC_63a1e.dir/build.make CMakeFiles/cmTC_63a1e.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-x4BvZW”
+Building C object CMakeFiles/cmTC_63a1e.dir/HAVE_DIRECT_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_63a1e.dir/HAVE_DIRECT_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-x4BvZW/HAVE_DIRECT_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-x4BvZW/HAVE_DIRECT_H.c:4:10: 寄了：direct.h：没有那个文件或目录
+    4 | #include <direct.h>
+      |          ^~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_63a1e.dir/build.make:78：CMakeFiles/cmTC_63a1e.dir/HAVE_DIRECT_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-x4BvZW”
+gmake: *** [Makefile:127：cmTC_63a1e/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <direct.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;ext2fs/ext2_fs.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yeQ3tD
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_3fa5c/fast && /bin/gmake  -f CMakeFiles/cmTC_3fa5c.dir/build.make CMakeFiles/cmTC_3fa5c.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yeQ3tD”
+Building C object CMakeFiles/cmTC_3fa5c.dir/HAVE_EXT2FS_EXT2_FS_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_3fa5c.dir/HAVE_EXT2FS_EXT2_FS_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yeQ3tD/HAVE_EXT2FS_EXT2_FS_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yeQ3tD/HAVE_EXT2FS_EXT2_FS_H.c:6:10: 寄了：ext2fs/ext2_fs.h：没有那个文件或目录
+    6 | #include <ext2fs/ext2_fs.h>
+      |          ^~~~~~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_3fa5c.dir/build.make:78：CMakeFiles/cmTC_3fa5c.dir/HAVE_EXT2FS_EXT2_FS_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yeQ3tD”
+gmake: *** [Makefile:127：cmTC_3fa5c/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <ext2fs/ext2_fs.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test HAVE_WORKING_EXT2_IOC_GETFLAGS failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-fgJA0G
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_4754c/fast && /bin/gmake  -f CMakeFiles/cmTC_4754c.dir/build.make CMakeFiles/cmTC_4754c.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-fgJA0G”
+Building C object CMakeFiles/cmTC_4754c.dir/src.c.o
+/bin/cc -DHAVE_WORKING_EXT2_IOC_GETFLAGS  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_4754c.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-fgJA0G/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-fgJA0G/src.c:2:10: 寄了：ext2fs/ext2_fs.h：没有那个文件或目录
+    2 | #include <ext2fs/ext2_fs.h>
+      |          ^~~~~~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_4754c.dir/build.make:78：CMakeFiles/cmTC_4754c.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-fgJA0G”
+gmake: *** [Makefile:127：cmTC_4754c/fast] 错误 2
+
+
+Source file was:
+#include <sys/ioctl.h>
+#include <ext2fs/ext2_fs.h>
+int main(void) { return EXT2_IOC_GETFLAGS; }
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;membership.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ncwoa
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_daaf7/fast && /bin/gmake  -f CMakeFiles/cmTC_daaf7.dir/build.make CMakeFiles/cmTC_daaf7.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ncwoa”
+Building C object CMakeFiles/cmTC_daaf7.dir/HAVE_MEMBERSHIP_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_daaf7.dir/HAVE_MEMBERSHIP_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ncwoa/HAVE_MEMBERSHIP_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ncwoa/HAVE_MEMBERSHIP_H.c:16:10: 寄了：membership.h：没有那个文件或目录
+   16 | #include <membership.h>
+      |          ^~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_daaf7.dir/build.make:78：CMakeFiles/cmTC_daaf7.dir/HAVE_MEMBERSHIP_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ncwoa”
+gmake: *** [Makefile:127：cmTC_daaf7/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <membership.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;process.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-AGWeKB
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_88eb4/fast && /bin/gmake  -f CMakeFiles/cmTC_88eb4.dir/build.make CMakeFiles/cmTC_88eb4.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-AGWeKB”
+Building C object CMakeFiles/cmTC_88eb4.dir/HAVE_PROCESS_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_88eb4.dir/HAVE_PROCESS_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-AGWeKB/HAVE_PROCESS_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-AGWeKB/HAVE_PROCESS_H.c:19:10: 寄了：process.h：没有那个文件或目录
+   19 | #include <process.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_88eb4.dir/build.make:78：CMakeFiles/cmTC_88eb4.dir/HAVE_PROCESS_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-AGWeKB”
+gmake: *** [Makefile:127：cmTC_88eb4/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <process.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;readpassphrase.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-MKCAeR
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_774e3/fast && /bin/gmake  -f CMakeFiles/cmTC_774e3.dir/build.make CMakeFiles/cmTC_774e3.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-MKCAeR”
+Building C object CMakeFiles/cmTC_774e3.dir/HAVE_READPASSPHRASE_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_774e3.dir/HAVE_READPASSPHRASE_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-MKCAeR/HAVE_READPASSPHRASE_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-MKCAeR/HAVE_READPASSPHRASE_H.c:21:10: 寄了：readpassphrase.h：没有那个文件或目录
+   21 | #include <readpassphrase.h>
+      |          ^~~~~~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_774e3.dir/build.make:78：CMakeFiles/cmTC_774e3.dir/HAVE_READPASSPHRASE_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-MKCAeR”
+gmake: *** [Makefile:127：cmTC_774e3/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <readpassphrase.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/acl.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-PAglcl
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_5fac7/fast && /bin/gmake  -f CMakeFiles/cmTC_5fac7.dir/build.make CMakeFiles/cmTC_5fac7.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-PAglcl”
+Building C object CMakeFiles/cmTC_5fac7.dir/HAVE_SYS_ACL_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_5fac7.dir/HAVE_SYS_ACL_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-PAglcl/HAVE_SYS_ACL_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-PAglcl/HAVE_SYS_ACL_H.c:28:10: 寄了：sys/acl.h：没有那个文件或目录
+   28 | #include <sys/acl.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_5fac7.dir/build.make:78：CMakeFiles/cmTC_5fac7.dir/HAVE_SYS_ACL_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-PAglcl”
+gmake: *** [Makefile:127：cmTC_5fac7/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/acl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/extattr.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-O5bfTs
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_6ce6d/fast && /bin/gmake  -f CMakeFiles/cmTC_6ce6d.dir/build.make CMakeFiles/cmTC_6ce6d.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-O5bfTs”
+Building C object CMakeFiles/cmTC_6ce6d.dir/HAVE_SYS_EXTATTR_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_6ce6d.dir/HAVE_SYS_EXTATTR_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-O5bfTs/HAVE_SYS_EXTATTR_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-O5bfTs/HAVE_SYS_EXTATTR_H.c:29:10: 寄了：sys/extattr.h：没有那个文件或目录
+   29 | #include <sys/extattr.h>
+      |          ^~~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_6ce6d.dir/build.make:78：CMakeFiles/cmTC_6ce6d.dir/HAVE_SYS_EXTATTR_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-O5bfTs”
+gmake: *** [Makefile:127：cmTC_6ce6d/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/extattr.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mkdev.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ieITYG
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_518ac/fast && /bin/gmake  -f CMakeFiles/cmTC_518ac.dir/build.make CMakeFiles/cmTC_518ac.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ieITYG”
+Building C object CMakeFiles/cmTC_518ac.dir/HAVE_SYS_MKDEV_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_518ac.dir/HAVE_SYS_MKDEV_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ieITYG/HAVE_SYS_MKDEV_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ieITYG/HAVE_SYS_MKDEV_H.c:30:10: 寄了：sys/mkdev.h：没有那个文件或目录
+   30 | #include <sys/mkdev.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_518ac.dir/build.make:78：CMakeFiles/cmTC_518ac.dir/HAVE_SYS_MKDEV_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-ieITYG”
+gmake: *** [Makefile:127：cmTC_518ac/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mkdev.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/richacl.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Alf27h
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_0dc4e/fast && /bin/gmake  -f CMakeFiles/cmTC_0dc4e.dir/build.make CMakeFiles/cmTC_0dc4e.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Alf27h”
+Building C object CMakeFiles/cmTC_0dc4e.dir/HAVE_SYS_RICHACL_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_0dc4e.dir/HAVE_SYS_RICHACL_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Alf27h/HAVE_SYS_RICHACL_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Alf27h/HAVE_SYS_RICHACL_H.c:33:10: 寄了：sys/richacl.h：没有那个文件或目录
+   33 | #include <sys/richacl.h>
+      |          ^~~~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_0dc4e.dir/build.make:78：CMakeFiles/cmTC_0dc4e.dir/HAVE_SYS_RICHACL_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Alf27h”
+gmake: *** [Makefile:127：cmTC_0dc4e/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/richacl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;windows.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Co8VSU
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_043c6/fast && /bin/gmake  -f CMakeFiles/cmTC_043c6.dir/build.make CMakeFiles/cmTC_043c6.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Co8VSU”
+Building C object CMakeFiles/cmTC_043c6.dir/HAVE_WINDOWS_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_043c6.dir/HAVE_WINDOWS_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Co8VSU/HAVE_WINDOWS_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Co8VSU/HAVE_WINDOWS_H.c:48:10: 寄了：windows.h：没有那个文件或目录
+   48 | #include <windows.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_043c6.dir/build.make:78：CMakeFiles/cmTC_043c6.dir/HAVE_WINDOWS_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Co8VSU”
+gmake: *** [Makefile:127：cmTC_043c6/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <windows.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;wincrypt.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-gJgoZW
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_a1b4f/fast && /bin/gmake  -f CMakeFiles/cmTC_a1b4f.dir/build.make CMakeFiles/cmTC_a1b4f.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-gJgoZW”
+Building C object CMakeFiles/cmTC_a1b4f.dir/HAVE_WINCRYPT_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_a1b4f.dir/HAVE_WINCRYPT_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-gJgoZW/HAVE_WINCRYPT_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-gJgoZW/HAVE_WINCRYPT_H.c:48:10: 寄了：wincrypt.h：没有那个文件或目录
+   48 | #include <wincrypt.h>
+      |          ^~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_a1b4f.dir/build.make:78：CMakeFiles/cmTC_a1b4f.dir/HAVE_WINCRYPT_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-gJgoZW”
+gmake: *** [Makefile:127：cmTC_a1b4f/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <wincrypt.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;winioctl.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-YYn0IV
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_df2ff/fast && /bin/gmake  -f CMakeFiles/cmTC_df2ff.dir/build.make CMakeFiles/cmTC_df2ff.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-YYn0IV”
+Building C object CMakeFiles/cmTC_df2ff.dir/HAVE_WINIOCTL_H.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_df2ff.dir/HAVE_WINIOCTL_H.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-YYn0IV/HAVE_WINIOCTL_H.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-YYn0IV/HAVE_WINIOCTL_H.c:48:10: 寄了：winioctl.h：没有那个文件或目录
+   48 | #include <winioctl.h>
+      |          ^~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_df2ff.dir/build.make:78：CMakeFiles/cmTC_df2ff.dir/HAVE_WINIOCTL_H.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-YYn0IV”
+gmake: *** [Makefile:127：cmTC_df2ff/fast] 错误 2
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <winioctl.h>
+
+
+int main(void){return 0;}
+
+Determining if the function getvfsbyname exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RP0LDk
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_efe1b/fast && /bin/gmake  -f CMakeFiles/cmTC_efe1b.dir/build.make CMakeFiles/cmTC_efe1b.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RP0LDk”
+Building C object CMakeFiles/cmTC_efe1b.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=getvfsbyname  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_efe1b.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RP0LDk/CheckFunctionExists.c
+Linking C executable cmTC_efe1b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_efe1b.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=getvfsbyname  -fno-builtin CMakeFiles/cmTC_efe1b.dir/CheckFunctionExists.c.o -o cmTC_efe1b  /usr/lib/aarch64-linux-gnu/libcrypto.so 
+/bin/ld: CMakeFiles/cmTC_efe1b.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `getvfsbyname'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_efe1b.dir/build.make:100：cmTC_efe1b] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RP0LDk”
+gmake: *** [Makefile:127：cmTC_efe1b/fast] 错误 2
+
+
+
+Determining if the function lchflags exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-jcRMZR
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_64641/fast && /bin/gmake  -f CMakeFiles/cmTC_64641.dir/build.make CMakeFiles/cmTC_64641.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-jcRMZR”
+Building C object CMakeFiles/cmTC_64641.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=lchflags  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_64641.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-jcRMZR/CheckFunctionExists.c
+Linking C executable cmTC_64641
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_64641.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=lchflags  -fno-builtin CMakeFiles/cmTC_64641.dir/CheckFunctionExists.c.o -o cmTC_64641  /usr/lib/aarch64-linux-gnu/libcrypto.so 
+/bin/ld: CMakeFiles/cmTC_64641.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `lchflags'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_64641.dir/build.make:100：cmTC_64641] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-jcRMZR”
+gmake: *** [Makefile:127：cmTC_64641/fast] 错误 2
+
+
+
+Determining if the function readpassphrase exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uDi9kT
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_dc9c0/fast && /bin/gmake  -f CMakeFiles/cmTC_dc9c0.dir/build.make CMakeFiles/cmTC_dc9c0.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uDi9kT”
+Building C object CMakeFiles/cmTC_dc9c0.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=readpassphrase  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_dc9c0.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uDi9kT/CheckFunctionExists.c
+Linking C executable cmTC_dc9c0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_dc9c0.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=readpassphrase  -fno-builtin CMakeFiles/cmTC_dc9c0.dir/CheckFunctionExists.c.o -o cmTC_dc9c0  /usr/lib/aarch64-linux-gnu/libcrypto.so 
+/bin/ld: CMakeFiles/cmTC_dc9c0.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `readpassphrase'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_dc9c0.dir/build.make:100：cmTC_dc9c0] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-uDi9kT”
+gmake: *** [Makefile:127：cmTC_dc9c0/fast] 错误 2
+
+
+
+Determining if the function strncpy_s exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-tQ6edq
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_863d4/fast && /bin/gmake  -f CMakeFiles/cmTC_863d4.dir/build.make CMakeFiles/cmTC_863d4.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-tQ6edq”
+Building C object CMakeFiles/cmTC_863d4.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=strncpy_s  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_863d4.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-tQ6edq/CheckFunctionExists.c
+Linking C executable cmTC_863d4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_863d4.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=strncpy_s  -fno-builtin CMakeFiles/cmTC_863d4.dir/CheckFunctionExists.c.o -o cmTC_863d4  /usr/lib/aarch64-linux-gnu/libcrypto.so 
+/bin/ld: CMakeFiles/cmTC_863d4.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `strncpy_s'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_863d4.dir/build.make:100：cmTC_863d4] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-tQ6edq”
+gmake: *** [Makefile:127：cmTC_863d4/fast] 错误 2
+
+
+
+Determining if the function _get_timezone exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-FkdYQl
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_7ad41/fast && /bin/gmake  -f CMakeFiles/cmTC_7ad41.dir/build.make CMakeFiles/cmTC_7ad41.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-FkdYQl”
+Building C object CMakeFiles/cmTC_7ad41.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=_get_timezone  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_7ad41.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-FkdYQl/CheckFunctionExists.c
+Linking C executable cmTC_7ad41
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7ad41.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=_get_timezone  -fno-builtin CMakeFiles/cmTC_7ad41.dir/CheckFunctionExists.c.o -o cmTC_7ad41  /usr/lib/aarch64-linux-gnu/libcrypto.so 
+/bin/ld: CMakeFiles/cmTC_7ad41.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_get_timezone'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_7ad41.dir/build.make:100：cmTC_7ad41] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-FkdYQl”
+gmake: *** [Makefile:127：cmTC_7ad41/fast] 错误 2
+
+
+
+Determining if the ctime_s exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_7cf5a/fast && /bin/gmake  -f CMakeFiles/cmTC_7cf5a.dir/build.make CMakeFiles/cmTC_7cf5a.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5”
+Building C object CMakeFiles/cmTC_7cf5a.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_7cf5a.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5/CheckSymbolExists.c:8:19: 笨蛋！‘ctime_s’ undeclared (first use in this function); did you mean ‘ctime_r’?
+    8 |   return ((int*)(&ctime_s))[argc];
+      |                   ^~~~~~~
+      |                   ctime_r
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_7cf5a.dir/build.make:78：CMakeFiles/cmTC_7cf5a.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OJ8Um5”
+gmake: *** [Makefile:127：cmTC_7cf5a/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef ctime_s
+  return ((int*)(&ctime_s))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the gmtime_s exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_cc013/fast && /bin/gmake  -f CMakeFiles/cmTC_cc013.dir/build.make CMakeFiles/cmTC_cc013.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN”
+Building C object CMakeFiles/cmTC_cc013.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_cc013.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN/CheckSymbolExists.c:8:19: 笨蛋！‘gmtime_s’ undeclared (first use in this function); did you mean ‘gmtime_r’?
+    8 |   return ((int*)(&gmtime_s))[argc];
+      |                   ^~~~~~~~
+      |                   gmtime_r
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_cc013.dir/build.make:78：CMakeFiles/cmTC_cc013.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-psUfEN”
+gmake: *** [Makefile:127：cmTC_cc013/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef gmtime_s
+  return ((int*)(&gmtime_s))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the localtime_s exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e5ad7/fast && /bin/gmake  -f CMakeFiles/cmTC_e5ad7.dir/build.make CMakeFiles/cmTC_e5ad7.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo”
+Building C object CMakeFiles/cmTC_e5ad7.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_e5ad7.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo/CheckSymbolExists.c:8:19: 笨蛋！‘localtime_s’ undeclared (first use in this function); did you mean ‘localtime_r’?
+    8 |   return ((int*)(&localtime_s))[argc];
+      |                   ^~~~~~~~~~~
+      |                   localtime_r
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_e5ad7.dir/build.make:78：CMakeFiles/cmTC_e5ad7.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z3gjYo”
+gmake: *** [Makefile:127：cmTC_e5ad7/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef localtime_s
+  return ((int*)(&localtime_s))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the _mkgmtime exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e9c2a/fast && /bin/gmake  -f CMakeFiles/cmTC_e9c2a.dir/build.make CMakeFiles/cmTC_e9c2a.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18”
+Building C object CMakeFiles/cmTC_e9c2a.dir/CheckSymbolExists.c.o
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_e9c2a.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18/CheckSymbolExists.c:8:19: 笨蛋！‘_mkgmtime’ undeclared (first use in this function); did you mean ‘gmtime’?
+    8 |   return ((int*)(&_mkgmtime))[argc];
+      |                   ^~~~~~~~~
+      |                   gmtime
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_e9c2a.dir/build.make:78：CMakeFiles/cmTC_e9c2a.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-5Ota18”
+gmake: *** [Makefile:127：cmTC_e9c2a/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _mkgmtime
+  return ((int*)(&_mkgmtime))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function cygwin_conv_path exists failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l79yrz
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_04e1d/fast && /bin/gmake  -f CMakeFiles/cmTC_04e1d.dir/build.make CMakeFiles/cmTC_04e1d.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l79yrz”
+Building C object CMakeFiles/cmTC_04e1d.dir/CheckFunctionExists.c.o
+/bin/cc   -w -DCHECK_FUNCTION_EXISTS=cygwin_conv_path  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_04e1d.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l79yrz/CheckFunctionExists.c
+Linking C executable cmTC_04e1d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04e1d.dir/link.txt --verbose=1
+/bin/cc  -w -DCHECK_FUNCTION_EXISTS=cygwin_conv_path  -fno-builtin CMakeFiles/cmTC_04e1d.dir/CheckFunctionExists.c.o -o cmTC_04e1d 
+/bin/ld: CMakeFiles/cmTC_04e1d.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `cygwin_conv_path'
+collect2: 笨蛋！ld 返回 1
+gmake[1]: *** [CMakeFiles/cmTC_04e1d.dir/build.make:99：cmTC_04e1d] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l79yrz”
+gmake: *** [Makefile:127：cmTC_04e1d/fast] 错误 2
+
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_VFSCONF failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2IcB6v
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_63aca/fast && /bin/gmake  -f CMakeFiles/cmTC_63aca.dir/build.make CMakeFiles/cmTC_63aca.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2IcB6v”
+Building C object CMakeFiles/cmTC_63aca.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_VFSCONF  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_63aca.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2IcB6v/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2IcB6v/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2IcB6v/src.c:3:33: 笨蛋！‘v’的存储大小未知,咱可并不喜欢你这种神秘感～
+    3 | int main(void) { struct vfsconf v; return sizeof(v);}
+      |                                 ^
+gmake[1]: *** [CMakeFiles/cmTC_63aca.dir/build.make:78：CMakeFiles/cmTC_63aca.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2IcB6v”
+gmake: *** [Makefile:127：cmTC_63aca/fast] 错误 2
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct vfsconf v; return sizeof(v);}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_XVFSCONF failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-vv1t2d
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e3cce/fast && /bin/gmake  -f CMakeFiles/cmTC_e3cce.dir/build.make CMakeFiles/cmTC_e3cce.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-vv1t2d”
+Building C object CMakeFiles/cmTC_e3cce.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_XVFSCONF  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_e3cce.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-vv1t2d/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-vv1t2d/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-vv1t2d/src.c:3:34: 笨蛋！‘v’的存储大小未知,咱可并不喜欢你这种神秘感～
+    3 | int main(void) { struct xvfsconf v; return sizeof(v);}
+      |                                  ^
+gmake[1]: *** [CMakeFiles/cmTC_e3cce.dir/build.make:78：CMakeFiles/cmTC_e3cce.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-vv1t2d”
+gmake: *** [Makefile:127：cmTC_e3cce/fast] 错误 2
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct xvfsconf v; return sizeof(v);}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STATFS failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Wsx7cW
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_e7902/fast && /bin/gmake  -f CMakeFiles/cmTC_e7902.dir/build.make CMakeFiles/cmTC_e7902.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Wsx7cW”
+Building C object CMakeFiles/cmTC_e7902.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STATFS  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_e7902.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Wsx7cW/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Wsx7cW/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Wsx7cW/src.c:3:32: 笨蛋！‘s’的存储大小未知,咱可并不喜欢你这种神秘感～
+    3 | int main(void) { struct statfs s; return sizeof(s);}
+      |                                ^
+gmake[1]: *** [CMakeFiles/cmTC_e7902.dir/build.make:78：CMakeFiles/cmTC_e7902.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-Wsx7cW”
+gmake: *** [Makefile:127：cmTC_e7902/fast] 错误 2
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct statfs s; return sizeof(s);}
+
+Performing C SOURCE FILE Test MAJOR_IN_MKDEV failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-B6tfyZ
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_3683e/fast && /bin/gmake  -f CMakeFiles/cmTC_3683e.dir/build.make CMakeFiles/cmTC_3683e.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-B6tfyZ”
+Building C object CMakeFiles/cmTC_3683e.dir/src.c.o
+/bin/cc -DMAJOR_IN_MKDEV  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_3683e.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-B6tfyZ/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-B6tfyZ/src.c:1:10: 寄了：sys/mkdev.h：没有那个文件或目录
+    1 | #include <sys/mkdev.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+gmake[1]: *** [CMakeFiles/cmTC_3683e.dir/build.make:78：CMakeFiles/cmTC_3683e.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-B6tfyZ”
+gmake: *** [Makefile:127：cmTC_3683e/fast] 错误 2
+
+
+Source file was:
+#include <sys/mkdev.h>
+int main() { return major(256); }
+
+Determining if the EFTYPE exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_fdf77/fast && /bin/gmake  -f CMakeFiles/cmTC_fdf77.dir/build.make CMakeFiles/cmTC_fdf77.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP”
+Building C object CMakeFiles/cmTC_fdf77.dir/CheckSymbolExists.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_fdf77.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP/CheckSymbolExists.c:8:19: 笨蛋！‘EFTYPE’未声明(在此函数内第一次使用)
+    8 |   return ((int*)(&EFTYPE))[argc];
+      |                   ^~~~~~
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_fdf77.dir/build.make:78：CMakeFiles/cmTC_fdf77.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-cwZtyP”
+gmake: *** [Makefile:127：cmTC_fdf77/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <errno.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef EFTYPE
+  return ((int*)(&EFTYPE))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the D_MD_ORDER exist failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_bc713/fast && /bin/gmake  -f CMakeFiles/cmTC_bc713.dir/build.make CMakeFiles/cmTC_bc713.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP”
+Building C object CMakeFiles/cmTC_bc713.dir/CheckSymbolExists.c.o
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_bc713.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP/CheckSymbolExists.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP/CheckSymbolExists.c:8:19: 笨蛋！‘D_MD_ORDER’未声明(在此函数内第一次使用)
+    8 |   return ((int*)(&D_MD_ORDER))[argc];
+      |                   ^~~~~~~~~~
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+gmake[1]: *** [CMakeFiles/cmTC_bc713.dir/build.make:78：CMakeFiles/cmTC_bc713.dir/CheckSymbolExists.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-z74kDP”
+gmake: *** [Makefile:127：cmTC_bc713/fast] 错误 2
+
+
+File CheckSymbolExists.c:
+/* */
+#include <langinfo.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef D_MD_ORDER
+  return ((int*)(&D_MD_ORDER))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test HAVE_STRUCT_TM___TM_GMTOFF failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RIpUtN
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_95105/fast && /bin/gmake  -f CMakeFiles/cmTC_95105.dir/build.make CMakeFiles/cmTC_95105.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RIpUtN”
+Building C object CMakeFiles/cmTC_95105.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_TM___TM_GMTOFF  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_95105.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RIpUtN/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RIpUtN/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RIpUtN/src.c:6:34: 笨蛋！‘struct tm’ has no member named ‘__tm_gmtoff’; did you mean ‘tm_gmtoff’?
+    6 |   (void)sizeof(((struct tm *)0)->__tm_gmtoff);
+      |                                  ^~~~~~~~~~~
+      |                                  tm_gmtoff
+gmake[1]: *** [CMakeFiles/cmTC_95105.dir/build.make:78：CMakeFiles/cmTC_95105.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-RIpUtN”
+gmake: *** [Makefile:127：cmTC_95105/fast] 错误 2
+
+
+Source file was:
+
+#include <time.h>
+
+int main()
+{
+  (void)sizeof(((struct tm *)0)->__tm_gmtoff);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIME failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OzoXRR
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_b573f/fast && /bin/gmake  -f CMakeFiles/cmTC_b573f.dir/build.make CMakeFiles/cmTC_b573f.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OzoXRR”
+Building C object CMakeFiles/cmTC_b573f.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_BIRTHTIME  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_b573f.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OzoXRR/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OzoXRR/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OzoXRR/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_birthtime’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_birthtime);
+      |                                  ^~
+gmake[1]: *** [CMakeFiles/cmTC_b573f.dir/build.make:78：CMakeFiles/cmTC_b573f.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-OzoXRR”
+gmake: *** [Makefile:127：cmTC_b573f/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtime);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-DtyGRw
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_95025/fast && /bin/gmake  -f CMakeFiles/cmTC_95025.dir/build.make CMakeFiles/cmTC_95025.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-DtyGRw”
+Building C object CMakeFiles/cmTC_95025.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_95025.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-DtyGRw/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-DtyGRw/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-DtyGRw/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_birthtimespec’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_birthtimespec.tv_nsec);
+      |                                  ^~
+gmake[1]: *** [CMakeFiles/cmTC_95025.dir/build.make:78：CMakeFiles/cmTC_95025.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-DtyGRw”
+gmake: *** [Makefile:127：cmTC_95025/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtimespec.tv_nsec);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIMESPEC_TV_NSEC failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-o5KMJy
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_79c3d/fast && /bin/gmake  -f CMakeFiles/cmTC_79c3d.dir/build.make CMakeFiles/cmTC_79c3d.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-o5KMJy”
+Building C object CMakeFiles/cmTC_79c3d.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_MTIMESPEC_TV_NSEC  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_79c3d.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-o5KMJy/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-o5KMJy/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-o5KMJy/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_mtimespec’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_mtimespec.tv_nsec);
+      |                                  ^~
+gmake[1]: *** [CMakeFiles/cmTC_79c3d.dir/build.make:78：CMakeFiles/cmTC_79c3d.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-o5KMJy”
+gmake: *** [Makefile:127：cmTC_79c3d/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtimespec.tv_nsec);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIME_N failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-0f9Ie7
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_d73b0/fast && /bin/gmake  -f CMakeFiles/cmTC_d73b0.dir/build.make CMakeFiles/cmTC_d73b0.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-0f9Ie7”
+Building C object CMakeFiles/cmTC_d73b0.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_MTIME_N  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_d73b0.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-0f9Ie7/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-0f9Ie7/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-0f9Ie7/src.c:7:36: 笨蛋！‘struct stat’ has no member named ‘st_mtime_n’; did you mean ‘st_mtim’?
+    7 |   (void)sizeof(((struct stat *)0)->st_mtime_n);
+      |                                    ^~~~~~~~~~
+      |                                    st_mtim
+gmake[1]: *** [CMakeFiles/cmTC_d73b0.dir/build.make:78：CMakeFiles/cmTC_d73b0.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-0f9Ie7”
+gmake: *** [Makefile:127：cmTC_d73b0/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtime_n);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_UMTIME failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l70T2A
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_9a1fe/fast && /bin/gmake  -f CMakeFiles/cmTC_9a1fe.dir/build.make CMakeFiles/cmTC_9a1fe.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l70T2A”
+Building C object CMakeFiles/cmTC_9a1fe.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_UMTIME  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_9a1fe.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l70T2A/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l70T2A/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l70T2A/src.c:7:36: 笨蛋！‘struct stat’ has no member named ‘st_umtime’; did you mean ‘st_mtim’?
+    7 |   (void)sizeof(((struct stat *)0)->st_umtime);
+      |                                    ^~~~~~~~~
+      |                                    st_mtim
+gmake[1]: *** [CMakeFiles/cmTC_9a1fe.dir/build.make:78：CMakeFiles/cmTC_9a1fe.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-l70T2A”
+gmake: *** [Makefile:127：cmTC_9a1fe/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_umtime);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIME_USEC failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2KQ9O8
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_15ed7/fast && /bin/gmake  -f CMakeFiles/cmTC_15ed7.dir/build.make CMakeFiles/cmTC_15ed7.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2KQ9O8”
+Building C object CMakeFiles/cmTC_15ed7.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_MTIME_USEC  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_15ed7.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2KQ9O8/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2KQ9O8/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2KQ9O8/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_mtime_usec’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_mtime_usec);
+      |                                  ^~
+gmake[1]: *** [CMakeFiles/cmTC_15ed7.dir/build.make:78：CMakeFiles/cmTC_15ed7.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-2KQ9O8”
+gmake: *** [Makefile:127：cmTC_15ed7/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtime_usec);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_FLAGS failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-1jeYYl
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_50ffb/fast && /bin/gmake  -f CMakeFiles/cmTC_50ffb.dir/build.make CMakeFiles/cmTC_50ffb.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-1jeYYl”
+Building C object CMakeFiles/cmTC_50ffb.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STAT_ST_FLAGS  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_50ffb.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-1jeYYl/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-1jeYYl/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-1jeYYl/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_flags’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_flags);
+      |                                  ^~
+gmake[1]: *** [CMakeFiles/cmTC_50ffb.dir/build.make:78：CMakeFiles/cmTC_50ffb.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-1jeYYl”
+gmake: *** [Makefile:127：cmTC_50ffb/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_flags);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STATVFS_F_IOSIZE failed with the following output:
+Change Dir: /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yH1Qzx
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_41834/fast && /bin/gmake  -f CMakeFiles/cmTC_41834.dir/build.make CMakeFiles/cmTC_41834.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yH1Qzx”
+Building C object CMakeFiles/cmTC_41834.dir/src.c.o
+/bin/cc -DHAVE_STRUCT_STATVFS_F_IOSIZE  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_41834.dir/src.c.o -c /home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yH1Qzx/src.c
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yH1Qzx/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yH1Qzx/src.c:7:39: 笨蛋！‘struct statvfs’ has no member named ‘f_iosize’; did you mean ‘f_bsize’?
+    7 |   (void)sizeof(((struct statvfs *)0)->f_iosize);
+      |                                       ^~~~~~~~
+      |                                       f_bsize
+gmake[1]: *** [CMakeFiles/cmTC_41834.dir/build.make:78：CMakeFiles/cmTC_41834.dir/src.c.o] 错误 1
+gmake[1]: 离开目录“/home/user/out/cmake/2/CMakeFiles/CMakeScratch/TryCompile-yH1Qzx”
+gmake: *** [Makefile:127：cmTC_41834/fast] 错误 2
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/statvfs.h>
+
+int main()
+{
+  (void)sizeof(((struct statvfs *)0)->f_iosize);
+  return 0;
+}
+
+
+Looking for a Fortran compiler failed with the following output:
+-- The Fortran compiler identification is unknown
+CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_Fortran_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "FC" or the CMake cache entry CMAKE_Fortran_COMPILER to the full
+  path to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/user/out/cmake/2/Tests/CMakeFiles/CheckFortran/CMakeFiles/CMakeOutput.log".
+See also "/home/user/out/cmake/2/Tests/CMakeFiles/CheckFortran/CMakeFiles/CMakeError.log".
+

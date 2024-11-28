@@ -1,0 +1,2 @@
+/bin/ar qc libcmllpkgc.a CMakeFiles/cmllpkgc.dir/llpkgc.c.o CMakeFiles/cmllpkgc.dir/llpkgc__internal.c.o
+/bin/ranlib libcmllpkgc.a

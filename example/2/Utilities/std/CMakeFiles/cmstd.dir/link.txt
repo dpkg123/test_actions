@@ -1,0 +1,2 @@
+/bin/ar qc libcmstd.a CMakeFiles/cmstd.dir/cm/bits/fs_path.cxx.o CMakeFiles/cmstd.dir/cm/bits/string_view.cxx.o
+/bin/ranlib libcmstd.a

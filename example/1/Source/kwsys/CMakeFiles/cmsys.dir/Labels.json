@@ -1,0 +1,121 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/ProcessUNIX.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/Base64.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/EncodingC.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/MD5.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/Terminal.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/System.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/String.c"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Configure.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Process.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Base64.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Encoding.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/MD5.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Terminal.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/System.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/String.h"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/Directory.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Directory.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/DynamicLoader.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/DynamicLoader.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/EncodingCXX.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Encoding.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/Glob.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Glob.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/RegularExpression.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/RegularExpression.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/SystemTools.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/SystemTools.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/CommandLineArguments.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/CommandLineArguments.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/FStream.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/FStream.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/SystemInformation.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/SystemInformation.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/ConsoleBuf.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/Source/kwsys/Status.cxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Status.hxx"
+		},
+		{
+			"file" : "/home/user/out/cmake/1/Source/cmsys/Configure.hxx"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [],
+		"name" : "cmsys"
+	}
+}

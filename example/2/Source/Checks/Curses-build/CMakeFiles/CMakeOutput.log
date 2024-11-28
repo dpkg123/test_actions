@@ -1,0 +1,42 @@
+Determining if the function wsyncup exists in the /usr/lib/aarch64-linux-gnu/libcurses.so passed with the following output:
+Change Dir: /home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-flMjLL
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_c12a1/fast && /bin/gmake  -f CMakeFiles/cmTC_c12a1.dir/build.make CMakeFiles/cmTC_c12a1.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-flMjLL”
+Building C object CMakeFiles/cmTC_c12a1.dir/CheckFunctionExists.c.o
+/bin/cc   -DCHECK_FUNCTION_EXISTS=wsyncup -o CMakeFiles/cmTC_c12a1.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-flMjLL/CheckFunctionExists.c
+Linking C executable cmTC_c12a1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c12a1.dir/link.txt --verbose=1
+/bin/cc  -DCHECK_FUNCTION_EXISTS=wsyncup CMakeFiles/cmTC_c12a1.dir/CheckFunctionExists.c.o -o cmTC_c12a1  -lcurses 
+gmake[1]: 离开目录“/home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-flMjLL”
+
+
+
+Determining if the function cbreak exists in the /usr/lib/aarch64-linux-gnu/libncurses.so passed with the following output:
+Change Dir: /home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-WCbTls
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_59839/fast && /bin/gmake  -f CMakeFiles/cmTC_59839.dir/build.make CMakeFiles/cmTC_59839.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-WCbTls”
+Building C object CMakeFiles/cmTC_59839.dir/CheckFunctionExists.c.o
+/bin/cc   -DCHECK_FUNCTION_EXISTS=cbreak -o CMakeFiles/cmTC_59839.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-WCbTls/CheckFunctionExists.c
+Linking C executable cmTC_59839
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59839.dir/link.txt --verbose=1
+/bin/cc  -DCHECK_FUNCTION_EXISTS=cbreak CMakeFiles/cmTC_59839.dir/CheckFunctionExists.c.o -o cmTC_59839  -lncurses 
+gmake[1]: 离开目录“/home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-WCbTls”
+
+
+
+Determining if the function nodelay exists in the /usr/lib/aarch64-linux-gnu/libncurses.so passed with the following output:
+Change Dir: /home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-0QbP4r
+
+Run Build Command(s):/bin/gmake -f Makefile cmTC_d0227/fast && /bin/gmake  -f CMakeFiles/cmTC_d0227.dir/build.make CMakeFiles/cmTC_d0227.dir/build
+gmake[1]: 进入目录“/home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-0QbP4r”
+Building C object CMakeFiles/cmTC_d0227.dir/CheckFunctionExists.c.o
+/bin/cc   -DCHECK_FUNCTION_EXISTS=nodelay -o CMakeFiles/cmTC_d0227.dir/CheckFunctionExists.c.o -c /home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-0QbP4r/CheckFunctionExists.c
+Linking C executable cmTC_d0227
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d0227.dir/link.txt --verbose=1
+/bin/cc  -DCHECK_FUNCTION_EXISTS=nodelay CMakeFiles/cmTC_d0227.dir/CheckFunctionExists.c.o -o cmTC_d0227  -lncurses 
+gmake[1]: 离开目录“/home/user/out/cmake/2/Source/Checks/Curses-build/CMakeFiles/CMakeScratch/TryCompile-0QbP4r”
+
+
+

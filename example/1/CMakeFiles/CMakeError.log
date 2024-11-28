@@ -1,0 +1,1936 @@
+Determining if the environ exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-dpOf2b
+
+Run Build Command(s):/bin/ninja cmTC_b2859 && [1/2] Building C object CMakeFiles/cmTC_b2859.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_b2859.dir/CheckSymbolExists.c.o 
+/bin/cc   -std=gnu11 -o CMakeFiles/cmTC_b2859.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-dpOf2b/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-dpOf2b/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-dpOf2b/CheckSymbolExists.c:8:19: 笨蛋！‘environ’未声明(在此函数内第一次使用)
+    8 |   return ((int*)(&environ))[argc];
+      |                   ^~~~~~~
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-dpOf2b/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef environ
+  return ((int*)(&environ))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Checking whether CXX compiler has environ in stdlib.h failed to compile with the following output:
+Change Dir: /home/user/out/cmake/1/Source/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/ninja cmTC_8d7bf && [1/2] Building CXX object CMakeFiles/cmTC_8d7bf.dir/kwsysPlatformTestsCXX.cxx.o
+FAILED: CMakeFiles/cmTC_8d7bf.dir/kwsysPlatformTestsCXX.cxx.o 
+/bin/c++ -DTEST_KWSYS_CXX_HAS_ENVIRON_IN_STDLIB_H   -o CMakeFiles/cmTC_8d7bf.dir/kwsysPlatformTestsCXX.cxx.o -c /home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx: 就...就在那个叫‘int main()’的函数里！:
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx:53:13: 笨蛋！‘environ’ was not declared in this scope; did you mean ‘union’?
+   53 |   char* e = environ[0];
+      |             ^~~~~~~
+      |             union
+ninja: build stopped: subcommand failed.
+
+
+
+Checking whether CXX compiler struct stat has st_mtimespec member failed to compile with the following output:
+Change Dir: /home/user/out/cmake/1/Source/kwsys/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/bin/ninja cmTC_ac4c4 && [1/2] Building CXX object CMakeFiles/cmTC_ac4c4.dir/kwsysPlatformTestsCXX.cxx.o
+FAILED: CMakeFiles/cmTC_ac4c4.dir/kwsysPlatformTestsCXX.cxx.o 
+/bin/c++ -DTEST_KWSYS_CXX_STAT_HAS_ST_MTIMESPEC   -o CMakeFiles/cmTC_ac4c4.dir/kwsysPlatformTestsCXX.cxx.o -c /home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx: 就...就在那个叫‘int main()’的函数里！:
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx:26:15: 笨蛋！‘struct stat’ has no member named ‘st_mtimespec’
+   26 |   (void)stat1.st_mtimespec.tv_sec;
+      |               ^~~~~~~~~~~~
+/home/user/out/cmake/Source/kwsys/kwsysPlatformTestsCXX.cxx:27:15: 笨蛋！‘struct stat’ has no member named ‘st_mtimespec’
+   27 |   (void)stat1.st_mtimespec.tv_nsec;
+      |               ^~~~~~~~~~~~
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function connect exists in the socket failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-Or59ZP
+
+Run Build Command(s):/bin/ninja cmTC_95758 && [1/2] Building C object CMakeFiles/cmTC_95758.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_95758
+FAILED: cmTC_95758 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=connect  CMakeFiles/cmTC_95758.dir/CheckFunctionExists.c.o -o cmTC_95758  -lsocket && :
+/bin/ld: 找不到 -lsocket: 没有那个文件或目录
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the OPENSSL_IS_AWSLC exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-FM6JqC
+
+Run Build Command(s):/bin/ninja cmTC_fd08b && [1/2] Building C object CMakeFiles/cmTC_fd08b.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_fd08b.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_fd08b.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-FM6JqC/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-FM6JqC/CheckSymbolExists.c:2:10: 寄了：openssl/base.h：没有那个文件或目录
+    2 | #include <openssl/base.h>
+      |          ^~~~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <openssl/base.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef OPENSSL_IS_AWSLC
+  return ((int*)(&OPENSSL_IS_AWSLC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the SSL_set0_wbio exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-k8gkyG
+
+Run Build Command(s):/bin/ninja cmTC_7bd60 && [1/2] Building C object CMakeFiles/cmTC_7bd60.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_7bd60
+FAILED: cmTC_7bd60 
+: && /bin/cc -w  CMakeFiles/cmTC_7bd60.dir/CheckSymbolExists.c.o -o cmTC_7bd60  /usr/lib/aarch64-linux-gnu/libssl.so  /usr/lib/aarch64-linux-gnu/libcrypto.so  -lcmzlib && :
+/bin/ld: 找不到 -lcmzlib: 没有那个文件或目录
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <openssl/ssl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SSL_set0_wbio
+  return ((int*)(&SSL_set0_wbio))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the SSL_CTX_set_srp_username exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-OHzRCd
+
+Run Build Command(s):/bin/ninja cmTC_4ebee && [1/2] Building C object CMakeFiles/cmTC_4ebee.dir/CheckSymbolExists.c.o
+[2/2] Linking C executable cmTC_4ebee
+FAILED: cmTC_4ebee 
+: && /bin/cc -w  CMakeFiles/cmTC_4ebee.dir/CheckSymbolExists.c.o -o cmTC_4ebee  /usr/lib/aarch64-linux-gnu/libssl.so  /usr/lib/aarch64-linux-gnu/libcrypto.so  -lcmzlib && :
+/bin/ld: 找不到 -lcmzlib: 没有那个文件或目录
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <openssl/ssl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SSL_CTX_set_srp_username
+  return ((int*)(&SSL_CTX_set_srp_username))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if files sys/eventfd.h;sys/filio.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-UCT2HC
+
+Run Build Command(s):/bin/ninja cmTC_7a335 && [1/2] Building C object CMakeFiles/cmTC_7a335.dir/HAVE_SYS_FILIO_H.c.o
+FAILED: CMakeFiles/cmTC_7a335.dir/HAVE_SYS_FILIO_H.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_7a335.dir/HAVE_SYS_FILIO_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-UCT2HC/HAVE_SYS_FILIO_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-UCT2HC/HAVE_SYS_FILIO_H.c:3:10: 寄了：sys/filio.h：没有那个文件或目录
+    3 | #include <sys/filio.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/filio.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/sockio.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-1FQPKg
+
+Run Build Command(s):/bin/ninja cmTC_b47c8 && [1/2] Building C object CMakeFiles/cmTC_b47c8.dir/HAVE_SYS_SOCKIO_H.c.o
+FAILED: CMakeFiles/cmTC_b47c8.dir/HAVE_SYS_SOCKIO_H.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_b47c8.dir/HAVE_SYS_SOCKIO_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-1FQPKg/HAVE_SYS_SOCKIO_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-1FQPKg/HAVE_SYS_SOCKIO_H.c:10:10: 寄了：sys/sockio.h：没有那个文件或目录
+   10 | #include <sys/sockio.h>
+      |          ^~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/sockio.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/un.h;sys/utime.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-v86W3F
+
+Run Build Command(s):/bin/ninja cmTC_2f282 && [1/2] Building C object CMakeFiles/cmTC_2f282.dir/HAVE_SYS_UTIME_H.c.o
+FAILED: CMakeFiles/cmTC_2f282.dir/HAVE_SYS_UTIME_H.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_2f282.dir/HAVE_SYS_UTIME_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-v86W3F/HAVE_SYS_UTIME_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-v86W3F/HAVE_SYS_UTIME_H.c:14:10: 寄了：sys/utime.h：没有那个文件或目录
+   14 | #include <sys/utime.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/utime.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/un.h;sys/xattr.h;arpa/inet.h;dirent.h;fcntl.h;ifaddrs.h;io.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-mBmyCm
+
+Run Build Command(s):/bin/ninja cmTC_efe4f && [1/2] Building C object CMakeFiles/cmTC_efe4f.dir/HAVE_IO_H.c.o
+FAILED: CMakeFiles/cmTC_efe4f.dir/HAVE_IO_H.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_efe4f.dir/HAVE_IO_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-mBmyCm/HAVE_IO_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-mBmyCm/HAVE_IO_H.c:19:10: 寄了：io.h：没有那个文件或目录
+   19 | #include <io.h>
+      |          ^~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <io.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/eventfd.h;sys/wait.h;sys/ioctl.h;sys/param.h;sys/poll.h;sys/resource.h;sys/select.h;sys/socket.h;sys/stat.h;sys/time.h;sys/types.h;sys/un.h;sys/xattr.h;arpa/inet.h;dirent.h;fcntl.h;ifaddrs.h;libgen.h;locale.h;net/if.h;netdb.h;netinet/in.h;netinet/tcp.h;netinet/udp.h;poll.h;pwd.h;stdbool.h;strings.h;stropts.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-VqgE1x
+
+Run Build Command(s):/bin/ninja cmTC_3c589 && [1/2] Building C object CMakeFiles/cmTC_3c589.dir/HAVE_STROPTS_H.c.o
+FAILED: CMakeFiles/cmTC_3c589.dir/HAVE_STROPTS_H.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_3c589.dir/HAVE_STROPTS_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-VqgE1x/HAVE_STROPTS_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-VqgE1x/HAVE_STROPTS_H.c:30:10: 寄了：stropts.h：没有那个文件或目录
+   30 | #include <stropts.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <stropts.h>
+
+
+int main(void){return 0;}
+
+Determining if the stricmp exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KIEOCO
+
+Run Build Command(s):/bin/ninja cmTC_9a70c && [1/2] Building C object CMakeFiles/cmTC_9a70c.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_9a70c.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_9a70c.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KIEOCO/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KIEOCO/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KIEOCO/CheckSymbolExists.c:40:19: 笨蛋！‘stricmp’ undeclared (first use in this function); did you mean ‘strncmp’?
+   40 |   return ((int*)(&stricmp))[argc];
+      |                   ^~~~~~~
+      |                   strncmp
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KIEOCO/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef stricmp
+  return ((int*)(&stricmp))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the strcmpi exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-wOKs9S
+
+Run Build Command(s):/bin/ninja cmTC_1678d && [1/2] Building C object CMakeFiles/cmTC_1678d.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_1678d.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_1678d.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-wOKs9S/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-wOKs9S/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-wOKs9S/CheckSymbolExists.c:40:19: 笨蛋！‘strcmpi’ undeclared (first use in this function); did you mean ‘strcmp’?
+   40 |   return ((int*)(&strcmpi))[argc];
+      |                   ^~~~~~~
+      |                   strcmp
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-wOKs9S/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef strcmpi
+  return ((int*)(&strcmpi))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the memrchr exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ICZZM6
+
+Run Build Command(s):/bin/ninja cmTC_a50dc && [1/2] Building C object CMakeFiles/cmTC_a50dc.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_a50dc.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_a50dc.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ICZZM6/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ICZZM6/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ICZZM6/CheckSymbolExists.c:40:19: 笨蛋！‘memrchr’ undeclared (first use in this function); did you mean ‘memchr’?
+   40 |   return ((int*)(&memrchr))[argc];
+      |                   ^~~~~~~
+      |                   memchr
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ICZZM6/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <string.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef memrchr
+  return ((int*)(&memrchr))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the closesocket exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-aLUEIM
+
+Run Build Command(s):/bin/ninja cmTC_b67cd && [1/2] Building C object CMakeFiles/cmTC_b67cd.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_b67cd.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_b67cd.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-aLUEIM/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-aLUEIM/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-aLUEIM/CheckSymbolExists.c:39:19: 笨蛋！‘closesocket’未声明(在此函数内第一次使用)
+   39 |   return ((int*)(&closesocket))[argc];
+      |                   ^~~~~~~~~~~
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-aLUEIM/CheckSymbolExists.c:39:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef closesocket
+  return ((int*)(&closesocket))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the getpass_r exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-tRF71x
+
+Run Build Command(s):/bin/ninja cmTC_b55d7 && [1/2] Building C object CMakeFiles/cmTC_b55d7.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_b55d7.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_b55d7.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-tRF71x/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-tRF71x/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-tRF71x/CheckSymbolExists.c:39:19: 笨蛋！‘getpass_r’ undeclared (first use in this function); did you mean ‘getpass’?
+   39 |   return ((int*)(&getpass_r))[argc];
+      |                   ^~~~~~~~~
+      |                   getpass
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-tRF71x/CheckSymbolExists.c:39:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef getpass_r
+  return ((int*)(&getpass_r))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the _fseeki64 exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-85nGKZ
+
+Run Build Command(s):/bin/ninja cmTC_1f5a0 && [1/2] Building C object CMakeFiles/cmTC_1f5a0.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_1f5a0.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_1f5a0.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-85nGKZ/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-85nGKZ/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-85nGKZ/CheckSymbolExists.c:40:19: 笨蛋！‘_fseeki64’未声明(在此函数内第一次使用)
+   40 |   return ((int*)(&_fseeki64))[argc];
+      |                   ^~~~~~~~~
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-85nGKZ/CheckSymbolExists.c:40:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+#include <stdio.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _fseeki64
+  return ((int*)(&_fseeki64))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the setmode exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HpWXWb
+
+Run Build Command(s):/bin/ninja cmTC_ea615 && [1/2] Building C object CMakeFiles/cmTC_ea615.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_ea615.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -std=gnu11 -o CMakeFiles/cmTC_ea615.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HpWXWb/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HpWXWb/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HpWXWb/CheckSymbolExists.c:39:19: 笨蛋！‘setmode’未声明(在此函数内第一次使用)
+   39 |   return ((int*)(&setmode))[argc];
+      |                   ^~~~~~~
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HpWXWb/CheckSymbolExists.c:39:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <sys/eventfd.h>
+#include <sys/wait.h>
+#include <sys/ioctl.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/resource.h>
+#include <sys/select.h>
+#include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/un.h>
+#include <sys/xattr.h>
+#include <arpa/inet.h>
+#include <dirent.h>
+#include <fcntl.h>
+#include <ifaddrs.h>
+#include <libgen.h>
+#include <locale.h>
+#include <net/if.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <poll.h>
+#include <pwd.h>
+#include <stdbool.h>
+#include <strings.h>
+#include <termio.h>
+#include <termios.h>
+#include <unistd.h>
+#include <utime.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef setmode
+  return ((int*)(&setmode))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function mach_absolute_time exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-SuC8aZ
+
+Run Build Command(s):/bin/ninja cmTC_c8250 && [1/2] Building C object CMakeFiles/cmTC_c8250.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_c8250
+FAILED: cmTC_c8250 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=mach_absolute_time  CMakeFiles/cmTC_c8250.dir/CheckFunctionExists.c.o -o cmTC_c8250   && :
+/bin/ld: CMakeFiles/cmTC_c8250.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `mach_absolute_time'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the include file sys/sysctl.h exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-LJvDa2
+
+Run Build Command(s):/bin/ninja cmTC_22b43 && [1/2] Building C object CMakeFiles/cmTC_22b43.dir/CheckIncludeFile.c.o
+FAILED: CMakeFiles/cmTC_22b43.dir/CheckIncludeFile.c.o 
+/bin/cc   -std=gnu11 -o CMakeFiles/cmTC_22b43.dir/CheckIncludeFile.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-LJvDa2/CheckIncludeFile.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-LJvDa2/CheckIncludeFile.c:1:10: 寄了：sys/sysctl.h：没有那个文件或目录
+    1 | #include <sys/sysctl.h>
+      |          ^~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if files sys/types.h;ctype.h;copyfile.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-2uKovQ
+
+Run Build Command(s):/bin/ninja cmTC_43bca && [1/2] Building C object CMakeFiles/cmTC_43bca.dir/HAVE_COPYFILE_H.c.o
+FAILED: CMakeFiles/cmTC_43bca.dir/HAVE_COPYFILE_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_43bca.dir/HAVE_COPYFILE_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-2uKovQ/HAVE_COPYFILE_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-2uKovQ/HAVE_COPYFILE_H.c:4:10: 寄了：copyfile.h：没有那个文件或目录
+    4 | #include <copyfile.h>
+      |          ^~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <copyfile.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;direct.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-N4eTMW
+
+Run Build Command(s):/bin/ninja cmTC_a7a35 && [1/2] Building C object CMakeFiles/cmTC_a7a35.dir/HAVE_DIRECT_H.c.o
+FAILED: CMakeFiles/cmTC_a7a35.dir/HAVE_DIRECT_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_a7a35.dir/HAVE_DIRECT_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-N4eTMW/HAVE_DIRECT_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-N4eTMW/HAVE_DIRECT_H.c:4:10: 寄了：direct.h：没有那个文件或目录
+    4 | #include <direct.h>
+      |          ^~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <direct.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;ext2fs/ext2_fs.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-sW1Qga
+
+Run Build Command(s):/bin/ninja cmTC_04c31 && [1/2] Building C object CMakeFiles/cmTC_04c31.dir/HAVE_EXT2FS_EXT2_FS_H.c.o
+FAILED: CMakeFiles/cmTC_04c31.dir/HAVE_EXT2FS_EXT2_FS_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_04c31.dir/HAVE_EXT2FS_EXT2_FS_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-sW1Qga/HAVE_EXT2FS_EXT2_FS_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-sW1Qga/HAVE_EXT2FS_EXT2_FS_H.c:6:10: 寄了：ext2fs/ext2_fs.h：没有那个文件或目录
+    6 | #include <ext2fs/ext2_fs.h>
+      |          ^~~~~~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <ext2fs/ext2_fs.h>
+
+
+int main(void){return 0;}
+
+Performing C SOURCE FILE Test HAVE_WORKING_EXT2_IOC_GETFLAGS failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-gYWtvk
+
+Run Build Command(s):/bin/ninja cmTC_c7d23 && [1/2] Building C object CMakeFiles/cmTC_c7d23.dir/src.c.o
+FAILED: CMakeFiles/cmTC_c7d23.dir/src.c.o 
+/bin/cc -DHAVE_WORKING_EXT2_IOC_GETFLAGS  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_c7d23.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-gYWtvk/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-gYWtvk/src.c:2:10: 寄了：ext2fs/ext2_fs.h：没有那个文件或目录
+    2 | #include <ext2fs/ext2_fs.h>
+      |          ^~~~~~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <sys/ioctl.h>
+#include <ext2fs/ext2_fs.h>
+int main(void) { return EXT2_IOC_GETFLAGS; }
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;membership.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-FOLNFu
+
+Run Build Command(s):/bin/ninja cmTC_c83ee && [1/2] Building C object CMakeFiles/cmTC_c83ee.dir/HAVE_MEMBERSHIP_H.c.o
+FAILED: CMakeFiles/cmTC_c83ee.dir/HAVE_MEMBERSHIP_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_c83ee.dir/HAVE_MEMBERSHIP_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-FOLNFu/HAVE_MEMBERSHIP_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-FOLNFu/HAVE_MEMBERSHIP_H.c:16:10: 寄了：membership.h：没有那个文件或目录
+   16 | #include <membership.h>
+      |          ^~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <membership.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;process.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-AhGzqE
+
+Run Build Command(s):/bin/ninja cmTC_76615 && [1/2] Building C object CMakeFiles/cmTC_76615.dir/HAVE_PROCESS_H.c.o
+FAILED: CMakeFiles/cmTC_76615.dir/HAVE_PROCESS_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_76615.dir/HAVE_PROCESS_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-AhGzqE/HAVE_PROCESS_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-AhGzqE/HAVE_PROCESS_H.c:19:10: 寄了：process.h：没有那个文件或目录
+   19 | #include <process.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <process.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;readpassphrase.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-JIib5j
+
+Run Build Command(s):/bin/ninja cmTC_029e4 && [1/2] Building C object CMakeFiles/cmTC_029e4.dir/HAVE_READPASSPHRASE_H.c.o
+FAILED: CMakeFiles/cmTC_029e4.dir/HAVE_READPASSPHRASE_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_029e4.dir/HAVE_READPASSPHRASE_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-JIib5j/HAVE_READPASSPHRASE_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-JIib5j/HAVE_READPASSPHRASE_H.c:21:10: 寄了：readpassphrase.h：没有那个文件或目录
+   21 | #include <readpassphrase.h>
+      |          ^~~~~~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <readpassphrase.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/acl.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-LFdPUe
+
+Run Build Command(s):/bin/ninja cmTC_d4e2d && [1/2] Building C object CMakeFiles/cmTC_d4e2d.dir/HAVE_SYS_ACL_H.c.o
+FAILED: CMakeFiles/cmTC_d4e2d.dir/HAVE_SYS_ACL_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_d4e2d.dir/HAVE_SYS_ACL_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-LFdPUe/HAVE_SYS_ACL_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-LFdPUe/HAVE_SYS_ACL_H.c:28:10: 寄了：sys/acl.h：没有那个文件或目录
+   28 | #include <sys/acl.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/acl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/extattr.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-XGEnhQ
+
+Run Build Command(s):/bin/ninja cmTC_6587c && [1/2] Building C object CMakeFiles/cmTC_6587c.dir/HAVE_SYS_EXTATTR_H.c.o
+FAILED: CMakeFiles/cmTC_6587c.dir/HAVE_SYS_EXTATTR_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_6587c.dir/HAVE_SYS_EXTATTR_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-XGEnhQ/HAVE_SYS_EXTATTR_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-XGEnhQ/HAVE_SYS_EXTATTR_H.c:29:10: 寄了：sys/extattr.h：没有那个文件或目录
+   29 | #include <sys/extattr.h>
+      |          ^~~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/extattr.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mkdev.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-7USo0z
+
+Run Build Command(s):/bin/ninja cmTC_4a498 && [1/2] Building C object CMakeFiles/cmTC_4a498.dir/HAVE_SYS_MKDEV_H.c.o
+FAILED: CMakeFiles/cmTC_4a498.dir/HAVE_SYS_MKDEV_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_4a498.dir/HAVE_SYS_MKDEV_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-7USo0z/HAVE_SYS_MKDEV_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-7USo0z/HAVE_SYS_MKDEV_H.c:30:10: 寄了：sys/mkdev.h：没有那个文件或目录
+   30 | #include <sys/mkdev.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mkdev.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/richacl.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eylGDd
+
+Run Build Command(s):/bin/ninja cmTC_ac531 && [1/2] Building C object CMakeFiles/cmTC_ac531.dir/HAVE_SYS_RICHACL_H.c.o
+FAILED: CMakeFiles/cmTC_ac531.dir/HAVE_SYS_RICHACL_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_ac531.dir/HAVE_SYS_RICHACL_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eylGDd/HAVE_SYS_RICHACL_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eylGDd/HAVE_SYS_RICHACL_H.c:33:10: 寄了：sys/richacl.h：没有那个文件或目录
+   33 | #include <sys/richacl.h>
+      |          ^~~~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/richacl.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;windows.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-jgg4KD
+
+Run Build Command(s):/bin/ninja cmTC_c0330 && [1/2] Building C object CMakeFiles/cmTC_c0330.dir/HAVE_WINDOWS_H.c.o
+FAILED: CMakeFiles/cmTC_c0330.dir/HAVE_WINDOWS_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_c0330.dir/HAVE_WINDOWS_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-jgg4KD/HAVE_WINDOWS_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-jgg4KD/HAVE_WINDOWS_H.c:48:10: 寄了：windows.h：没有那个文件或目录
+   48 | #include <windows.h>
+      |          ^~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <windows.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;wincrypt.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-vDtJb2
+
+Run Build Command(s):/bin/ninja cmTC_121a9 && [1/2] Building C object CMakeFiles/cmTC_121a9.dir/HAVE_WINCRYPT_H.c.o
+FAILED: CMakeFiles/cmTC_121a9.dir/HAVE_WINCRYPT_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_121a9.dir/HAVE_WINCRYPT_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-vDtJb2/HAVE_WINCRYPT_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-vDtJb2/HAVE_WINCRYPT_H.c:48:10: 寄了：wincrypt.h：没有那个文件或目录
+   48 | #include <wincrypt.h>
+      |          ^~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <wincrypt.h>
+
+
+int main(void){return 0;}
+
+Determining if files sys/types.h;ctype.h;dlfcn.h;errno.h;fcntl.h;fnmatch.h;grp.h;langinfo.h;limits.h;linux/types.h;linux/fiemap.h;linux/fs.h;linux/magic.h;locale.h;memory.h;paths.h;poll.h;pthread.h;pwd.h;regex.h;signal.h;spawn.h;stdarg.h;stdlib.h;string.h;strings.h;sys/cdefs.h;sys/ioctl.h;sys/mount.h;sys/param.h;sys/poll.h;sys/select.h;sys/stat.h;sys/statfs.h;sys/statvfs.h;sys/sysmacros.h;sys/time.h;sys/utsname.h;sys/vfs.h;sys/wait.h;sys/xattr.h;time.h;unistd.h;utime.h;wchar.h;wctype.h;winioctl.h exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KB4R3J
+
+Run Build Command(s):/bin/ninja cmTC_7bff1 && [1/2] Building C object CMakeFiles/cmTC_7bff1.dir/HAVE_WINIOCTL_H.c.o
+FAILED: CMakeFiles/cmTC_7bff1.dir/HAVE_WINIOCTL_H.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_7bff1.dir/HAVE_WINIOCTL_H.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KB4R3J/HAVE_WINIOCTL_H.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KB4R3J/HAVE_WINIOCTL_H.c:48:10: 寄了：winioctl.h：没有那个文件或目录
+   48 | #include <winioctl.h>
+      |          ^~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source:
+/* */
+#include <sys/types.h>
+#include <ctype.h>
+#include <dlfcn.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fnmatch.h>
+#include <grp.h>
+#include <langinfo.h>
+#include <limits.h>
+#include <linux/types.h>
+#include <linux/fiemap.h>
+#include <linux/fs.h>
+#include <linux/magic.h>
+#include <locale.h>
+#include <memory.h>
+#include <paths.h>
+#include <poll.h>
+#include <pthread.h>
+#include <pwd.h>
+#include <regex.h>
+#include <signal.h>
+#include <spawn.h>
+#include <stdarg.h>
+#include <stdlib.h>
+#include <string.h>
+#include <strings.h>
+#include <sys/cdefs.h>
+#include <sys/ioctl.h>
+#include <sys/mount.h>
+#include <sys/param.h>
+#include <sys/poll.h>
+#include <sys/select.h>
+#include <sys/stat.h>
+#include <sys/statfs.h>
+#include <sys/statvfs.h>
+#include <sys/sysmacros.h>
+#include <sys/time.h>
+#include <sys/utsname.h>
+#include <sys/vfs.h>
+#include <sys/wait.h>
+#include <sys/xattr.h>
+#include <time.h>
+#include <unistd.h>
+#include <utime.h>
+#include <wchar.h>
+#include <wctype.h>
+#include <winioctl.h>
+
+
+int main(void){return 0;}
+
+Determining if the function getvfsbyname exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-F1fhzU
+
+Run Build Command(s):/bin/ninja cmTC_31360 && [1/2] Building C object CMakeFiles/cmTC_31360.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_31360
+FAILED: cmTC_31360 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=getvfsbyname  -fno-builtin  CMakeFiles/cmTC_31360.dir/CheckFunctionExists.c.o -o cmTC_31360  /usr/lib/aarch64-linux-gnu/libcrypto.so && :
+/bin/ld: CMakeFiles/cmTC_31360.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `getvfsbyname'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function lchflags exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-mYLlNf
+
+Run Build Command(s):/bin/ninja cmTC_02008 && [1/2] Building C object CMakeFiles/cmTC_02008.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_02008
+FAILED: cmTC_02008 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=lchflags  -fno-builtin  CMakeFiles/cmTC_02008.dir/CheckFunctionExists.c.o -o cmTC_02008  /usr/lib/aarch64-linux-gnu/libcrypto.so && :
+/bin/ld: CMakeFiles/cmTC_02008.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `lchflags'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function readpassphrase exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-vjjqMr
+
+Run Build Command(s):/bin/ninja cmTC_92055 && [1/2] Building C object CMakeFiles/cmTC_92055.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_92055
+FAILED: cmTC_92055 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=readpassphrase  -fno-builtin  CMakeFiles/cmTC_92055.dir/CheckFunctionExists.c.o -o cmTC_92055  /usr/lib/aarch64-linux-gnu/libcrypto.so && :
+/bin/ld: CMakeFiles/cmTC_92055.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `readpassphrase'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function strncpy_s exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-yeVWz9
+
+Run Build Command(s):/bin/ninja cmTC_96b57 && [1/2] Building C object CMakeFiles/cmTC_96b57.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_96b57
+FAILED: cmTC_96b57 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=strncpy_s  -fno-builtin  CMakeFiles/cmTC_96b57.dir/CheckFunctionExists.c.o -o cmTC_96b57  /usr/lib/aarch64-linux-gnu/libcrypto.so && :
+/bin/ld: CMakeFiles/cmTC_96b57.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `strncpy_s'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the function _get_timezone exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-yd8wrA
+
+Run Build Command(s):/bin/ninja cmTC_92b24 && [1/2] Building C object CMakeFiles/cmTC_92b24.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_92b24
+FAILED: cmTC_92b24 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=_get_timezone  -fno-builtin  CMakeFiles/cmTC_92b24.dir/CheckFunctionExists.c.o -o cmTC_92b24  /usr/lib/aarch64-linux-gnu/libcrypto.so && :
+/bin/ld: CMakeFiles/cmTC_92b24.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `_get_timezone'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Determining if the ctime_s exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-i3FgzA
+
+Run Build Command(s):/bin/ninja cmTC_f4573 && [1/2] Building C object CMakeFiles/cmTC_f4573.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_f4573.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_f4573.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-i3FgzA/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-i3FgzA/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-i3FgzA/CheckSymbolExists.c:8:19: 笨蛋！‘ctime_s’ undeclared (first use in this function); did you mean ‘ctime_r’?
+    8 |   return ((int*)(&ctime_s))[argc];
+      |                   ^~~~~~~
+      |                   ctime_r
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-i3FgzA/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef ctime_s
+  return ((int*)(&ctime_s))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the gmtime_s exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-lB2RdR
+
+Run Build Command(s):/bin/ninja cmTC_51d18 && [1/2] Building C object CMakeFiles/cmTC_51d18.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_51d18.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_51d18.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-lB2RdR/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-lB2RdR/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-lB2RdR/CheckSymbolExists.c:8:19: 笨蛋！‘gmtime_s’ undeclared (first use in this function); did you mean ‘gmtime_r’?
+    8 |   return ((int*)(&gmtime_s))[argc];
+      |                   ^~~~~~~~
+      |                   gmtime_r
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-lB2RdR/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef gmtime_s
+  return ((int*)(&gmtime_s))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the localtime_s exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-MBWAlQ
+
+Run Build Command(s):/bin/ninja cmTC_f026d && [1/2] Building C object CMakeFiles/cmTC_f026d.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_f026d.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_f026d.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-MBWAlQ/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-MBWAlQ/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-MBWAlQ/CheckSymbolExists.c:8:19: 笨蛋！‘localtime_s’ undeclared (first use in this function); did you mean ‘localtime_r’?
+    8 |   return ((int*)(&localtime_s))[argc];
+      |                   ^~~~~~~~~~~
+      |                   localtime_r
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-MBWAlQ/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef localtime_s
+  return ((int*)(&localtime_s))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the _mkgmtime exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-RZCJYH
+
+Run Build Command(s):/bin/ninja cmTC_31789 && [1/2] Building C object CMakeFiles/cmTC_31789.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_31789.dir/CheckSymbolExists.c.o 
+/bin/cc   -w  -fno-builtin    -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_31789.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-RZCJYH/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-RZCJYH/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-RZCJYH/CheckSymbolExists.c:8:19: 笨蛋！‘_mkgmtime’ undeclared (first use in this function); did you mean ‘gmtime’?
+    8 |   return ((int*)(&_mkgmtime))[argc];
+      |                   ^~~~~~~~~
+      |                   gmtime
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-RZCJYH/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef _mkgmtime
+  return ((int*)(&_mkgmtime))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the function cygwin_conv_path exists failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-OREfaI
+
+Run Build Command(s):/bin/ninja cmTC_45c9f && [1/2] Building C object CMakeFiles/cmTC_45c9f.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_45c9f
+FAILED: cmTC_45c9f 
+: && /bin/cc -w -DCHECK_FUNCTION_EXISTS=cygwin_conv_path  -fno-builtin  CMakeFiles/cmTC_45c9f.dir/CheckFunctionExists.c.o -o cmTC_45c9f   && :
+/bin/ld: CMakeFiles/cmTC_45c9f.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `cygwin_conv_path'
+collect2: 笨蛋！ld 返回 1
+ninja: build stopped: subcommand failed.
+
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_VFSCONF failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-zv5ovL
+
+Run Build Command(s):/bin/ninja cmTC_d6ae8 && [1/2] Building C object CMakeFiles/cmTC_d6ae8.dir/src.c.o
+FAILED: CMakeFiles/cmTC_d6ae8.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_VFSCONF  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_d6ae8.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-zv5ovL/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-zv5ovL/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-zv5ovL/src.c:3:33: 笨蛋！‘v’的存储大小未知,咱可并不喜欢你这种神秘感～
+    3 | int main(void) { struct vfsconf v; return sizeof(v);}
+      |                                 ^
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct vfsconf v; return sizeof(v);}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_XVFSCONF failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WlKdNE
+
+Run Build Command(s):/bin/ninja cmTC_1db3d && [1/2] Building C object CMakeFiles/cmTC_1db3d.dir/src.c.o
+FAILED: CMakeFiles/cmTC_1db3d.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_XVFSCONF  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_1db3d.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WlKdNE/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WlKdNE/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WlKdNE/src.c:3:34: 笨蛋！‘v’的存储大小未知,咱可并不喜欢你这种神秘感～
+    3 | int main(void) { struct xvfsconf v; return sizeof(v);}
+      |                                  ^
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct xvfsconf v; return sizeof(v);}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STATFS failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-nzTuEF
+
+Run Build Command(s):/bin/ninja cmTC_56382 && [1/2] Building C object CMakeFiles/cmTC_56382.dir/src.c.o
+FAILED: CMakeFiles/cmTC_56382.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STATFS  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_56382.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-nzTuEF/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-nzTuEF/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-nzTuEF/src.c:3:32: 笨蛋！‘s’的存储大小未知,咱可并不喜欢你这种神秘感～
+    3 | int main(void) { struct statfs s; return sizeof(s);}
+      |                                ^
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <sys/types.h>
+#include <sys/mount.h>
+int main(void) { struct statfs s; return sizeof(s);}
+
+Performing C SOURCE FILE Test MAJOR_IN_MKDEV failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KUM73t
+
+Run Build Command(s):/bin/ninja cmTC_2dfad && [1/2] Building C object CMakeFiles/cmTC_2dfad.dir/src.c.o
+FAILED: CMakeFiles/cmTC_2dfad.dir/src.c.o 
+/bin/cc -DMAJOR_IN_MKDEV  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_2dfad.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KUM73t/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-KUM73t/src.c:1:10: 寄了：sys/mkdev.h：没有那个文件或目录
+    1 | #include <sys/mkdev.h>
+      |          ^~~~~~~~~~~~~
+编译中断，好耶！
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <sys/mkdev.h>
+int main() { return major(256); }
+
+Determining if the EFTYPE exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-iapFYL
+
+Run Build Command(s):/bin/ninja cmTC_80c3e && [1/2] Building C object CMakeFiles/cmTC_80c3e.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_80c3e.dir/CheckSymbolExists.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_80c3e.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-iapFYL/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-iapFYL/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-iapFYL/CheckSymbolExists.c:8:19: 笨蛋！‘EFTYPE’未声明(在此函数内第一次使用)
+    8 |   return ((int*)(&EFTYPE))[argc];
+      |                   ^~~~~~
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-iapFYL/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <errno.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef EFTYPE
+  return ((int*)(&EFTYPE))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the D_MD_ORDER exist failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-uxz7mX
+
+Run Build Command(s):/bin/ninja cmTC_85416 && [1/2] Building C object CMakeFiles/cmTC_85416.dir/CheckSymbolExists.c.o
+FAILED: CMakeFiles/cmTC_85416.dir/CheckSymbolExists.c.o 
+/bin/cc   -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_85416.dir/CheckSymbolExists.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-uxz7mX/CheckSymbolExists.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-uxz7mX/CheckSymbolExists.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-uxz7mX/CheckSymbolExists.c:8:19: 笨蛋！‘D_MD_ORDER’未声明(在此函数内第一次使用)
+    8 |   return ((int*)(&D_MD_ORDER))[argc];
+      |                   ^~~~~~~~~~
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-uxz7mX/CheckSymbolExists.c:8:19: 才...才不会告诉你...：我只警告你这一次喵！！！
+ninja: build stopped: subcommand failed.
+
+
+File CheckSymbolExists.c:
+/* */
+#include <langinfo.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef D_MD_ORDER
+  return ((int*)(&D_MD_ORDER))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C SOURCE FILE Test HAVE_STRUCT_TM___TM_GMTOFF failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NHCZYs
+
+Run Build Command(s):/bin/ninja cmTC_23142 && [1/2] Building C object CMakeFiles/cmTC_23142.dir/src.c.o
+FAILED: CMakeFiles/cmTC_23142.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_TM___TM_GMTOFF  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_23142.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NHCZYs/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NHCZYs/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NHCZYs/src.c:6:34: 笨蛋！‘struct tm’ has no member named ‘__tm_gmtoff’; did you mean ‘tm_gmtoff’?
+    6 |   (void)sizeof(((struct tm *)0)->__tm_gmtoff);
+      |                                  ^~~~~~~~~~~
+      |                                  tm_gmtoff
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <time.h>
+
+int main()
+{
+  (void)sizeof(((struct tm *)0)->__tm_gmtoff);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIME failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HZg791
+
+Run Build Command(s):/bin/ninja cmTC_9eac2 && [1/2] Building C object CMakeFiles/cmTC_9eac2.dir/src.c.o
+FAILED: CMakeFiles/cmTC_9eac2.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_BIRTHTIME  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_9eac2.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HZg791/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HZg791/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-HZg791/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_birthtime’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_birthtime);
+      |                                  ^~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtime);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-PNf61q
+
+Run Build Command(s):/bin/ninja cmTC_4366e && [1/2] Building C object CMakeFiles/cmTC_4366e.dir/src.c.o
+FAILED: CMakeFiles/cmTC_4366e.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_BIRTHTIMESPEC_TV_NSEC  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_4366e.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-PNf61q/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-PNf61q/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-PNf61q/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_birthtimespec’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_birthtimespec.tv_nsec);
+      |                                  ^~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_birthtimespec.tv_nsec);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIMESPEC_TV_NSEC failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WMFlBf
+
+Run Build Command(s):/bin/ninja cmTC_dcf14 && [1/2] Building C object CMakeFiles/cmTC_dcf14.dir/src.c.o
+FAILED: CMakeFiles/cmTC_dcf14.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_MTIMESPEC_TV_NSEC  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_dcf14.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WMFlBf/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WMFlBf/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-WMFlBf/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_mtimespec’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_mtimespec.tv_nsec);
+      |                                  ^~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtimespec.tv_nsec);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIME_N failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-trhXgJ
+
+Run Build Command(s):/bin/ninja cmTC_39148 && [1/2] Building C object CMakeFiles/cmTC_39148.dir/src.c.o
+FAILED: CMakeFiles/cmTC_39148.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_MTIME_N  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_39148.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-trhXgJ/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-trhXgJ/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-trhXgJ/src.c:7:36: 笨蛋！‘struct stat’ has no member named ‘st_mtime_n’; did you mean ‘st_mtim’?
+    7 |   (void)sizeof(((struct stat *)0)->st_mtime_n);
+      |                                    ^~~~~~~~~~
+      |                                    st_mtim
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtime_n);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_UMTIME failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-4K6Pf2
+
+Run Build Command(s):/bin/ninja cmTC_fe306 && [1/2] Building C object CMakeFiles/cmTC_fe306.dir/src.c.o
+FAILED: CMakeFiles/cmTC_fe306.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_UMTIME  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_fe306.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-4K6Pf2/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-4K6Pf2/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-4K6Pf2/src.c:7:36: 笨蛋！‘struct stat’ has no member named ‘st_umtime’; did you mean ‘st_mtim’?
+    7 |   (void)sizeof(((struct stat *)0)->st_umtime);
+      |                                    ^~~~~~~~~
+      |                                    st_mtim
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_umtime);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIME_USEC failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NBLpUa
+
+Run Build Command(s):/bin/ninja cmTC_eba52 && [1/2] Building C object CMakeFiles/cmTC_eba52.dir/src.c.o
+FAILED: CMakeFiles/cmTC_eba52.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_MTIME_USEC  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_eba52.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NBLpUa/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NBLpUa/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-NBLpUa/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_mtime_usec’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_mtime_usec);
+      |                                  ^~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_mtime_usec);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_FLAGS failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ftMygC
+
+Run Build Command(s):/bin/ninja cmTC_ba3b5 && [1/2] Building C object CMakeFiles/cmTC_ba3b5.dir/src.c.o
+FAILED: CMakeFiles/cmTC_ba3b5.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STAT_ST_FLAGS  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_ba3b5.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ftMygC/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ftMygC/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-ftMygC/src.c:7:34: 笨蛋！‘struct stat’没有名为‘st_flags’的成员
+    7 |   (void)sizeof(((struct stat *)0)->st_flags);
+      |                                  ^~
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+  (void)sizeof(((struct stat *)0)->st_flags);
+  return 0;
+}
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STATVFS_F_IOSIZE failed with the following output:
+Change Dir: /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eWHVY6
+
+Run Build Command(s):/bin/ninja cmTC_ace99 && [1/2] Building C object CMakeFiles/cmTC_ace99.dir/src.c.o
+FAILED: CMakeFiles/cmTC_ace99.dir/src.c.o 
+/bin/cc -DHAVE_STRUCT_STATVFS_F_IOSIZE  -w     -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=600 -std=gnu11 -o CMakeFiles/cmTC_ace99.dir/src.c.o -c /home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eWHVY6/src.c
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eWHVY6/src.c: 就...就在那个叫‘main’的函数里！:
+/home/user/out/cmake/1/CMakeFiles/CMakeScratch/TryCompile-eWHVY6/src.c:7:39: 笨蛋！‘struct statvfs’ has no member named ‘f_iosize’; did you mean ‘f_bsize’?
+    7 |   (void)sizeof(((struct statvfs *)0)->f_iosize);
+      |                                       ^~~~~~~~
+      |                                       f_bsize
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/statvfs.h>
+
+int main()
+{
+  (void)sizeof(((struct statvfs *)0)->f_iosize);
+  return 0;
+}
+
+
+Looking for a Fortran compiler failed with the following output:
+-- The Fortran compiler identification is unknown
+CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_Fortran_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "FC" or the CMake cache entry CMAKE_Fortran_COMPILER to the full
+  path to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/user/out/cmake/1/Tests/CMakeFiles/CheckFortran/CMakeFiles/CMakeOutput.log".
+See also "/home/user/out/cmake/1/Tests/CMakeFiles/CheckFortran/CMakeFiles/CMakeError.log".
+
+Looking for a Swift compiler failed with the following output:
+-- The Swift compiler identification is unknown
+CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_Swift_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "SWIFTC" or the CMake cache entry CMAKE_Swift_COMPILER to the full
+  path to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/user/out/cmake/1/Tests/CMakeFiles/CheckSwift/CMakeFiles/CMakeOutput.log".
+See also "/home/user/out/cmake/1/Tests/CMakeFiles/CheckSwift/CMakeFiles/CMakeError.log".
+

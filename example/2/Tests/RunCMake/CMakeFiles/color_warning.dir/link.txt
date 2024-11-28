@@ -1,0 +1,1 @@
+/bin/cc  -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common -Wundef CMakeFiles/color_warning.dir/color_warning.c.o -o color_warning 

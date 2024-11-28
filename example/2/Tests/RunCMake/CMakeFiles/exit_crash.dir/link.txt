@@ -1,0 +1,1 @@
+/bin/cc  -Wcast-align -Werror-implicit-function-declaration -Wchar-subscripts -Wall -W -Wpointer-arith -Wwrite-strings -Wformat-security -Wmissing-format-attribute -fno-common -Wundef CMakeFiles/exit_crash.dir/exit_crash.c.o -o exit_crash 
