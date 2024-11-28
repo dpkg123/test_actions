@@ -1,2 +1,0 @@
-^CMake Error: Could not read presets from .*
-Error: @2,15: Invalid extra field \"\$comment\" in root object

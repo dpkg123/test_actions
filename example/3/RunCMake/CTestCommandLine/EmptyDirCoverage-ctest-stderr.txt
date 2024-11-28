@@ -1,3 +1,0 @@
-Cannot find file: [^
-]*/Tests/RunCMake/CTestCommandLine/EmptyDirCoverage-ctest-build/DartConfiguration.tcl
-CTEST_BINARY_DIRECTORY not set
