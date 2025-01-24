@@ -1,0 +1,4 @@
+/usr/local/lib/mold/mold-wrapper.so
+/usr/local/bin/mold
+/usr/local/share/man/man1/mold.1
+/usr/local/share/doc/mold/LICENSE

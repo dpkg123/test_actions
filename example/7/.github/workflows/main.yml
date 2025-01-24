@@ -1,0 +1,46 @@
+name: Upload Images 
+  
+on:
+   push: 
+   schedule: 
+     - cron: "0 12 1,11,21,28 * *" 
+   workflow_dispatch: 
+  
+permissions: 
+   contents: write 
+  
+jobs: 
+   test:
+     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/'))
+     runs-on: ubuntu-latest
+     steps:
+       - run: echo  ${{ github.ref }}
+   build: 
+     runs-on: ubuntu-latest 
+  
+     steps: 
+     # Check out repository under $GITHUB_WORKSPACE, so the job can access it 
+     - name: Checkout Repo
+       uses: actions/checkout@v4
+ 
+     - name: Download Image
+       run: |
+         export number=500
+         sudo chmod 777 image_down
+         sed -i 's/set -e/set -ex/g' image_down
+         ./image_down image-`(date +%Y-%m-%d)` $number
+
+     - name: Delete Images
+       run: |
+           cd image-`(date +%Y-%m-%d)`
+           cp ../delete_image .
+           sed -i 's/set -e/set -ex/g' delete_image
+           number=500 bash delete_image 4 8
+           
+     - name: Upload to Artifact
+       if: github.event_name == 'schedule'
+       uses: actions/upload-artifact@v4
+       with: 
+        name: "image"
+        path: image*
+        retention-days: 30

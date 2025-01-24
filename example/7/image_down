@@ -1,0 +1,88 @@
+#!/bin/bash
+# A shell script to download random images from https://iw233.cn/API/Random.php
+# Usage: ./image_down <folder> <number>
+
+set -e
+
+# Check if the folder and number arguments are provided
+if [ $# -ne 2 ]; then
+  echo "Usage: ./image_down <folder> <number>"
+  exit 1
+fi
+
+A=$(date +%s)
+
+concurrent_downloads=50 # 你可以调整这个值来设置并发下载数
+
+folder=$1
+number=$2
+
+# 初始化最快站点和时间
+fastest_url=""
+min_time=999999
+
+# 普通浏览器
+#UA='Mozilla/5.0 (Windows NT 6.4; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.2135.0 Safari/537.36'
+# 百度蜘蛛
+#UA="Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)"
+# PS3
+#UA="Mozilla/5.0 (PLAYSTATION 3 4.90) AppleWebKit/531.22.8 (KHTML, like Gecko)"
+# Linux
+UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.2903.9'
+# IE11
+#UA="Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; LCTE; rv:11.0) like Gecko"
+
+if [ ! -d "$folder" ]; then
+  mkdir -p "$folder"
+fi
+
+# 定义待测试的站点列表
+urls=(
+  "https://dev.iw233.cn/api.php?sort=random"
+  "https://api.iw233.cn/api.php?sort=random"
+  "https://iw233.cn/api.php?sort=random"
+)
+
+# 检测每个站点
+for url in "${urls[@]}"; do
+  # 使用curl测试连接时间
+  time=$(curl -H "User-Agent: $UA" --referer https://www.baidu.com/s?wd=iw233 -o /dev/null -s -w '%{time_connect}' --connect-timeout 5 "$url")
+  http_code=$(curl -o /dev/null -H "User-Agent: $UA" --referer https://weibo.com/ -s -w "%{http_code}" "$url")
+
+  # 检查http状态码是否为403
+  if [ "$http_code" -eq 403 ]; then
+    echo "Site $url is forbidden (HTTP 403). Skipping."
+    continue
+  fi
+
+  # 检查是否找到更快的站点
+  if [ $(awk 'BEGIN{print "'$time'" < "'$min_time'"}') -eq 1 ]; then
+      min_time=$time
+    fastest_url=$url
+  fi
+done
+
+# 检查是否找到可用站点
+if [ -z "$fastest_url" ]; then
+  echo "No available site found. Exiting."
+  exit 1
+fi
+
+echo "Using the fastest site: $fastest_url"
+
+seq 1 $number | xargs -I {} -P $concurrent_downloads bash -c '
+    filename="'$folder'/$(date +%s%N).jpg"
+    if curl -H "User-Agent: $UA" --referer https://weibo.com/ -H "Accept-Language: zh-CN,cn;q=0.9" -sSL "'$fastest_url'" -o "$filename"; then
+        echo "Downloaded {} of '$number'. filename: $filename"
+    else
+        echo "Failed to download image {}"
+    fi
+'
+
+# 等待所有后台进程结束
+wait
+
+B=$(date +%s)
+C=$(expr $B - $A)
+
+echo "Done. Downloaded $number images to $folder, use to $(expr $C / 60)min$(expr $C % 60)s."
