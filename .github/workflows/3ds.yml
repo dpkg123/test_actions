@@ -8,7 +8,7 @@ on:
 jobs:
   build-rootfs:
     needs: srv-info
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
@@ -37,6 +37,7 @@ jobs:
     - name: Configure
       run: |
         cd buildroot
+        export USE_CCACHE=1
         time make nintendo3ds_defconfig V=1 VERBOSE=1 -j4
 
     - name: Build
@@ -58,7 +59,7 @@ jobs:
        
   build-arm9linuxfw:
     needs: srv-info
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
@@ -92,7 +93,7 @@ jobs:
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
     - name: Ccache for gh actions
-      uses: hendrikmuhs/ccache-action@v1.2.16
+      uses: hendrikmuhs/ccache-action@v1.2.16a
       with:
         key: ee2b31d23ae6068c6aecc2e81e4b71c40ed72654
             
@@ -117,7 +118,7 @@ jobs:
        path: out/*
 
   build-firm:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     needs: srv-info
     permissions:
       contents: read
@@ -144,7 +145,7 @@ jobs:
        path: firm_linux_loader/firm_linux_loader.firm
 
   srv-info:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
