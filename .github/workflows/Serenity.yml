@@ -30,8 +30,8 @@ jobs:
         #sudo ln -sv /proc/self/mounts /etc/mtab
     - name: Build toolchain
       run: |
-        bash Toolchain/BuildJakt.sh
-        bash Toolchain/BuildMold.sh
+        CXX=g++-13 bash Toolchain/BuildJakt.sh lagom
+        CXX=g++-13 bash Toolchain/BuildMold.sh lagom
     - name: Configure
       run: |
         cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
@@ -46,6 +46,14 @@ jobs:
         ninja configure-components
         ninja install-ports
         ninja all_generated
+    - name: Enable the Ladybird Qt chrome
+      working-directory: ${{ github.workspace }}/Meta/Lagom
+      run: cmake -B Build -DENABLE_QT=ON
+
+    - name: Build the Ladybird Qt chrome
+      working-directory: ${{ github.workspace }}/Meta/Lagom/Build
+      run: cmake --build .
+
     - name: Build image
       run: |
         cd Build/superbuild-x86_64
