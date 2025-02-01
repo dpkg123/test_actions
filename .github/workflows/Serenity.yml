@@ -28,6 +28,24 @@ jobs:
         sudo apt install libgtk-3-dev libpixman-1-dev libsdl2-dev libslirp-dev libspice-server-dev qemu-system-x86 bash cmake curl e2fsprogs gawk genext2fs git ninja-build patch python3 rsync
         sudo apt install build-essential cmake curl libmpfr-dev libmpc-dev libgmp-dev e2fsprogs ninja-build qemu-system-gui qemu-system-x86 qemu-utils ccache rsync unzip texinfo libssl-dev
         #sudo ln -sv /proc/self/mounts /etc/mtab
-    - name: Build
-      run: bash -x Meta/serenity.sh run
+    - name: Configure
+      run: |
+        cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
+        -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
+        -DBUILD_LAGOM=on
+    - name: Build base system
+      run: |
+        cmake --build Build/superbuild-x86_64
+    - name: Build ports
+      run: |
+        cd Build/superbuild-x86_64
+        ninja configure-components
+        ninja install-ports
+        ninja all_generated
+    - name: Build image
+      run: |
+        cd Build/superbuild-x86_64
+        ninja grub-image
+        ls
+        
         
