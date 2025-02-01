@@ -45,16 +45,14 @@ jobs:
         CXX=g++-13 bash Toolchain/BuildMold.sh lagom
     - name: Configure
       run: |
-        export USE_CCACHE=1
-        cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=clang \
+        cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
         -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
-        -DBUILD_LAGOM=on -DENABLE_MOLD_LINKER=on -DCMAKE_ASM_COMPILER=gcc-13 -DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13 \
-        -DWASM_SPEC_TEST_SKIP_FORMATTING=ON -DENABLE_LAGOM_LADYBIRD=ON   -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF
+        -DBUILD_LAGOM=on -DENABLE_MOLD_LINKER=on -DCMAKE_ASM_COMPILER=gcc-13 -DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13
     - name: Build base system
       run: |
         export USE_CCACHE=1
         cmake --build Build/superbuild-x86_64
-    - name: Build ports
+    - name: ports
       run: |
         export USE_CCACHE=1
         cd Build/superbuild-x86_64
