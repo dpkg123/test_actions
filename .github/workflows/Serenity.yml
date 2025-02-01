@@ -45,7 +45,7 @@ jobs:
         CXX=g++-13 bash Toolchain/BuildMold.sh lagom
     - name: Configure
       run: |
-        cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=CLANG \
+        cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=clang \
         -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
         -DBUILD_LAGOM=on -DENABLE_MOLD_LINKER=on -DCMAKE_ASM_COMPILER=gcc-13 -DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13
     - name: Build base system
