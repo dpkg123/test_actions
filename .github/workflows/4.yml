@@ -22,7 +22,7 @@ jobs:
 
   ci-4:
     needs: ci-5
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
@@ -93,7 +93,7 @@ jobs:
 
 
   ci-5:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
