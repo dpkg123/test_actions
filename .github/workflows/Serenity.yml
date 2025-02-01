@@ -27,17 +27,25 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt install libgtk-3-dev libpixman-1-dev libsdl2-dev libslirp-dev libspice-server-dev \
-        bash cmake curl e2fsprogs gawk genext2fs git ninja-build patch python3 rsync \
+        bash ccache cmake curl e2fsprogs gawk genext2fs git ninja-build patch python3 rsync \
         build-essential cmake curl libmpfr-dev libmpc-dev libgmp-dev e2fsprogs ninja-build qemu-system-gui \
         qemu-system-x86 qemu-utils ccache rsync unzip texinfo libssl-dev \
         libqt5gui5 libqt5widgets5 libqt5core5a qtdeclarative5-dev qtbase5-dev
         #sudo ln -sv /proc/self/mounts /etc/mtab
+    - name: ccache
+      uses: hendrikmuhs/ccache-action@v1.2
+      with:
+        create-symlink: true
+        max-size: 4G
+    
     - name: Build toolchain
       run: |
+        export USE_CCACHE=1
         CXX=g++-13 bash Toolchain/BuildJakt.sh lagom
         CXX=g++-13 bash Toolchain/BuildMold.sh lagom
     - name: Configure
       run: |
+        export USE_CCACHE=1
         cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
         #cmake . -GNinja -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=clang \
         -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
@@ -45,9 +53,11 @@ jobs:
         -DWASM_SPEC_TEST_SKIP_FORMATTING=ON -DENABLE_LAGOM_LADYBIRD=ON   -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF
     - name: Build base system
       run: |
+        export USE_CCACHE=1
         cmake --build Build/superbuild-x86_64
     - name: Build ports
       run: |
+        export USE_CCACHE=1
         cd Build/superbuild-x86_64
         ninja configure-components
         ninja install-ports
@@ -55,15 +65,18 @@ jobs:
     - name: Enable the Ladybird Qt chrome
       working-directory: ${{ github.workspace }}/Meta/Lagom
       run: |
+        export USE_CCACHE=1
         cmake -B Build -DENABLE_QT=ON -GNinja
 
     - name: Build the Ladybird Qt chrome
       working-directory: ${{ github.workspace }}/Meta/Lagom/Build
       run: |
+        export USE_CCACHE=1
         cmake --build .
 
     - name: Build image
       run: |
+        export USE_CCACHE=1
         cd Build/superbuild-x86_64
         ninja grub-image
         ls
