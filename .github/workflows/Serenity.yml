@@ -32,11 +32,11 @@ jobs:
         qemu-system-x86 qemu-utils ccache rsync unzip texinfo libssl-dev \
         libqt5gui5 libqt5widgets5 libqt5core5a qtdeclarative5-dev qtbase5-dev
         #sudo ln -sv /proc/self/mounts /etc/mtab
-    - name: ccache
-      uses: hendrikmuhs/ccache-action@v1.2
-      with:
-        create-symlink: true
-        max-size: 4G
+   # - name: ccache
+   #   uses: hendrikmuhs/ccache-action@v1.2
+   #   with:
+   #     create-symlink: true
+   #     max-size: 4G
     
     - name: Build toolchain
       run: |
