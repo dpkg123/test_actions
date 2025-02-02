@@ -12,8 +12,8 @@ jobs:
       contents: read
     steps:
 
-  #  - name: clean
-  #    uses: rokibhasansagar/slimhub_actions@main
+    - name: clean
+      uses: rokibhasansagar/slimhub_actions@main
         
     - name: "Checkout Repo"
       uses: actions/checkout@v4
