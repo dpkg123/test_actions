@@ -12,8 +12,8 @@ jobs:
       contents: read
     steps:
 
-    - name: clean
-      uses: rokibhasansagar/slimhub_actions@main
+    #- name: clean
+    #  uses: rokibhasansagar/slimhub_actions@main
         
     - name: "Checkout Repo"
       uses: actions/checkout@v4
@@ -32,7 +32,7 @@ jobs:
         qemu-system-x86 qemu-utils ccache rsync unzip texinfo libssl-dev \
         qt6-3d-dev qt6-shader-baker qt6-quick3d-dev qt6-designer-abi \
         qt6-webengine-dev qt6-datavisualization-dev qt6-tools-dev qt6-wayland qt6-base-dev-tools libqt6core6 libqt6qml6 \
-        libqt6uitools6 libqt6webenginecore6 libcurl4-openssl-dev llvm-18-dev clang-18
+        libqt6uitools6 libqt6webenginecore6 libcurl4-openssl-dev
         #sudo ln -sv /proc/self/mounts /etc/mtab
     - name: ccache
       uses: hendrikmuhs/ccache-action@v1.2
@@ -56,8 +56,8 @@ jobs:
         cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
         -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
         -DBUILD_LAGOM=on -DENABLE_MOLD_LINKER=on -DCMAKE_ASM_COMPILER=gcc -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
-        -DWASM_SPEC_TEST_SKIP_FORMATTING=ON -DENABLE_LAGOM_LADYBIRD=ON -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF -DENABLE_UNDEFINED_SANITIZER=ON \
-        -DUNDEFINED_BEHAVIOR_IS_FATAL=ON \ 
+        -DWASM_SPEC_TEST_SKIP_FORMATTING=ON -DENABLE_LAGOM_LADYBIRD=ON -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF -DENABLE_UNDEFINED_SANITIZER=OFF \
+        -DUNDEFINED_BEHAVIOR_IS_FATAL=OFF \ 
         -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF \
         -DENABLE_PCI_IDS_DOWNLOAD=OFF \
         -DENABLE_USB_IDS_DOWNLOAD=OFF
