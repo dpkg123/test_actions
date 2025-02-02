@@ -30,7 +30,7 @@ jobs:
         bash ccache cmake curl e2fsprogs gawk genext2fs git ninja-build patch python3 rsync \
         build-essential cmake curl libmpfr-dev libmpc-dev libgmp-dev e2fsprogs ninja-build qemu-system-gui \
         qemu-system-x86 qemu-utils ccache rsync unzip texinfo libssl-dev \
-        libqt5gui5 libqt5widgets5 libqt5core5a qtdeclarative5-dev qtbase5-dev
+        qt6-3d-dev qt6-shader-baker qt6-quick3d-dev qt6-designer-abi qt6-webengine-dev qt6-datavisualization-dev qt6-tools-dev qt6-wayland qt6-base-dev-tools libqt6core6 libqt6qml6 libqt6uitools6 libqt6webenginecore6
         #sudo ln -sv /proc/self/mounts /etc/mtab
    # - name: ccache
    #   uses: hendrikmuhs/ccache-action@v1.2
