@@ -55,7 +55,7 @@ jobs:
         do
         printf "#define DATE $(date)\n\n" > 1.y
         git add . 
-        git commit -m $(date)
+        git commit -m "$(date)"
         echo $i
         done
         for i in {1..5}
