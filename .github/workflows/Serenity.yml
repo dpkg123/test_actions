@@ -12,8 +12,8 @@ jobs:
       contents: read
     steps:
 
-    - name: clean
-      uses: rokibhasansagar/slimhub_actions@main
+  #  - name: clean
+  #    uses: rokibhasansagar/slimhub_actions@main
         
     - name: "Checkout Repo"
       uses: actions/checkout@v4
@@ -54,7 +54,11 @@ jobs:
         cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
         -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
         -DBUILD_LAGOM=on -DENABLE_MOLD_LINKER=on -DCMAKE_ASM_COMPILER=gcc -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
-        -DWASM_SPEC_TEST_SKIP_FORMATTING=ON -DENABLE_LAGOM_LADYBIRD=ON -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF 
+        -DWASM_SPEC_TEST_SKIP_FORMATTING=ON -DENABLE_LAGOM_LADYBIRD=ON -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF -DENABLE_UNDEFINED_SANITIZER=ON \
+        -DUNDEFINED_BEHAVIOR_IS_FATAL=ON \ 
+        -DENABLE_USERSPACE_COVERAGE_COLLECTION=OFF \
+        -DENABLE_PCI_IDS_DOWNLOAD=OFF \
+        -DENABLE_USB_IDS_DOWNLOAD=OFF
     - name: Build base system
       run: |
         export USE_CCACHE=1
