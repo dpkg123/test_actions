@@ -57,10 +57,8 @@ jobs:
         git add . 
         git commit -m "$(date)"
         echo $i
-        done
-        for i in {1..5}
-        do
         git pull --rebase
+        git push
         done
 
     - name: GitHub Push
