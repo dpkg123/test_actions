@@ -32,12 +32,12 @@ jobs:
         qemu-system-x86 qemu-utils ccache rsync unzip texinfo libssl-dev \
         qt6-3d-dev qt6-shader-baker qt6-quick3d-dev qt6-designer-abi qt6-webengine-dev qt6-datavisualization-dev qt6-tools-dev qt6-wayland qt6-base-dev-tools libqt6core6 libqt6qml6 libqt6uitools6 libqt6webenginecore6
         #sudo ln -sv /proc/self/mounts /etc/mtab
-    - name: ccache
-      uses: hendrikmuhs/ccache-action@v1.2
-      with:
-        create-symlink: true
-        max-size: 4G
-        key: b9897102d03247fb031d61a4efb9ade1dbded207
+    #- name: ccache
+    #  uses: hendrikmuhs/ccache-action@v1.2
+    #  with:
+    #    create-symlink: true
+    #    max-size: 4G
+    #    key: b9897102d03247fb031d61a4efb9ade1dbded207
     
     - name: Build linker
       run: |
