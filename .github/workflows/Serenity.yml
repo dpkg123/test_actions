@@ -37,6 +37,7 @@ jobs:
       with:
         create-symlink: true
         max-size: 4G
+        key: b9897102d03247fb031d61a4efb9ade1dbded207
     
     - name: Build linker
       run: |
@@ -49,6 +50,7 @@ jobs:
         bash Toolchain/BuildGNU.sh --ci
     - name: Configure
       run: |
+        export USE_CCACHE=1
         cmake -GNinja -S Meta/CMake/Superbuild -B Build/superbuild-x86_64 -DSERENITY_ARCH=x86_64 -DSERENITY_TOOLCHAIN=GNU \
         -DENABLE_NETWORK_DOWNLOADS=on -DENABLE_ACCELERATED_GRAPHICS=on -DBUILD_EVERYTHING=on -DENABLE_JAKT=on -DENABLE_KERNEL_LTO=on \
         -DBUILD_LAGOM=on -DENABLE_MOLD_LINKER=on -DCMAKE_ASM_COMPILER=gcc-13 -DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13 \
