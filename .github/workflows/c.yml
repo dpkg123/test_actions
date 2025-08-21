@@ -21,7 +21,7 @@ jobs:
     steps:
 
     - uses: actions/checkout@v5
-    - uses: actions/setup-java@v4
+    - uses: actions/setup-java@v5
       with:
         distribution: 'zulu'
         java-version: '8'
@@ -77,7 +77,7 @@ jobs:
 
     - run: apt update && apt install git nodejs wget -y
     - uses: actions/checkout@v5
-    - uses: actions/setup-java@v4
+    - uses: actions/setup-java@v5
       with:
         distribution: 'zulu'
         java-version: '8'
@@ -135,7 +135,7 @@ jobs:
 
     - run: apk update && apk add nodejs git curl bash
     - uses: actions/checkout@v5
-    - uses: actions/setup-java@v4
+    - uses: actions/setup-java@v5
       with:
         distribution: 'zulu'
         java-version: '8'
@@ -193,7 +193,7 @@ jobs:
 
     - run: dnf install git nodejs wget -y
     - uses: actions/checkout@v5
-    - uses: actions/setup-java@v4
+    - uses: actions/setup-java@v5
       with:
         distribution: 'zulu'
         java-version: '8'
