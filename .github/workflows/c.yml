@@ -37,7 +37,7 @@ jobs:
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 7.x
-    - uses: actions/setup-go@v5
+    - uses: actions/setup-go@v6
       with:
         go-version: '^1.18' 
         cache: false
@@ -93,7 +93,7 @@ jobs:
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 7.x
-    - uses: actions/setup-go@v5
+    - uses: actions/setup-go@v6
       with:
         go-version: '^1.18' 
         cache: false
@@ -151,7 +151,7 @@ jobs:
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 7.x
-    - uses: actions/setup-go@v5
+    - uses: actions/setup-go@v6
       with:
         go-version: '^1.18' 
         cache: false
@@ -209,7 +209,7 @@ jobs:
       uses: actions/setup-dotnet@v5
       with:
         dotnet-version: 7.x
-    - uses: actions/setup-go@v5
+    - uses: actions/setup-go@v6
       with:
         go-version: '^1.18'
         cache: false
