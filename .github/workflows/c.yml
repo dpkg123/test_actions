@@ -1,7 +1,7 @@
 name: ci
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "30 * * * *"
   workflow_dispatch:
   push:
   pull_request:
@@ -44,17 +44,10 @@ jobs:
     - name: Commit updates
       continue-on-error: true
       run: |
-        git pull
         git config user.name "dpkg123"
-        git pull
         git config user.email "test1@qw5d.onmicrosoft.com"
-        git pull
         git config --global --add safe.directory /github/workspace
-        git pull
-        printf "#define DATE $(date)\n\n" > 1.y
-        git add .
-        git commit -am "$(date)"
-        git pull --rebase
+        for i in {1..106}; do git pull --rebase && printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m $(date) ; done
 
     - name: GitHub Push
       continue-on-error: true
@@ -100,18 +93,10 @@ jobs:
     - name: Commit updates
       continue-on-error: true
       run: |
-        git config --global --add safe.directory /__w/test_actions/test_actions
-        git pull
         git config user.name "dpkg123"
-        git pull
         git config user.email "test1@qw5d.onmicrosoft.com"
-        git pull
         git config --global --add safe.directory /github/workspace
-        git pull
-        printf "#define DATE $(date)\n\n" > 1.y
-        git add .
-        git commit -am "$(date)"
-        git pull --rebase
+        for i in {1..106}; do git pull --rebase && printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m $(date) ; done
 
     - name: GitHub Push
       continue-on-error: true
@@ -158,18 +143,10 @@ jobs:
     - name: Commit updates
       continue-on-error: true
       run: |
-        git config --global --add safe.directory /__w/test_actions/test_actions
-        git pull
         git config user.name "dpkg123"
-        git pull
         git config user.email "test1@qw5d.onmicrosoft.com"
-        git pull
         git config --global --add safe.directory /github/workspace
-        git pull
-        printf "#define DATE $(date)\n\n" > 1.y
-        git add .
-        git commit -am "$(date)"
-        git pull --rebase
+        for i in {1..106}; do git pull --rebase && printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m $(date) ; done
 
     - name: GitHub Push
       continue-on-error: true
@@ -216,18 +193,10 @@ jobs:
     - name: Commit updates
       continue-on-error: true
       run: |
-        git config --global --add safe.directory /__w/test_actions/test_actions
-        git pull
         git config user.name "dpkg123"
-        git pull
         git config user.email "test1@qw5d.onmicrosoft.com"
-        git pull
         git config --global --add safe.directory /github/workspace
-        git pull
-        printf "#define DATE $(date)\n\n" > 1.y
-        git add .
-        git commit -am "$(date)"
-        git pull --rebase
+        for i in {1..106}; do git pull --rebase && printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m $(date) ; done
 
     - name: GitHub Push
       continue-on-error: true
