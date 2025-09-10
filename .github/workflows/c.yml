@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, ubuntu-22.04-arm, ubuntu-24.04-arm, macos-latest]
      
     
     runs-on: ${{ matrix.os }}
@@ -47,7 +47,8 @@ jobs:
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
         git config --global --add safe.directory /github/workspace
-        for i in {1..106}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s && git pull --rebase; done
+        git pull --rebase
+        for i in {1..256}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s; done
 
     - name: GitHub Push
       continue-on-error: true
@@ -96,7 +97,8 @@ jobs:
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
         git config --global --add safe.directory /github/workspace
-        for i in {1..106}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s && git pull --rebase; done
+        git pull --rebase 
+        for i in {1..256}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s ; done
     - name: GitHub Push
       continue-on-error: true
       uses: ad-m/github-push-action@master
@@ -145,15 +147,14 @@ jobs:
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
         git config --global --add safe.directory /github/workspace
-        for i in {1..106}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s && git pull --rebase; done
+        git pull --rebase
+        for i in {1..256}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s ; done
     - name: GitHub Push
       continue-on-error: true
       uses: ad-m/github-push-action@master
       with:
         force: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
-
-
 
   fedora:
     needs: 
@@ -194,7 +195,8 @@ jobs:
         git config user.name "dpkg123"
         git config user.email "test1@qw5d.onmicrosoft.com"
         git config --global --add safe.directory /github/workspace
-        for i in {1..106}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s && git pull --rebase; done
+        git pull --rebase
+        for i in {1..256}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" && sleep 2s ; done
     - name: GitHub Push
       continue-on-error: true
       uses: ad-m/github-push-action@master
