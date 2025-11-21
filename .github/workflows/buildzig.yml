@@ -16,7 +16,7 @@ jobs:
     #  uses: rokibhasansagar/slimhub_actions@main
         
     - name: "Checkout Repo"
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with: 
         repository: Frain-Breeze/teatimetools
         #repository: mos9527/mages-tools

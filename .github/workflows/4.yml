@@ -97,7 +97,7 @@ jobs:
     permissions:
       contents: read
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       with:
         repository: degdag-mohamed/linux
         fetch-depth: 5

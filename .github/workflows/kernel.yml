@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout kernel source
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         repository: AcmeUI-Devices/android_kernel_xiaomi_cas
         fetch-depth: 1
 
     - name: Checkout zipper
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         repository: lemniskett/AnyKernel3
         path: zipper
