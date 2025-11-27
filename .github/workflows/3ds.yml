@@ -93,7 +93,7 @@ jobs:
     - name: "Install Packages"
       run: sudo apt-get install -y gcc-arm-linux-gnueabi binutils build-essential git flex bison libssl-dev bc axel libgmp-dev libmpc-dev jq
     - name: Ccache for gh actions
-      uses: hendrikmuhs/ccache-action@v1.2.19
+      uses: hendrikmuhs/ccache-action@v1.2.20
       with:
         key: ee2b31d23ae6068c6aecc2e81e4b71c40ed72654
             
