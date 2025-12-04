@@ -48,7 +48,7 @@ jobs:
         git config --global user.email "actions@github.com"
         git config --global --add safe.directory /github/workspace
         git pull --rebase
-        for i in {1..256}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" --author "dpkg123 <test1@qw5d.onmicrosoft.com>" && sleep $((RANDOM % 10)) ; done
+        for i in {1..256}; do printf "#define DATE $(date)\n\n" > 1.y && git add . && git commit -m "$(date)" --author "dpkg123 <test1@qw5d.onmicrosoft.com>" && sleep $((RANDOM % 15 + 1)) ; done
         git pull --rebase
 
     - name: GitHub Push
