@@ -52,7 +52,7 @@ jobs:
         sudo du -hs buildroot
         
     - name: Upload rootfs to Artifact
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with: 
        name: "3ds-rootfs"
        path: buildroot/output/images/rootfs.cpio.gz
@@ -71,7 +71,7 @@ jobs:
     - name: Build
       run: make -C arm9linuxfw -j4 V=1 VERBOSE=1
     - name: Upload arm9linuxfw to Artifact
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with: 
        name: "arm9linuxfw"
        path: arm9linuxfw/arm9linuxfw.bin
@@ -112,7 +112,7 @@ jobs:
         cp linux/arch/arm/boot/dts/nintendo3ds_ktr.dtb out -v
 
     - name: Upload rootfs to Artifact
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with: 
        name: "3ds-kernel"
        path: out/*
@@ -139,7 +139,7 @@ jobs:
         CC: "arm-none-eabi-gcc"
         
     - name: Upload firm to Artifact
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with: 
        name: "firm_linux_loader"
        path: firm_linux_loader/firm_linux_loader.firm
