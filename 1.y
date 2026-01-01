@@ -1,2 +1,2 @@
-#define DATE Wed Dec 31 23:59:51 UTC 2025
+#define DATE Thu Jan  1 00:00:05 UTC 2026
 
