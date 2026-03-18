@@ -28,7 +28,7 @@ jobs:
         submodules: true
 
     - name: Checkout build files
-      run: git submodule update --init
+      run: git config --global --add safe.directory /__w/test_actions/test_actions && git submodule update --init
 
     - name: configure
       run: |
