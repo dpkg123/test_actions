@@ -7,7 +7,8 @@ on:
 
 jobs:
   build-rootfs:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    container: ubuntu:focal
     permissions:
       contents: read
     steps:
@@ -15,6 +16,12 @@ jobs:
     #- name: clean
     #  uses: rokibhasansagar/slimhub_actions@main
         
+    - name: Install package
+      run: apt update && install -y git libxml2-dev libbz2-dev libssl-dev zlib1g-dev gcc g++ binutils libstdc++-10-dev libstdc++-9-dev ninja-build libzstd-dev && uname -a
+            
+    - name: Checkout build files
+      run: git submodule update --init
+
     - name: "Checkout Repo"
       uses: actions/checkout@v6
       with: 
@@ -22,12 +29,6 @@ jobs:
         #repository: mos9527/mages-tools
         fetch-depth: 2
         submodules: true
-        
-    - name: Install package
-      run: sudo apt install libxml2-dev libbz2-dev libssl-dev zlib1g-dev gcc g++ binutils libstdc++-10-dev libstdc++-9-dev ninja-build libzstd-dev && uname -a
-            
-    - name: Checkout build files
-      run: git submodule update --init
 
     - name: configure
       run: |
