@@ -18,10 +18,7 @@ jobs:
         
     - name: Install package
       run: apt update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install -y git libxml2-dev libbz2-dev libssl-dev zlib1g-dev gcc g++ binutils libstdc++-10-dev libstdc++-9-dev ninja-build libzstd-dev && uname -a
-            
-    - name: Checkout build files
-      run: git submodule update --init
-
+  
     - name: "Checkout Repo"
       uses: actions/checkout@v6
       with: 
@@ -29,6 +26,9 @@ jobs:
         #repository: mos9527/mages-tools
         fetch-depth: 2
         submodules: true
+
+    - name: Checkout build files
+      run: git submodule update --init
 
     - name: configure
       run: |
