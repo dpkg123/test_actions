@@ -20,7 +20,7 @@ jobs:
       run: apt update && DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install -y git libxml2-dev libbz2-dev libssl-dev zlib1g-dev gcc g++ binutils libstdc++-10-dev libstdc++-9-dev ninja-build cmake libzstd-dev && uname -a
   
     - name: "Checkout Repo"
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with: 
         repository: Frain-Breeze/teatimetools
         #repository: mos9527/mages-tools
